@@ -155,6 +155,64 @@
                         margin-top: 30%;
                         height: 100%;
                 }
+
+                /* Overlay styles */
+                .overlay {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.8);
+                        display: none;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 1000;
+                }
+
+                .overlay-content {
+                        position: relative;
+                        width: 90%;
+                        max-width: 800px;
+                        background: white;
+                        padding: 20px;
+                        border-radius: 10px;
+                }
+
+                .overlay-image-wrapper {
+                        position: relative;
+                        width: 100%;
+                        padding-top: 56.25%;
+                        /* 16:9 Aspect Ratio */
+                        background: #f0f0f0;
+                        /* Fallback background color */
+                        border-radius: 10px;
+                        overflow: hidden;
+                }
+
+                .overlay-image-wrapper img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        /* Maintain aspect ratio */
+                        border-radius: 10px;
+                }
+
+                .overlay-content h2,
+                .overlay-content p {
+                        margin: 10px 0;
+                }
+
+                .close-btn {
+                        position: absolute;
+                        top: -20px;
+                        right: 5px;
+                        font-size: 40px;
+                        cursor: pointer;
+                }
         </style>
 
 </head>
@@ -354,7 +412,6 @@
                         <div class="swiper-wrapper">
                                 <div class="swiper-slide" style="position: relative;">
                                         <img src="img/1.jpg" alt="Slide 1" class="swiper-image">
-                                        <!-- Text overlay -->
                                         <div class="swiper-text">
                                                 <h1>Rajasthan</h1>
                                                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -366,7 +423,6 @@
                                 </div>
                                 <div class="swiper-slide" style="position: relative;">
                                         <img src="img/2.jpg" alt="Slide 2" class="swiper-image">
-                                        <!-- Text overlay for the second image -->
                                         <div class="swiper-text">
                                                 <h1>Punjab</h1>
                                                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -378,7 +434,6 @@
                                 </div>
                                 <div class="swiper-slide" style="position: relative;">
                                         <img src="img/3.png" alt="Slide 3" class="swiper-image">
-                                        <!-- Text overlay for the third image -->
                                         <div class="swiper-text">
                                                 <h1>Delhi</h1>
                                                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -414,86 +469,61 @@
                 <section class="w-full flex justify-center bg-color3 py-8 h-auto">
                         <div class="w-full container 2xl:px-36 h-auto">
                                 <div>
-                                        <p class="text-color4 uppercase px-5">TRAVEL
-                                                BLOG</p>
+                                        <p class="text-color4 uppercase px-5">TRAVEL BLOG</p>
                                         <p class="text-5xl font-secondary text-color4 px-5">
-                                                Travel<span class="text-white">
-                                                        Experience</span></p>
+                                                Travel<span class="text-white">Experience</span>
+                                        </p>
                                         <div
-                                                class="flex flex-wrap justify-center xl:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3 ">
+                                                class="flex flex-wrap justify-center xl:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3">
                                                 <figure
-                                                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative  transition-all duration-1000  group mb-20   ">
+                                                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
                                                         <div
                                                                 class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
                                                                 <img src="img/22.jpeg" alt=""
-                                                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                                                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
+                                                                        data-id="1">
                                                         </div>
-                                                        <!-- <div
-                                                                class="absolute uppercase text-white bg-color1 px-2 left-3 top-12 flex flex-col items-center ">
-                                                                <p>Aug</p>
-                                                                <p class="font-bold">02
-                                                                </p>
-                                                        </div> -->
                                                         <figcaption
-                                                                class=" absolute h-[150px] w-[85%]  bg-white bottom-[-80px]  left-[8%] flex flex-col justify-center px-8 group-hover:bottom-10 transition-all duration-1000 ">
-                                                                <p class="uppercase text-color4">
-                                                                        Tours</p>
+                                                                class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-8 group-hover:bottom-10 transition-all duration-1000">
+                                                                <p class="uppercase text-color4">Tours</p>
                                                                 <p
                                                                         class="capitalize text-color3 font-secondary text-2xl">
                                                                         most popular
-                                                                        yacht charter
-                                                                        routes </p>
+                                                                        yacht charter routes</p>
                                                         </figcaption>
                                                 </figure>
                                                 <figure
-                                                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative  transition-all duration-1000  group mb-20   ">
+                                                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
                                                         <div
                                                                 class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
                                                                 <img src="img/canada1-1.jpeg" alt=""
-                                                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                                                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
+                                                                        data-id="2">
                                                         </div>
-                                                        <!-- <div
-                                                                class="absolute uppercase text-white bg-color1 px-2 left-3 top-12 flex flex-col items-center ">
-                                                                <p>Aug</p>
-                                                                <p class="font-bold">07
-                                                                </p>
-                                                        </div> -->
                                                         <figcaption
-                                                                class=" absolute h-[150px] w-[85%]  bg-white bottom-[-80px]  left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000 ">
-                                                                <p class="uppercase text-color4">
-                                                                        travel</p>
+                                                                class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                                                                <p class="uppercase text-color4">Travel</p>
                                                                 <p
                                                                         class="capitalize text-color3 font-secondary text-2xl">
                                                                         practical
-                                                                        information for
-                                                                        travelling to
-                                                                        egypt
-                                                                </p>
+                                                                        information for travelling to egypt</p>
                                                         </figcaption>
                                                 </figure>
                                                 <figure
-                                                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative  transition-all duration-1000  group mb-20   ">
+                                                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
                                                         <div
                                                                 class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
                                                                 <img src="img/44-1.jpg" alt=""
-                                                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                                                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
+                                                                        data-id="3">
                                                         </div>
-                                                        <!-- <div
-                                                                class="absolute uppercase text-white bg-color1 px-2 left-3 top-12 flex flex-col items-center ">
-                                                                <p>Aug</p>
-                                                                <p class="font-bold">02
-                                                                </p>
-                                                        </div> -->
                                                         <figcaption
-                                                                class=" absolute h-[150px] w-[85%]  bg-white bottom-[-80px]  left-[8%] flex flex-col justify-center px-5 group-hover:bottom-10 transition-all duration-1000 ">
-                                                                <p class="uppercase text-color4">
-                                                                        Destinations
-                                                                </p>
+                                                                class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-5 group-hover:bottom-10 transition-all duration-1000">
+                                                                <p class="uppercase text-color4">Destinations</p>
                                                                 <p
                                                                         class="capitalize text-color3 font-secondary text-2xl">
                                                                         tips towards a
-                                                                        flawless
-                                                                        honeymoon </p>
+                                                                        flawless honeymoon</p>
                                                         </figcaption>
                                                 </figure>
                                         </div>
@@ -501,6 +531,51 @@
                         </div>
                 </section>
 
+
+                <!-- Overlay Popup -->
+                <div id="overlay" class="overlay">
+                        <div class="overlay-content">
+                                <span class="close-btn" id="close-btn">&times;</span>
+                                <div class="overlay-image-wrapper">
+                                        <img id="popup-img" src="" alt="Popup Image">
+                                </div>
+                                <h2 id="popup-title">Title</h2>
+                                <p id="popup-description">Description</p>
+                        </div>
+                </div>
+                <script>
+                        const overlay = document.getElementById('overlay');
+                        const closeButton = document.getElementById('close-btn');
+                        const popupImg = document.getElementById('popup-img');
+                        const popupTitle = document.getElementById('popup-title');
+                        const popupDescription = document.getElementById('popup-description');
+
+                        const cards = document.querySelectorAll('figure');
+
+                        cards.forEach(card => {
+                                card.addEventListener('click', () => {
+                                        const imgSrc = card.querySelector('img').src;
+                                        const title = card.querySelector('figcaption p').innerText;
+                                        const description = card.querySelector('figcaption p').nextElementSibling.innerText;
+
+                                        popupImg.src = imgSrc;
+                                        popupTitle.innerText = title;
+                                        popupDescription.innerText = description;
+
+                                        overlay.style.display = 'flex';
+                                });
+                        });
+
+                        closeButton.addEventListener('click', () => {
+                                overlay.style.display = 'none';
+                        });
+
+                        window.addEventListener('click', (event) => {
+                                if (event.target === overlay) {
+                                        overlay.style.display = 'none';
+                                }
+                        });
+                </script>
                 <section class="w-full flex justify-center bg-color7 overflow-hidden  ">
                         <div class="w-full container flex whitespace-nowrap overflow-hidden group  ">
                                 <div
