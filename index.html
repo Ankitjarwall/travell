@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>travel</title>
+        <link rel="stylesheet" href="css/output.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <style>
+                html,
+                body {
+                        margin: 0;
+                        padding: 0;
+                        overflow-x: hidden;
+                }
+
+                #name,
+                .getintouch-heading article {
+                        background: -webkit-linear-gradient(135deg, #133373, #4c73bf, #133373, #133373);
+                        -webkit-text-fill-color: transparent
+                }
+
+                /* #name,
+                .getintouch-heading article {
+                        background: -webkit-linear-gradient(135deg, #133373, #02abff, #133373, #02abff);
+                        -webkit-text-fill-color: transparent
+                } */
+
+                #name {
+                        font-size: 4rem;
+                        width: fit-content;
+                        display: flex;
+                        font-weight: 900;
+                        align-items: flex-start;
+                        background: linear-gradient(-45deg, #000000);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        background-size: 400% 400%;
+                        -webkit-animation: 10s infinite gradient;
+                        animation: 10s infinite gradient
+                }
+
+                @keyframes gradient {
+
+                        0%,
+                        100% {
+                                background-position: 0 50%
+                        }
+
+                        50% {
+                                background-position: 100% 50%
+                        }
+                }
+
+                .jello:hover {
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-color: #03e6ff;
+                        -webkit-animation: .9s both jello-vertical;
+                        animation: .9s both jello-vertical
+                }
+
+                @-webkit-keyframes jello-vertical {
+
+                        0%,
+                        100% {
+                                -webkit-transform: scale3d(1, 1, 1);
+                                transform: scale3d(1, 1, 1)
+                        }
+
+                        30% {
+                                -webkit-transform: scale3d(.75, 1.25, 1);
+                                transform: scale3d(.75, 1.25, 1)
+                        }
+
+                        40% {
+                                -webkit-transform: scale3d(1.25, .75, 1);
+                                transform: scale3d(1.25, .75, 1)
+                        }
+
+                        50% {
+                                -webkit-transform: scale3d(.85, 1.15, 1);
+                                transform: scale3d(.85, 1.15, 1)
+                        }
+
+                        65% {
+                                -webkit-transform: scale3d(1.05, .95, 1);
+                                transform: scale3d(1.05, .95, 1)
+                        }
+
+                        75% {
+                                -webkit-transform: scale3d(.95, 1.05, 1);
+                                transform: scale3d(.95, 1.05, 1)
+                        }
+                }
+
+                @keyframes jello-vertical {
+
+                        0%,
+                        100% {
+                                -webkit-transform: scale3d(1, 1, 1);
+                                transform: scale3d(1, 1, 1)
+                        }
+
+                        30% {
+                                -webkit-transform: scale3d(.75, 1.25, 1);
+                                transform: scale3d(.75, 1.25, 1)
+                        }
+
+                        40% {
+                                -webkit-transform: scale3d(1.25, .75, 1);
+                                transform: scale3d(1.25, .75, 1)
+                        }
+
+                        50% {
+                                -webkit-transform: scale3d(.85, 1.15, 1);
+                                transform: scale3d(.85, 1.15, 1)
+                        }
+
+                        65% {
+                                -webkit-transform: scale3d(1.05, .95, 1);
+                                transform: scale3d(1.05, .95, 1)
+                        }
+
+                        75% {
+                                -webkit-transform: scale3d(.95, 1.05, 1);
+                                transform: scale3d(.95, 1.05, 1)
+                        }
+                }
+
+                @media (max-width: 700px) {
+                        .discover {
+                                font-size: 50px;
+                        }
+                }
+
+                @media (max-width: 500px) {
+                        .discover {
+                                font-size: 40px;
+                        }
+                }
+
+                @media (max-width: 430px) {
+                        .discover {
+                                font-size: 30px;
+                        }
+                }
+
+                .logo-light {
+                        margin-top: 30%;
+                        height: 100%;
+                }
+        </style>
+
+</head>
+
+<body class="font-primary">
+        <main class="w-full">
+                <section
+                        class="w-full h-[100vh]  bg-header  bg-cover bg-no-repeat bg-center bg-color1 bg-blend-multiply bg-opacity-60 ">
+                        <section class="w-full flex flex-wrap justify-center ">
+                                <header
+                                        class="w-[85%]  xl:w-[73%]  container hidden lg:flex justify-between h-[60px]       items-center py-[45px] border-b-[1px] border-white border-opacity-40">
+                                        <figure class="w-[140px]">
+                                                <img src="img/logo-light.png" alt="" class="logo-light">
+                                        </figure>
+                                        <nav class="h-[100%] md:w-[70%]">
+                                                <ul class="h-[100%] flex items-center gap-8 justify-end">
+                                                        <li class="list-none  "><a
+                                                                        class="decoration-none text-white hover:text-color3 transition-all duration-500"
+                                                                        href="/">Home</a></li>
+                                                        <li class="list-none"><a
+                                                                        class="decoration-none text-white  hover:text-color3 transition-all duration-500"
+                                                                        href="">Packages</a></li>
+                                                        <li class="list-none"><a
+                                                                        class="decoration-none text-white  hover:text-color3 transition-all duration-500"
+                                                                        href="">About</a></li>
+                                                        <li class="list-none"><a
+                                                                        class="decoration-none text-white  hover:text-color3 transition-all duration-500"
+                                                                        href="#contact">Contact</a></li>
+                                                </ul>
+                                        </nav>
+                                </header>
+
+                                <!-- header for mobile -->
+                                <header
+                                        class="w-[95%] sm:w-[70%] md:w-[80%] container flex h-[60px] justify-between  items-center  lg:hidden  py-[45px] relative border-b-[1px] border-white border-opacity-40 ">
+                                        <figure class="w-[140px]">
+                                                <img src="img/logo-light.png" alt="" class="logo-light">
+                                        </figure>
+                                        <div class=" w-1/2 h-full flex justify-end items-center ">
+                                                <i
+                                                        class="bi bi-list text-3xl text-white cursor-pointer ham-menu-icon"></i>
+                                        </div>
+                                        <nav
+                                                class="menu hidden h-[400px] w-full absolute bg-white left-0 top-[90px]   z-30 ">
+                                                <ul class="h-full w-full flex flex-col  justify-center ms-6">
+                                                        <li class="list-none my-3"><a
+                                                                        class="decoration-none text-color2 flex hover:text-color4  transition-all duration-600"
+                                                                        href="">Home</a></li>
+                                                        <li class="list-none my-3"><a
+                                                                        class="decoration-none text-color2 flex  hover:text-color4 transition-all duration-600"
+                                                                        href="">Packages</a></li>
+                                                        <li class="list-none my-3"><a
+                                                                        class="decoration-none text-color2 flex  hover:text-color4  transition-all duration-600"
+                                                                        href="">About</a></li>
+                                                        <li class="list-none my-3"><a
+                                                                        class="decoration-none text-color2 flex   hover:text-color4 transition-all duration-600"
+                                                                        href="">Contact</a></li>
+                                                </ul>
+                                        </nav>
+                                </header>
+                                <!-- end header mobile  -->
+
+                        </section>
+                        <section class="w-full flex justify-center mt-[180px]">
+                                <div class="w-[700px] md:w-[900px] container h-auto  ">
+                                        <p
+                                                class="w-full text-center uppercase text-white tracking-widest [word-spacing:8px] mb-4">
+                                                Lets travel the world with us</p>
+                                        <h1
+                                                class="w-full text-center text-white text-5xl md:text-7xl font-secondary uppercase tracking-widest">
+                                                Explore <span class="travol">India</span> with us </h1>
+                                </div>
+                        </section>
+
+                </section>
+
+                <section class="w-full flex justify-center bg-color5 h-auto">
+                        <div class="w-full container flex flex-wrap px-0 2xl:px-36 h-auto py-16">
+                                <div class="w-full lg:w-[50%] bg-color px-5">
+                                        <div class="text-content">
+                                                <p class="text-color4 uppercase">The best travel agency</p>
+                                                <article class="discover text-color3 text-5xl font-bold uppercase font-secondary my-4"
+                                                        id="name" data-aos="fade-up" data-aos-delay="200">
+                                                        <p class="jello discover">D</p>
+                                                        <p class="jello discover">i</p>
+                                                        <p class="jello discover">s</p>
+                                                        <p class="jello discover">c</p>
+                                                        <p class="jello discover">o</p>
+                                                        <p class="jello discover">v</p>
+                                                        <p class="jello discover">e</p>
+                                                        <p class="jello discover">r</p>
+                                                        &nbsp;
+                                                        <p class="jello discover">w</p>
+                                                        <p class="jello discover">o</p>
+                                                        <p class="jello discover">r</p>
+                                                        <p class="jello discover">l</p>
+                                                        <p class="jello discover">d</p>
+                                                        &nbsp;
+                                                </article>
+                                                <article class="text-color3 text-5xl font-bold uppercase font-secondary my-4"
+                                                        id="name" data-aos="fade-up" data-aos-delay="200">
+                                                        <p class="jello discover">w</p>
+                                                        <p class="jello discover">i</p>
+                                                        <p class="jello discover">t</p>
+                                                        <p class="jello discover">h</p>
+                                                        &nbsp;
+                                                        <p class="jello discover">o</p>
+                                                        <p class="jello discover">u</p>
+                                                        <p class="jello discover">r</p>
+                                                        &nbsp;
+                                                        <p class="jello discover">g</p>
+                                                        <p class="jello discover">u</p>
+                                                        <p class="jello discover">i</p>
+                                                        <p class="jello discover">d</p>
+                                                        <p class="jello discover">e</p>
+                                                </article>
+                                                <p class="text-color6">You can choose any country with good tourism.
+                                                        Agency elementum
+                                                        sesue the aucan vestibulum aliquam justo in sapien rutrum
+                                                        volutpat. Donec in
+                                                        quis the pellentesque velit. Donec id velit ac arcu posuere
+                                                        blane.</p>
+                                                <p class="text-color6 my-4">Hotel ut nisl quam nestibulum ac quam nec
+                                                        odio elementum
+                                                        ceisue the miss varius natoque penatibus et magnis dis
+                                                        parturient monte.</p>
+                                                <div class="flex items-center">
+                                                        <i
+                                                                class="bi bi-check text-white bg-color4 rounded-[50%] px-2 py-1 me-3"></i>
+                                                        <p class="text-color6">5+ Years of Experience</p>
+                                                </div>
+                                                <div class="flex items-center my-4">
+                                                        <i
+                                                                class="bi bi-check text-white bg-color4 rounded-[50%] px-2 py-1 me-3"></i>
+                                                        <p class="text-color6">100+ Tour Destinations</p>
+                                                </div>
+                                                <div class="flex items-center">
+                                                        <i
+                                                                class="bi bi-telephone-forward text-color1 text-2xl me-3"></i>
+                                                        <div>
+                                                                <p class="text-color6">For information</p>
+                                                                <p class="text-color6 text-2xl">09188085590</p>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div
+                                        class="w-full lg:w-[50%] flex flex-col justify-center items-center bg-color5 h-auto pb-8 lg:pb-0 mt-10 lg:mt-0">
+                                        <figure class="w-[100%] h-[500px] relative">
+                                                <div class="w-[100%] h-[100%] bg-color6 absolute left-8 top-8"></div>
+                                                <img src="img/india.png" alt=""
+                                                        class="w-[100%] h-[110%] absolute z-10 object-cover hover:scale-[.95] transition-all duration-500">
+                                        </figure>
+                                </div>
+                        </div>
+                </section>
+
+
+
+                <section class="swiper-container my-5">
+                        <div class="swiper-wrapper">
+                                <div class="swiper-slide" style="position: relative;">
+                                        <img src="img/1.jpg" alt="Slide 1"
+                                                style="margin-left: 5%; width: 50%; height: auto;">
+                                        <!-- Text overlay -->
+                                        <div
+                                                style="position: absolute; top: 50%; left: 75%; transform: translate(-50%, -50%); color: rgb(9, 107, 255); font-size: 24px; font-weight: bold;">
+                                                <h1 style="text-shadow:  1px 1px 4px rgba(0, 0, 0, 0.7);">Rajasthan</h1>
+                                                <p style=" color: #000000;">Lorem ipsum dolor, sit amet consectetur
+                                                        adipisicing elit.
+                                                        Repellendus, quisquam iste est explicabo, quaerat minima
+                                                        deserunt mollitia voluptates ratione laboriosam tempore ea quae
+                                                        quasi alias error magnam odio. Saepe, unde.</p>
+                                        </div>
+                                </div>
+                                <div class="swiper-slide" style="position: relative;">
+                                        <img src="img/2.jpg" alt="Slide 2"
+                                                style="margin-left: 5%; width: 50%; height: auto;">
+                                        <!-- Add text overlay for the second image if needed -->
+                                        <div
+                                                style="position: absolute; top: 50%; left: 75%; transform: translate(-50%, -50%); color: rgb(9, 107, 255); font-size: 24px; font-weight: bold;">
+                                                <h1 style="text-shadow:  1px 1px 4px rgba(0, 0, 0, 0.7);">Punjab</h1>
+                                                <p style="color: #000000;">Lorem ipsum dolor, sit amet consectetur
+                                                        adipisicing elit. Repellendus, quisquam iste est explicabo,
+                                                        quaerat minima
+                                                        deserunt mollitia voluptates ratione laboriosam tempore ea quae
+                                                        quasi alias error magnam odio. Saepe, unde.</p>
+                                        </div>
+                                </div>
+                                <div class="swiper-slide" style="position: relative;">
+                                        <img src="img/3.png" alt="Slide 3"
+                                                style="margin-left: 5%; width: 50%; height: auto;">
+                                        <!-- Add text overlay for the third image if needed -->
+                                        <div
+                                                style="position: absolute; top: 50%; left: 75%; transform: translate(-50%, -50%); color: rgb(9, 107, 255); font-size: 24px; font-weight: bold;">
+                                                <h1 style="text-shadow:  1px 1px 4px rgba(0, 0, 0, 0.7);">Delhi</h1>
+                                                <p style="color: #000000;">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                                        Repellendus, quisquam iste est explicabo, quaerat minima
+                                                        deserunt mollitia voluptates ratione laboriosam tempore ea quae
+                                                        quasi alias error magnam odio. Saepe, unde.</p>
+                                        </div>
+                                </div>
+                        </div>
+                </section>
+
+                <script>
+                        var swiper = new Swiper('.swiper-container', {
+                                loop: true,
+                                autoplay: {
+                                        delay: 3000,  // Autoplay delay in milliseconds (3000ms = 3s)
+                                        disableOnInteraction: false,  // Continue autoplay after user interaction
+                                },
+                                pagination: {
+                                        el: '.swiper-pagination',
+                                        clickable: true,
+                                },
+                                navigation: {
+                                        nextEl: '.swiper-button-next',
+                                        prevEl: '.swiper-button-prev',
+                                },
+                        });
+                </script>
+
+
+                <section
+                        class="w-full bg-sea py-32 relative bg-cover bg-fixed flex justify-center after:content-[''] after:absolute after:w-[100%] after:h-[100%] after:bg-black after:bg-opacity-50 after:top-0">
+                        <div
+                                class="w-full container 2xl:px-36 flex flex-wrap relative z-10 justify-center md:justify-between">
+
+                                <div class="w-full md:w-[20%] my-5">
+                                        <figure class="flex flex-col items-center  group">
+                                                <div
+                                                        class="bg-white bg-opacity-50  rounded-[50%] p-5 flex items-center relative overflow-hidden outline outline-8  outline-offset-8 out  ">
+                                                        <i
+                                                                class="bi bi-house-heart text-5xl text-white absolute ms-[-100%] group-hover:ms-[0%] transition-all duration-300"></i><i
+                                                                class="bi bi-house-heart text-5xl text-white  group-hover:ms-[200%] transition-all duration-300"></i>
+                                                </div>
+                                                <figcaption class="text-center text-white font-secondary mt-10">
+                                                        <p class="text-3xl">250</p>
+                                                        <p class="text-xl">Amazing Tour</p>
+                                                </figcaption>
+                                        </figure>
+                                </div>
+
+                                <div class="w-full md:w-[20%] my-5">
+                                        <figure class="flex flex-col items-center  group">
+                                                <div
+                                                        class="bg-white bg-opacity-50  rounded-[50%] p-5 flex items-center relative overflow-hidden outline outline-8  outline-offset-8 out  ">
+                                                        <i
+                                                                class="bi bi-postage-heart text-5xl text-white absolute ms-[-100%] group-hover:ms-[0%] transition-all duration-300"></i><i
+                                                                class="bi bi-postage-heart text-5xl text-white  group-hover:ms-[200%] transition-all duration-300"></i>
+                                                </div>
+                                                <figcaption class="text-center text-white font-secondary mt-10">
+                                                        <p class="text-3xl">100</p>
+                                                        <p class="text-xl">Hotel Booking</p>
+                                                </figcaption>
+                                        </figure>
+                                </div>
+
+                        </div>
+                </section>
+
+                <section class="w-full flex justify-center bg-color3 py-8 h-auto">
+                        <div class="w-full container 2xl:px-36 h-auto">
+                                <div>
+                                        <p class="text-color4 uppercase px-5">TRAVEL
+                                                BLOG</p>
+                                        <p class="text-5xl font-secondary text-color4 px-5">
+                                                Travel<span class="text-white">
+                                                        Experience</span></p>
+                                        <div
+                                                class="flex flex-wrap justify-center xl:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3 ">
+                                                <figure
+                                                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative  transition-all duration-1000  group mb-20   ">
+                                                        <div
+                                                                class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                                                                <img src="img/22.jpeg" alt=""
+                                                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                                                        </div>
+                                                        <div
+                                                                class="absolute uppercase text-white bg-color1 px-2 left-3 top-12 flex flex-col items-center ">
+                                                                <p>Aug</p>
+                                                                <p class="font-bold">02
+                                                                </p>
+                                                        </div>
+                                                        <figcaption
+                                                                class=" absolute h-[150px] w-[85%]  bg-white bottom-[-80px]  left-[8%] flex flex-col justify-center px-8 group-hover:bottom-10 transition-all duration-1000 ">
+                                                                <p class="uppercase text-color4">
+                                                                        Tours</p>
+                                                                <p
+                                                                        class="capitalize text-color3 font-secondary text-2xl">
+                                                                        most popular
+                                                                        yacht charter
+                                                                        routes </p>
+                                                        </figcaption>
+                                                </figure>
+                                                <figure
+                                                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative  transition-all duration-1000  group mb-20   ">
+                                                        <div
+                                                                class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                                                                <img src="img/canada1-1.jpeg" alt=""
+                                                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                                                        </div>
+                                                        <div
+                                                                class="absolute uppercase text-white bg-color1 px-2 left-3 top-12 flex flex-col items-center ">
+                                                                <p>Aug</p>
+                                                                <p class="font-bold">07
+                                                                </p>
+                                                        </div>
+                                                        <figcaption
+                                                                class=" absolute h-[150px] w-[85%]  bg-white bottom-[-80px]  left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000 ">
+                                                                <p class="uppercase text-color4">
+                                                                        travel</p>
+                                                                <p
+                                                                        class="capitalize text-color3 font-secondary text-2xl">
+                                                                        practical
+                                                                        information for
+                                                                        travelling to
+                                                                        egypt
+                                                                </p>
+                                                        </figcaption>
+                                                </figure>
+                                                <figure
+                                                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative  transition-all duration-1000  group mb-20   ">
+                                                        <div
+                                                                class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                                                                <img src="img/44-1.jpg" alt=""
+                                                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                                                        </div>
+                                                        <div
+                                                                class="absolute uppercase text-white bg-color1 px-2 left-3 top-12 flex flex-col items-center ">
+                                                                <p>Aug</p>
+                                                                <p class="font-bold">02
+                                                                </p>
+                                                        </div>
+                                                        <figcaption
+                                                                class=" absolute h-[150px] w-[85%]  bg-white bottom-[-80px]  left-[8%] flex flex-col justify-center px-5 group-hover:bottom-10 transition-all duration-1000 ">
+                                                                <p class="uppercase text-color4">
+                                                                        Destinations
+                                                                </p>
+                                                                <p
+                                                                        class="capitalize text-color3 font-secondary text-2xl">
+                                                                        tips towards a
+                                                                        flawless
+                                                                        honeymoon </p>
+                                                        </figcaption>
+                                                </figure>
+                                        </div>
+                                </div>
+                        </div>
+                </section>
+
+                <section class="w-full flex justify-center bg-color7 overflow-hidden  ">
+                        <div class="w-full container flex whitespace-nowrap overflow-hidden group  ">
+                                <div
+                                        class="flex  logos-slide animate-anime w-full flex-wrap whitespace-nowrap group-hover:pause  ">
+                                        <figure class="w-[25%] "><img src="img/1.png" alt="" w-[100%]>
+                                        </figure>
+                                        <figure class="w-[25%] "><img src="img/2.png" alt="" w-[100%]>
+                                        </figure>
+                                        <figure class="w-[25%]  "><img src="img/3.png" alt="" w-[100%]>
+                                        </figure>
+                                        <figure class="w-[25%]  "><img src="img/4.png" alt="" w-[100%]>
+                                        </figure>
+                                </div>
+                                <div
+                                        class="flex  logos-slide  w-full flex-wrap  whitespace-nowrap ms-[-200%] animate-anime group-hover:pause ">
+                                        <figure class="w-[25%] "><img src="img/1.png" alt="" w-[100%]>
+                                        </figure>
+                                        <figure class="w-[25%] "><img src="img/2.png" alt="" w-[100%]>
+                                        </figure>
+                                        <figure class="w-[25%]  "><img src="img/3.png" alt="" w-[100%]>
+                                        </figure>
+                                        <figure class="w-[25%]  "><img src="img/4.png" alt="" w-[100%]>
+                                        </figure>
+                                </div>
+                        </div>
+                </section>
+                <section id="contact" class="w-full flex justify-center h-auto  bg-color3">
+                        <footer class="w-full container h-auto flex flex-col 2xl:px-36 ">
+                                <div
+                                        class="flex justify-center border items-center boder-1 border-color5 my-10 flex-wrap mx-6 ">
+                                        <div
+                                                class="w-full lg:w-[30%] flex  items-center py-2 lg:border-r-2 lg:border-r-color5 my-5 ps-8 lg:ps-0">
+                                                <i
+                                                        class="bi bi-telephone-outbound text-4xl me-4 text-white bg-color1 p-3"></i>
+                                                <div class="w-full text-white">
+                                                        <p class="font-secondary">Call
+                                                                Us</p>
+                                                        <p>9530377377</p>
+                                                </div>
+                                        </div>
+                                        <div
+                                                class="w-full lg:w-[35%] flex items-center py-2 lg:border-r-2 lg:border-r-color5 my-5 ps-8">
+                                                <i class="bi-envelope-paper text-4xl me-4 text-white bg-color1 p-3"></i>
+                                                <div class="w-full text-white">
+                                                        <p class="font-secondary">Write
+                                                                to Us</p>
+                                                        <p>info@theitinerary.com</p>
+                                                </div>
+                                        </div>
+                                        <div class="w-full lg:w-[30%] flex items-center py-2 my-5 ps-8">
+                                                <i class="bi bi-map text-4xl me-4 text-white bg-color1 p-3 "></i>
+                                                <div class="w-full text-white">
+                                                        <p class="font-secondary">
+                                                                Reach Us</p>
+                                                        <p>Jagatpura (302017), Jaipur</p>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="flex  justify-between  my-1 flex-wrap  ">
+                                        <div class="md:w-[30%] flex flex-col py-2  my-1 px-1 ">
+                                                <figure class="w-[40%]">
+                                                        <img src="img/logo-light.png" alt="" class="w-[100%]">
+                                                </figure>
+                                        </div>
+                                        <div class="w-full md:w-[30%] flex flex-col py-2  my-5 md:ps-20 px-6 ">
+                                                <p class="font-secondary text-white text-xl xl:text-2xl">
+                                                        Quick
+                                                        Links</p>
+                                                <ul class="mt-7 px-6">
+                                                        <li class="my-2 list-disc marker:text-color1">
+                                                                <a href="" class="text-color6">About</a>
+                                                        </li>
+                                                        <li class="list-disc marker:text-color1">
+                                                                <a href="" class="text-color6">Tours</a>
+                                                        </li>
+                                                        <li class="my-2 list-disc marker:text-color1">
+                                                                <a href="" class="text-color6">Blog</a>
+                                                        </li>
+                                                </ul>
+                                                
+                                        </div>
+
+                                        <div class="w-full md:w-[28%] flex flex-col  py-2 my-5 px-6 md:px-0 ">
+                                                <p class="font-secondary text-2xl text-white ">
+                                                        Subscribe</p>
+                                                <p class="text-color6 mt-5">Sign up for regular updates
+                                                        releated travel and tours.
+                                                </p>
+                                                <form action="" class="mt-1 flex w-full flex-wrap">
+                                                        <input type="email" placeholder="Email Address"
+                                                                class="px-1 py-1">
+                                                        <a href=""
+                                                                class="text-white bg-color4 py-1 px-1 flex mt-0 md:mt-2 lg:mt-0">Send</a>
+                                                </form>
+                                        </div>
+                                </div>
+                                <p
+                                        class="text-stone-300 text-left py-5  text-[14px] relative before:content-[''] before:h-[3px] before:w-[100%] before:bg-stone-400 before:absolute before:top-0 before:bg-opacity-50">
+                                        ©2023 Aman Khan. All rights reserved.</p>
+                        </footer>
+                </section>
+        </main>
+</body>
+<script src="js/master.js"></script>
+
+</html>
