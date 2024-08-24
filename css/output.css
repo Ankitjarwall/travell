@@ -1019,6 +1019,11 @@ video {
   background-size: cover;
 }
 
+.bg-cover-img {
+  background-image: url(../img/bg-cover.png);
+  background-size: cover;
+}
+
 .bg-fixed {
   background-attachment: fixed;
 }
@@ -1801,7 +1806,7 @@ video {
 
 .swiper-text {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 73%;
   transform: translate(-50%, -50%);
   color: rgb(118, 117, 117);
@@ -1813,6 +1818,10 @@ video {
 }
 
 @media (max-width: 768px) {
+  .swiper-container {
+    height: 100vw;
+  }
+
   .swiper-image {
     width: 90%;
     /* Reduce image width for mobile view */
@@ -1841,5 +1850,13 @@ video {
     /* Darker text color for contrast */
     text-align: center;
     /* Center-align text */
+
+  }
+
+  .footer {
+    width: 90%;
+  }
+  .footer-contact-phone{
+    
   }
 }
