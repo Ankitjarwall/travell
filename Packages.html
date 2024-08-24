@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>travel</title>
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .logo-light {
+            margin-top: 30%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+
+<body class="font-primary">
+
+    <section
+        class="w-full h-[100vh]  bg-header  bg-cover bg-no-repeat bg-center bg-color1 bg-blend-multiply bg-opacity-60 ">
+        <section class="w-full flex flex-wrap justify-center ">
+            <header
+                class="w-[85%]  xl:w-[73%]  container hidden lg:flex justify-between h-[60px]       items-center py-[45px] border-b-[1px] border-white border-opacity-40">
+                <figure class="w-[140px]">
+                    <a href="/">
+                        <img src="img/logo-light.png" alt="Logo" class="logo-light">
+                    </a>
+                </figure>
+
+                <nav class="h-[100%] md:w-[70%]">
+                    <ul class="h-[100%] flex items-center gap-8 justify-end">
+                        <li class="list-none  "><a
+                                class="decoration-none text-white hover:text-color3 transition-all duration-500"
+                                href="/">Home</a></li>
+                        <li class="list-none"><a
+                                class="decoration-none text-white  hover:text-color3 transition-all duration-500"
+                                href="./Packages.html">Packages</a></li>
+                        <li class="list-none"><a
+                                class="decoration-none text-white  hover:text-color3 transition-all duration-500"
+                                href="/#aboutus">About Us</a></li>
+                        <li class="list-none"><a
+                                class="decoration-none text-white  hover:text-color3 transition-all duration-500"
+                                href="/#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- header for mobile -->
+            <header
+                class="xw-[95%] sm:w-[70%] md:w-[80%] container flex h-[60px] justify-between  items-center  lg:hidden  py-[45px] relative border-b-[1px] border-white border-opacity-40 ">
+                <figure class="w-[140px]">
+                    <a href="/">
+                        <img src="img/logo-light.png" alt="Logo" class="logo-light">
+                    </a>
+                </figure>
+                <div class=" w-1/2 h-full flex justify-end items-center ">
+                    <i class="bi bi-list text-3xl text-white cursor-pointer ham-menu-icon"></i>
+                </div>
+                <nav class="menu hidden h-[400px] w-full absolute bg-white left-0 top-[90px]   z-30 ">
+                    <ul class="h-full w-full flex flex-col  justify-center ms-6">
+                        <li class="list-none my-3"><a
+                                class="decoration-none text-color2 flex hover:text-color4  transition-all duration-600"
+                                href="/">Home</a></li>
+                        <li class="list-none my-3"><a
+                                class="decoration-none text-color2 flex  hover:text-color4 transition-all duration-600"
+                                href="./Packages.html">Packages</a></li>
+                        <li class="list-none my-3"><a
+                                class="decoration-none text-color2 flex  hover:text-color4  transition-all duration-600"
+                                href="/#aboutus">About Us</a></li>
+                        <li class="list-none my-3"><a
+                                class="decoration-none text-color2 flex   hover:text-color4 transition-all duration-600"
+                                href="/#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+        </section>
+        <!-- </section> -->
+
+        <!-- <section class="w-full flex justify-center bg-color3 py-8 h-auto"> -->
+        <div class="w-full container 2xl:px-36 h-auto">
+            <div style="margin-top: 5%;">
+
+                <p class="text-5xl font-secondary text-white px-5">
+                    Packages</p>
+                <div class="flex flex-wrap justify-center xl:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3 ">
+                    <figure
+                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative  transition-all duration-1000  group mb-20   ">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="img/22.jpeg" alt=""
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+                        <!-- <div
+                                                                    class="absolute uppercase text-white bg-color1 px-2 left-3 top-12 flex flex-col items-center ">
+                                                                    <p>Aug</p>
+                                                                    <p class="font-bold">02
+                                                                    </p>
+                                                            </div> -->
+                        <figcaption
+                            class=" absolute h-[150px] w-[85%]  bg-white bottom-[-80px]  left-[8%] flex flex-col justify-center px-8 group-hover:bottom-10 transition-all duration-1000 ">
+                            <p class="uppercase text-color4">
+                                Tours</p>
+                            <p class="capitalize text-color3 font-secondary text-2xl">
+                                most popular
+                                yacht charter
+                                routes </p>
+                        </figcaption>
+                    </figure>
+                    <figure
+                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative  transition-all duration-1000  group mb-20   ">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="img/canada1-1.jpeg" alt=""
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+
+                        <figcaption
+                            class=" absolute h-[150px] w-[85%]  bg-white bottom-[-80px]  left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000 ">
+                            <p class="uppercase text-color4">
+                                travel</p>
+                            <p class="capitalize text-color3 font-secondary text-2xl">
+                                practical
+                                information for
+                                travelling to
+                                egypt
+                            </p>
+                        </figcaption>
+                    </figure>
+                    <figure
+                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative  transition-all duration-1000  group mb-20   ">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="img/44-1.jpg" alt=""
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+
+                        <figcaption
+                            class=" absolute h-[150px] w-[85%]  bg-white bottom-[-80px]  left-[8%] flex flex-col justify-center px-5 group-hover:bottom-10 transition-all duration-1000 ">
+                            <p class="uppercase text-color4">
+                                Destinations
+                            </p>
+                            <p class="capitalize text-color3 font-secondary text-2xl">
+                                tips towards a
+                                flawless
+                                honeymoon </p>
+                        </figcaption>
+                    </figure>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
