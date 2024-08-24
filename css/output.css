@@ -1798,13 +1798,13 @@ video {
 .swiper-text {
   position: absolute;
   top: 50%;
-  left: 78%;
+  left: 73%;
   transform: translate(-50%, -50%);
-  color: rgb(9, 107, 255);
-  font-size: 24px;
-  font-weight: bold;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-  width: 40%;
+  color: rgb(118, 117, 117);
+  font-size: 20px;
+  /* font-weight: bold; */
+  /* text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); */
+  width: 30%;
   /* Ensures text fits within container */
 }
 
