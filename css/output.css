@@ -1844,10 +1844,18 @@ video {
   /* Opacity of the active bullet */
 }
 
+.achivement {
+  height: 200px;
+}
+
 @media (max-width: 768px) {
   #name {
     font-size: 30px;
     background-size: 40% 40%;
+  }
+
+  .achivement {
+    height: 700px;
   }
 
   .swiper-container {
