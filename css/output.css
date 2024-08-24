@@ -1004,7 +1004,7 @@ video {
 }
 
 .bg-header {
-  background-image: url('../img/1.jpg');
+  background-image: url('../img/hero.png');
 }
 
 .bg-map {
@@ -1798,6 +1798,19 @@ video {
 }
 
 /* Default styles for Swiper images and text */
+
+
+
+.swiper-container {
+  width: 100%;
+  /* height: 100vh; */
+  /* Adjust as needed */
+}
+
+.swiper-slide {
+  position: relative;
+}
+
 .swiper-image {
   margin-left: 5%;
   width: 50%;
@@ -1815,6 +1828,20 @@ video {
   /* text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); */
   width: 30%;
   /* Ensures text fits within container */
+}
+
+.swiper-pagination-bullet {
+  background: #000;
+  /* Color of the bullets */
+  opacity: 0.7;
+  /* Opacity of the bullets */
+}
+
+.swiper-pagination-bullet-active {
+  background: #fff;
+  /* Color of the active bullet */
+  opacity: 1;
+  /* Opacity of the active bullet */
 }
 
 @media (max-width: 768px) {
