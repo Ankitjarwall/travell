@@ -25,12 +25,6 @@
                         -webkit-text-fill-color: transparent
                 }
 
-                /* #name,
-                .getintouch-heading article {
-                        background: -webkit-linear-gradient(135deg, #133373, #02abff, #133373, #02abff);
-                        -webkit-text-fill-color: transparent
-                } */
-
                 #name {
                         font-size: 4rem;
                         width: fit-content;
@@ -231,6 +225,194 @@
                         width: 200px;
                         height: 100px;
                 }
+
+                @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
+
+                .testi {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                        font-family: 'Barlow Semi Condensed', sans-serif;
+                }
+
+                a:link,
+                a:active,
+                a:visited,
+                a:hover {
+                        color: #3f51b5;
+                }
+
+                .outerdiv {
+                        width: 100%;
+                        min-height: 100vh;
+                        background: #EDF2F8;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                }
+
+                .innerdiv {
+                        transform: scale(0.9);
+                        margin: 1rem;
+                        display: grid;
+                        grid-gap: 1.5rem;
+                        grid-template-rows: repeat(2, 22rem);
+                        grid-template-columns: repeat(4, 17rem);
+                }
+
+                .eachdiv {
+                        padding: 1rem 2rem;
+                        border-radius: 0.8rem;
+                        box-shadow: 5px 5px 20px #6d6b6b6b;
+                        color: white;
+                }
+
+                .div1 {
+                        background: #733FC8;
+                        grid-column: 1/3;
+                        grid-row: 1/2;
+                        background-image: url(https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/bg-pattern-quotation.svg);
+                        background-repeat: no-repeat;
+                        background-position-x: 25rem;
+                }
+
+                .div2 {
+                        background: #49556B;
+                        grid-column: 3/4;
+                        grid-row: 1/2;
+                }
+
+                .div3 {
+                        background: white;
+                        grid-column: 4/5;
+                        grid-row: 1/3;
+                        color: black;
+                }
+
+                .div4 {
+                        background: white;
+                        grid-column: 1/2;
+                        grid-row: 2/3;
+                        color: black;
+                }
+
+                .div5 {
+                        background: #18202D;
+                        grid-column: 2/4;
+                        grid-row: 2/3;
+                }
+
+                .userdetails {
+                        display: flex;
+                }
+
+                .imgbox {
+                        margin-right: 1rem;
+                }
+
+                .imgbox img {
+                        border-radius: 50%;
+                        width: 2rem;
+                        border: 2px solid #cec5c5;
+                }
+
+                .detbox {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                }
+
+                .detbox p {
+                        margin: 0;
+                }
+
+                .detbox .name {
+                        color: hsl(0, 0%, 81%);
+                        font-size: 0.9rem;
+                        margin-bottom: 0.1rem;
+                        font-weight: 600;
+                }
+
+                .detbox .name.dark {
+                        color: #49505A;
+                }
+
+                .detbox .designation {
+                        color: hsl(0, 0%, 81%);
+                        opacity: 50%;
+                        font-size: 0.8rem;
+                }
+
+                .detbox .designation.dark {
+                        color: #49505A;
+                }
+
+                .review h4 {
+                        font-size: 1.4rem;
+                        color: #F3DEFF;
+                        font-weight: 600;
+                        line-height: 1.5;
+                        margin-bottom: 0.8rem;
+                }
+
+                .review.dark h4 {
+                        color: #4B5258;
+                }
+
+                .review p {
+                        font-size: 0.95rem;
+                        color: #F3DEFF;
+                        font-weight: 500;
+                        opacity: 50%;
+                        line-height: 1.5;
+                }
+
+                .review.dark p {
+                        color: #0e0e0e;
+                }
+
+                .attribution {
+                        font-size: 1rem;
+                        line-height: 1.5;
+                        position: fixed;
+                        bottom: 1rem;
+                        right: 1rem;
+                        text-align: right;
+                }
+
+                .attribution a {
+                        text-decoration: none;
+                }
+
+                @media only screen and (max-width: 1000px) {
+                        .innerdiv {
+                                transform: scale(0.7);
+                        }
+                }
+
+                @media only screen and (max-width: 800px) {
+                        .innerdiv {
+                                transform: scale(0.6);
+                        }
+                }
+
+                @media only screen and (max-width: 600px) {
+                        .div1 {
+                                background-position-x: 10rem;
+                        }
+
+                        .innerdiv {
+                                display: flex;
+                                flex-direction: column;
+                                transform: scale(1);
+                                margin: 2rem;
+                                margin-bottom: 5rem;
+                        }
+
+                        .attribution {
+                                position: relative;
+                        }
+                }
         </style>
 
 </head>
@@ -334,7 +516,7 @@
                 </section>
 
                 <section id="aboutus" class="w-full flex justify-center bg-color5 h-auto">
-                        <div class="w-full container flex flex-wrap px-0 2xl:px-36 h-auto py-16">
+                        <div class="w-full container flex flex-wrap px-0 2xl:px-36 h-auto py-10">
                                 <div class="w-full lg:w-[50%] bg-color px-5">
                                         <div class="text-content">
                                                 <p class="text-color4 uppercase">The best travel agency</p>
@@ -405,124 +587,345 @@
                                         </div>
                                 </div>
                                 <div
-                                        class="w-full lg:w-[50%] flex flex-col justify-center items-center bg-color5 h-auto pb-8 lg:pb-0 mt-10 lg:mt-0">
-                                        <figure class="w-[100%] h-[500px] relative">
-                                                <div class="w-[100%] h-[100%] bg-color6 absolute left-8 top-8"></div>
-                                                <img src="img/india.png" alt=""
+                                        class="w-full lg:w-[50%] flex flex-col justify-center items-center bg-color5 h-auto lg:pb-0 mt-10 lg:mt-0">
+                                        <figure class="w-[100%] h-[400px] relative">
+                                                <img src="img/india.png" alt="india image"
                                                         class="w-[100%] h-[110%] absolute z-10 object-cover hover:scale-[.95] transition-all duration-500">
                                         </figure>
                                 </div>
                         </div>
                 </section>
 
-                <section class="w-full flex justify-center bg-color3 py-8 h-auto">
-                        <div class="w-full container 2xl:px-36 h-auto">
+                <section class="w-full flex justify-center bg-color7 py-1 ">
+                        <div class="w-full container 2xl:px-36">
                                 <div>
-                                        <p class="text-color4 uppercase px-5">TRAVEL BLOG</p>
-                                        <p class="travelexp text-4xl font-secondary text-color4 px-4">
-                                                Top<span class="text-white"> Packages</span>
-                                        </p>
+                                        <p class="text-color4 uppercase px-5">Choose your place</p>
+                                        <p class="text-5xl font-secondary text-color3 px-5">Popular <span
+                                                        class="text-color1">Tours</span></p>
                                         <div
-                                                class="flex flex-wrap justify-center xl:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3">
+                                                class="flex flex-wrap md:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3 ">
                                                 <figure
-                                                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                                                        class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
                                                         <div
-                                                                class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
-                                                                <img src="img/22.jpeg" alt=""
-                                                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
-                                                                        data-id="1">
-                                                        </div>
-                                                        <figcaption
-                                                                class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-8 group-hover:bottom-10 transition-all duration-1000">
-                                                                <p class="uppercase text-color4">Tours</p>
+                                                                class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-5">
                                                                 <p
-                                                                        class="capitalize text-color3 font-secondary text-2xl">
-                                                                        most popular
-                                                                        yacht charter routes</p>
+                                                                        class="text-2xl text-color3 capitalize font-secondary">
+                                                                        Chandigarh -
+                                                                        Shimla</p>
+                                                                <p class="text-color1 mb-4">6000 Rs /person</p>
+                                                                <p class="text-color6">Discover Chandigarh's modernity
+                                                                        at Rock Garden.
+                                                                        Experience Shimla's colonial charm on Mall Road.
+                                                                        Blend urban
+                                                                        buzz with mountain tranquility.</p>
+                                                                <div class="flex flex-wrap my-4">
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-clock text-color4"></i>
+                                                                                <p class="text-color6 ms-2">5 Days</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-geo-alt text-color4"></i>
+                                                                                <p class="text-color6 ms-2">Shimla</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-person text-color4"></i>
+                                                                                <p class="text-color6 ms-2">6 +</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-emoji-smile text-color4"></i>
+                                                                                <p class="text-color6 ms-2">9.8 Superb
+                                                                                </p>
+                                                                        </div>
+                                                                </div>
+                                                                <a href=""
+                                                                        class="underline decoration-color1 text-color6 flex mb-2">Tour
+                                                                        details</a>
+                                                        </div>
+                                                        <img src="img/oa.jpg" alt=""
+                                                                class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                                                        <p
+                                                                class="absolute uppercase text-white bg-color3 px-4 py-1 right-1 top-12 rotate-[-90deg] ">
+                                                                Shimla</p>
+                                                        <figcaption
+                                                                class="absolute text-white bottom-8 right-10 fig mx-2">
+                                                                <p class="capitalize font-secondary text-3xl">Chandigarh
+                                                                        - Shimla</p>
+                                                                <p class="text-right">6000 Rs / person</p>
                                                         </figcaption>
                                                 </figure>
                                                 <figure
-                                                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                                                        class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
                                                         <div
-                                                                class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
-                                                                <img src="img/canada1-1.jpeg" alt=""
-                                                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
-                                                                        data-id="2">
-                                                        </div>
-                                                        <figcaption
-                                                                class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
-                                                                <p class="uppercase text-color4">Travel</p>
+                                                                class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-5">
                                                                 <p
-                                                                        class="capitalize text-color3 font-secondary text-2xl">
-                                                                        practical
-                                                                        information for travelling to egypt</p>
+                                                                        class="text-2xl text-color3 capitalize font-secondary">
+                                                                        Chandigarh -
+                                                                        Manali</p>
+                                                                <p class="text-color1 mb-1">7000 Rs/person</p>
+                                                                <p class="text-color6">Discover the best of Chandigarh's
+                                                                        urban charm and
+                                                                        Manali's Himalayan beauty! Our trip blends city
+                                                                        delights with
+                                                                        mountain adventures, ensuring an unforgettable
+                                                                        journey filled
+                                                                        with culture, nature, and thrill!</p>
+                                                                <div class="flex flex-wrap my-1">
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-clock text-color4"></i>
+                                                                                <p class="text-color6 ms-2">6 Days</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-geo-alt text-color4"></i>
+                                                                                <p class="text-color6 ms-2">Chandigarh -
+                                                                                        Manali</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-person text-color4"></i>
+                                                                                <p class="text-color6 ms-2">7 +</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-emoji-smile text-color4"></i>
+                                                                                <p class="text-color6 ms-2"> 9.5 Superb
+                                                                                </p>
+                                                                        </div>
+                                                                </div>
+                                                                <a href=""
+                                                                        class="underline decoration-color1 text-color6 flex mb-2">Tour
+                                                                        details</a>
+                                                        </div>
+                                                        <img src="img/2.jpg" alt=""
+                                                                class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                                                        <p
+                                                                class="absolute uppercase text-white bg-color3 px-4 py-1 right-1 top-12 rotate-[-90deg] ">
+                                                                Manali</p>
+                                                        <figcaption class="absolute text-white bottom-8 right-10 fig">
+                                                                <p class="capitalize font-secondary text-3xl mx-2">
+                                                                        Chandigarh
+                                                                        - Manali</p>
+                                                                <p class="text-right">7000 Rs/ person</p>
                                                         </figcaption>
                                                 </figure>
                                                 <figure
-                                                        class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                                                        class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000">
                                                         <div
-                                                                class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
-                                                                <img src="img/44-1.jpg" alt=""
-                                                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
-                                                                        data-id="3">
-                                                        </div>
-                                                        <figcaption
-                                                                class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-5 group-hover:bottom-10 transition-all duration-1000">
-                                                                <p class="uppercase text-color4">Destinations</p>
+                                                                class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
                                                                 <p
-                                                                        class="capitalize text-color3 font-secondary text-2xl">
-                                                                        tips towards a
-                                                                        flawless honeymoon</p>
+                                                                        class="text-2xl text-color3 capitalize font-secondary">
+                                                                        Jaipur -
+                                                                        Udaipur - Jodhpur - Jaisalmer</p>
+                                                                <p class="text-color1 mb-1">6500 Rs/ person</p>
+                                                                <p class="text-color6">
+                                                                        Royal journey through Rajasthan's
+                                                                        gems: Jaipur's
+                                                                        vibrant culture, Udaipur's lakeside charm,
+                                                                        Jodhpur's majestic
+                                                                        forts, and Jaisalmer's golden sands. Experience
+                                                                        history, luxury,
+                                                                        and adventure in the land of kings.</p>
+                                                                <div class="flex flex-wrap my-0">
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-clock text-color4"></i>
+                                                                                <p class="text-color6 ms-2">7 Days</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-geo-alt text-color4"></i>
+                                                                                <p class="text-color6 ms-2">
+                                                                                        Jpr,Uda,Jod,Jas</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-person text-color4"></i>
+                                                                                <p class="text-color6 ms-2">6+</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-emoji-smile text-color4"></i>
+                                                                                <p class="text-color6 ms-2">9.5 Superb
+                                                                                </p>
+                                                                        </div>
+                                                                </div>
+                                                                <a href=""
+                                                                        class="underline decoration-color1 text-color6 flex mb-2">Tour
+                                                                        details</a>
+                                                        </div>
+                                                        <img src="img/france1.jpg" alt=""
+                                                                class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                                                        <p
+                                                                class="absolute uppercase text-white bg-color3 px-4 py-1 right-1 top-12 rotate-[-90deg] ">
+                                                                Jpr - Jas</p>
+                                                        <figcaption class="absolute text-white bottom-8 right-10 fig">
+                                                                <p class="capitalize font-secondary text-3xl mx-2">
+                                                                        Jaipur -
+                                                                        Udaipur - Jodhpur
+                                                                        - Jaisalmer</p>
+                                                                <p class="text-right">6500 Rs / person</p>
+                                                        </figcaption>
+                                                </figure>
+                                                <figure
+                                                        class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                                                        <div
+                                                                class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-5">
+                                                                <p
+                                                                        class="text-2xl text-color3 capitalize font-secondary">
+                                                                        Mumbai - Goa
+                                                                </p>
+                                                                <p class="text-color1 mb-1">7000 Rs/ person</p>
+                                                                <p class="text-color6">
+                                                                        Experience the ultimate coastal getaway from
+                                                                        bustling Mumbai to
+                                                                        the laid-back beaches of Goa. Dive into vibrant
+                                                                        nightlife,
+                                                                        historic landmarks, and pristine sands. Indulge
+                                                                        in local
+                                                                        cuisine, water sports, and cultural richness
+                                                                        along this
+                                                                        unforgettable journey.</p>
+                                                                <div class="flex flex-wrap my-1">
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-clock text-color4"></i>
+                                                                                <p class="text-color6 ms-2">5 Days</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-geo-alt text-color4"></i>
+                                                                                <p class="text-color6 ms-2">Mumbai - Goa
+                                                                                </p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-person text-color4"></i>
+                                                                                <p class="text-color6 ms-2">7 +</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-emoji-smile text-color4"></i>
+                                                                                <p class="text-color6 ms-2">9.3 Superb
+                                                                                </p>
+                                                                        </div>
+                                                                </div>
+                                                                <a href=""
+                                                                        class="underline decoration-color1 text-color6 flex mb-2">Tour
+                                                                        details</a>
+                                                        </div>
+                                                        <img src="img/greece1.jpg" alt=""
+                                                                class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                                                        <p
+                                                                class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
+                                                                Mumbai-Goa</p>
+                                                        <figcaption class="absolute text-white bottom-8 right-10 fig">
+                                                                <p class="capitalize font-secondary text-3xl ">Mumbai -
+                                                                        Goa</p>
+                                                                <p class="text-right">7500 Rs/ person</p>
+                                                        </figcaption>
+                                                </figure>
+                                                <figure
+                                                        class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                                                        <div
+                                                                class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
+                                                                <p
+                                                                        class="text-2xl text-color3 capitalize font-secondary">
+                                                                        Manali -
+                                                                        Shimla - Leh-Ladakh</p>
+                                                                <p class="text-color1 mb-1">7000 Rs/ persons</p>
+                                                                <p class="text-color6">Embark on an exhilarating
+                                                                        mountain adventure from
+                                                                        the lush valleys of Manali to the colonial charm
+                                                                        of Shimla,
+                                                                        culminating in the rugged beauty of Leh-Ladakh.
+                                                                        Explore
+                                                                        snow-capped peaks, ancient monasteries, and
+                                                                        serene lakes.</p>
+                                                                <div class="flex flex-wrap my-1">
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-clock text-color4"></i>
+                                                                                <p class="text-color6 ms-2">7 Days</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-geo-alt text-color4"></i>
+                                                                                <p class="text-color6 ms-2">Manali -
+                                                                                        Shimla - Leh
+                                                                                        -Ladakh</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-person text-color4"></i>
+                                                                                <p class="text-color6 ms-2">7 +</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-emoji-smile text-color4"></i>
+                                                                                <p class="text-color6 ms-2"> 9.3 Superb
+                                                                                </p>
+                                                                        </div>
+                                                                </div>
+                                                                <a href=""
+                                                                        class="underline decoration-color1 text-color6 flex mb-2">Tour
+                                                                        details</a>
+                                                        </div>
+                                                        <img src="img/canada1.jpg" alt=""
+                                                                class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                                                        <p
+                                                                class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
+                                                                Leh-Ladakh</p>
+                                                        <figcaption class="absolute text-white bottom-8 right-10 fig">
+                                                                <p class="capitalize font-secondary text-3xl mx-2">
+                                                                        Manali -
+                                                                        Shimla - Leh
+                                                                        -Ladakh</p>
+                                                                <p class="text-right">$300 / per persons</p>
+                                                        </figcaption>
+                                                </figure>
+                                                <figure
+                                                        class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                                                        <div
+                                                                class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
+                                                                <p
+                                                                        class="text-2xl text-color3 capitalize font-secondary">
+                                                                        Delhi - Agra -
+                                                                        Jaipur</p>
+                                                                <p class="text-color1 mb-1">6000 Rs/person</p>
+                                                                <p class="text-color6">Discover India's Golden Triangle:
+                                                                        Delhi's
+                                                                        historic charm, Agra's majestic Taj Mahal, and
+                                                                        Jaipur's vibrant
+                                                                        culture. Immerse in Mughal architecture, royal
+                                                                        heritage, and
+                                                                        bustling markets, creating timeless memories in
+                                                                        this iconic
+                                                                        journey through North India.</p>
+                                                                <div class="flex flex-wrap my-1">
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-clock text-color4"></i>
+                                                                                <p class="text-color6 ms-2">6 Days</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-geo-alt text-color4"></i>
+                                                                                <p class="text-color6 ms-2">Delhi - Agra
+                                                                                        - Jaipur</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-person text-color4"></i>
+                                                                                <p class="text-color6 ms-2">7 +</p>
+                                                                        </div>
+                                                                        <div class="w-[50%] flex"><i
+                                                                                        class="bi bi-emoji-smile text-color4"></i>
+                                                                                <p class="text-color6 ms-2">9.8 Superb
+                                                                                </p>
+                                                                        </div>
+                                                                </div>
+                                                                <a href=""
+                                                                        class="underline decoration-color1 text-color6 flex mb-2">Tour
+                                                                        details</a>
+                                                        </div>
+                                                        <img src="img/44-1.jpg" alt=""
+                                                                class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                                                        <p
+                                                                class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
+                                                                Agra-Jaipur</p>
+                                                        <figcaption class="absolute text-white bottom-8 right-10 fig">
+                                                                <p class="capitalize font-secondary text-3xl mx-2">Delhi
+                                                                        -
+                                                                        Agra - Jaipur</p>
+                                                                <p class="text-right">6500 Rs/ person</p>
                                                         </figcaption>
                                                 </figure>
                                         </div>
                                 </div>
                         </div>
                 </section>
-                <!-- Overlay Popup -->
-                <div id="overlay" class="overlay">
-                        <div class="overlay-content">
-                                <span class="close-btn" id="close-btn">&times;</span>
-                                <div class="overlay-image-wrapper">
-                                        <img id="popup-img" src="" alt="Popup Image">
-                                </div>
-                                <h2 id="popup-title">Title</h2>
-                                <p id="popup-description">Description</p>
-                        </div>
-                </div>
-                <script>
-                        const overlay = document.getElementById('overlay');
-                        const closeButton = document.getElementById('close-btn');
-                        const popupImg = document.getElementById('popup-img');
-                        const popupTitle = document.getElementById('popup-title');
-                        const popupDescription = document.getElementById('popup-description');
-
-                        const cards = document.querySelectorAll('figure');
-
-                        cards.forEach(card => {
-                                card.addEventListener('click', () => {
-                                        const imgSrc = card.querySelector('img').src;
-                                        const title = card.querySelector('figcaption p').innerText;
-                                        const description = card.querySelector('figcaption p').nextElementSibling.innerText;
-
-                                        popupImg.src = imgSrc;
-                                        popupTitle.innerText = title;
-                                        popupDescription.innerText = description;
-
-                                        overlay.style.display = 'flex';
-                                });
-                        });
-
-                        closeButton.addEventListener('click', () => {
-                                overlay.style.display = 'none';
-                        });
-
-                        window.addEventListener('click', (event) => {
-                                if (event.target === overlay) {
-                                        overlay.style.display = 'none';
-                                }
-                        });
-                </script>
 
                 <section
                         class="w-full bg-sea py-20 relative bg-cover bg-fixed flex justify-center after:content-[''] after:absolute after:w-[100%] after:h-[100%] after:bg-black after:bg-opacity-50 after:top-0">
@@ -543,7 +946,7 @@
                                 <div class="w-full md:w-[20%] my-5">
                                         <figure class="flex flex-col items-center  group">
                                                 <div class="bg-white bg-opacity-50  rounded-[50%] p-5 flex items-center relative overflow-hidden outline outline-8  outline-offset-8 out  "
-                                                        style="background-image: url('./img/4.png'); background-size:160%; background-position: center;">
+                                                        style="background-image: url('./img/school\ trip.png'); background-size:130%; background-position: center;">
                                                 </div>
                                                 <figcaption class="text-center text-white font-secondary mt-10">
                                                         <p class="text-3xl">250</p>
@@ -567,39 +970,86 @@
                         </div>
                 </section>
 
-                <section class="swiper-container my-5">
+                <section class="swiper-container my-4">
                         <div class="swiper-wrapper">
                                 <div class="swiper-slide" style="position: relative;">
-                                        <img src="img/1.jpg" alt="Slide 1" class="swiper-image">
+                                        <img src="img/taj mahal.jpeg" alt="Taj mahal" class="swiper-image">
                                         <div class="swiper-text">
-                                                <h1 class="font-secondary text-color4">Rajasthan</h1>
-                                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                                        Repellendus, quisquam iste
-                                                        est explicabo, quaerat minima deserunt mollitia voluptates
-                                                        ratione laboriosam
-                                                        tempore ea quae quasi alias error magnam odio. Saepe, unde.</p>
+                                                <h2 class="font-secondary text-color4">Taj Mahal <span
+                                                                class="state">(Agra)</span> </h2>
+                                                <p>The Taj Mahal is an ivory-white marble mausoleum on the right bank of
+                                                        the river Yamuna in Agra, Uttar Pradesh, India. It
+                                                        was commissioned in 1631 by the fifth Mughal emperor, Shah Jahan
+                                                        to house the tomb of his beloved wife, Mumtaz Mahal; it
+                                                        also houses the tomb of Shah Jahan himself.</p>
+                                        </div>
+                                </div>
+
+                                <div class="swiper-slide" style="position: relative;">
+                                        <img src="img/hawa mahal.png" alt="hawa mahal" class="swiper-image">
+                                        <div class="swiper-text">
+                                                <h2 class="font-secondary text-color4">Hawa Mahal <span
+                                                                class="state">(Jaipur)</span></h2>
+                                                <p>The Hawa Mahal is a palace in Jaipur, Rajasthan.
+                                                        Built from red and pink sandstone, it is on the edge
+                                                        of the City Palace, Jaipur, and extends to the Zenana, or
+                                                        women's chambers. Hawa Mahal famously known as the “ palace of
+                                                        winds “ has one of the best architecture in Jaipur.
+                                                </p>
+                                        </div>
+                                </div>
+
+                                <div class="swiper-slide" style="position: relative;">
+                                        <img src="img/red fort.webp" alt="red fort" class="swiper-image">
+                                        <div class="swiper-text">
+                                                <h2 class="font-secondary text-color4">Red Fort <span
+                                                                class="state">(Delhi)</span></h2>
+                                                <p>The Red Fort, is a historic fort in Delhi,
+                                                        India, that historically served as the main residence
+                                                        of the Mughal emperors. Emperor Shah Jahan commissioned
+                                                        construction of the Red Fort on 12 May 1639, when he decided to
+                                                        shift his capital from Agra to Delhi.</p>
                                         </div>
                                 </div>
                                 <div class="swiper-slide" style="position: relative;">
-                                        <img src="img/2.jpg" alt="Slide 2" class="swiper-image">
+                                        <img src="img/banaras.jpeg" alt="banaras" class="swiper-image">
                                         <div class="swiper-text">
-                                                <h1 class="font-secondary text-color4">Punjab</h1>
-                                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                                        Repellendus, quisquam iste
-                                                        est explicabo, quaerat minima deserunt mollitia voluptates
-                                                        ratione laboriosam
-                                                        tempore ea quae quasi alias error magnam odio. Saepe, unde.</p>
+                                                <h2 class="font-secondary text-color4">Banaras <span
+                                                                class="state">(Uttar Pradesh)</span></h2>
+                                                <p>Varanasi is a city in the northern Indian state of Uttar Pradesh
+                                                        dating to the 11th century B.C. Regarded as the
+                                                        spiritual capital of India, the city draws Hindu pilgrims who
+                                                        bathe in the Ganges River’s sacred waters and perform
+                                                        funeral rites. Along the city's winding streets are some 2,000
+                                                        temples, including Kashi Vishwanath.</p>
                                         </div>
                                 </div>
+
                                 <div class="swiper-slide" style="position: relative;">
-                                        <img src="img/3.png" alt="Slide 3" class="swiper-image">
+                                        <img src="img/kerla.avif" alt="kerala" class="swiper-image">
                                         <div class="swiper-text">
-                                                <h1 class="font-secondary text-color4">Delhi</h1>
-                                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                                        Repellendus, quisquam iste
-                                                        est explicabo, quaerat minima deserunt mollitia voluptates
-                                                        ratione laboriosam
-                                                        tempore ea quae quasi alias error magnam odio. Saepe, unde.</p>
+                                                <h2 class="font-secondary text-color4">Backwaters <span
+                                                                class="state">(Kerala) </span> </h2>
+                                                <p>Kerala known for its
+                                                        palm-lined beaches and backwaters, a network of canals. Inland
+                                                        are the Western Ghats, mountains whose slopes support
+                                                        tea, coffee and spice plantations and wildlife. National
+                                                        parks like Eravikulam and Periyar, plus Wayanad &
+                                                        other sanctuaries, are home to elephants, langur monkeys and
+                                                        tigers.</p>
+                                        </div>
+                                </div>
+
+                                <div class="swiper-slide" style="position: relative;">
+                                        <img src="img/rotang.jpg" alt="Rohtang" class="swiper-image">
+                                        <div class="swiper-text">
+                                                <h2 class="font-secondary text-color4">Rotang Pass <span
+                                                                class="state">(Himachal) </span> </h2>
+                                                <p>Rohtang Pass is a high mountain pass on the eastern end of the Pir
+                                                        Panjal Range of the Himalayas around 51 km from
+                                                        Manali in the Indian state of Himachal Pradesh. It connects the
+                                                        Kullu Valley with the Lahaul and Spiti Valleys of
+                                                        Himachal Pradesh, India.</p>
                                         </div>
                                 </div>
                         </div>
@@ -643,12 +1093,12 @@
                                                                         data-id="1">
                                                         </div>
                                                         <figcaption
-                                                                class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-8 group-hover:bottom-10 transition-all duration-1000">
+                                                                class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
                                                                 <p class="uppercase text-color4">Tours</p>
                                                                 <p
                                                                         class="capitalize text-color3 font-secondary text-2xl">
-                                                                        most popular
-                                                                        yacht charter routes</p>
+                                                                        Unforgettable Indian Getaways, Just a Click Away
+                                                                </p>
                                                         </figcaption>
                                                 </figure>
                                                 <figure
@@ -664,8 +1114,8 @@
                                                                 <p class="uppercase text-color4">Travel</p>
                                                                 <p
                                                                         class="capitalize text-color3 font-secondary text-2xl">
-                                                                        practical
-                                                                        information for travelling to egypt</p>
+                                                                        Exploring India's Vibrant Culture & Scenic
+                                                                        Beauty</p>
                                                         </figcaption>
                                                 </figure>
                                                 <figure
@@ -677,19 +1127,18 @@
                                                                         data-id="3">
                                                         </div>
                                                         <figcaption
-                                                                class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-5 group-hover:bottom-10 transition-all duration-1000">
+                                                                class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
                                                                 <p class="uppercase text-color4">Destinations</p>
                                                                 <p
                                                                         class="capitalize text-color3 font-secondary text-2xl">
-                                                                        tips towards a
-                                                                        flawless honeymoon</p>
+                                                                        Himalayas to the Beaches, India Awaits You</p>
                                                         </figcaption>
                                                 </figure>
                                         </div>
                                 </div>
                         </div>
                 </section>
-                <!-- Overlay Popup -->
+                <!-- Overlay Popup
                 <div id="overlay" class="overlay">
                         <div class="overlay-content">
                                 <span class="close-btn" id="close-btn">&times;</span>
@@ -732,7 +1181,149 @@
                                         overlay.style.display = 'none';
                                 }
                         });
-                </script>
+                </script> -->
+
+                <section class="testi">
+                        <div class="outerdiv">
+                                <div class="innerdiv">
+                                        <!-- div1 -->
+                                        <div class="div1 eachdiv">
+                                                <div class="userdetails">
+                                                        <div class="imgbox">
+                                                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-daniel.jpg"
+                                                                        alt="">
+                                                        </div>
+                                                        <div class="detbox">
+                                                                <p class="name">Anuj Gupta</p>
+                                                                <p class="designation">Verified Graduate</p>
+                                                        </div>
+                                                </div>
+                                                <div class="review">
+                                                        <h4>My trip to Rohtang Pass in Manali was nothing short of
+                                                                spectacular!
+                                                        </h4>
+                                                        <p>“ The breathtaking views of the snow-capped mountains left me
+                                                                in awe. The journey to the pass was an adventure in
+                                                                itself,
+                                                                with winding roads and stunning landscapes at every
+                                                                turn. The cool breeze and the serene environment made it
+                                                                a perfect
+                                                                escape from the hustle and bustle of city life. Our tour
+                                                                guide was knowledgeable and ensured we had the best
+                                                                experience
+                                                                possible. Whether you're an adventure enthusiast or
+                                                                simply looking for a peaceful retreat, Rohtang Pass is a
+                                                                must-visit.
+                                                                Highly recommended! ”</p>
+                                                </div>
+                                        </div>
+                                        <!-- div2 -->
+                                        <div class="div2 eachdiv">
+                                                <div class="userdetails">
+                                                        <div class="imgbox">
+                                                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-jonathan.jpg"
+                                                                        alt="">
+                                                        </div>
+                                                        <div class="detbox">
+                                                                <p class="name">Krishna Vankates</p>
+                                                                <p class="designation">Verified Graduate</p>
+                                                        </div>
+                                                </div>
+                                                <div class="review">
+                                                        <h4>My trip to Kerala was amazing my dream come true!</h4>
+                                                        <p>“ Cruising through the serene backwaters on a traditional
+                                                                houseboat was an unforgettable experience. The lush
+                                                                greenery,
+                                                                calm waters, and beautiful sunset views made it a
+                                                                perfect getaway. ”</p>
+                                                </div>
+                                        </div>
+                                        <!-- div3 -->
+                                        <div class="div3 eachdiv">
+                                                <div class="userdetails">
+                                                        <div class="imgbox">
+                                                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-kira.jpg"
+                                                                        alt="">
+                                                        </div>
+                                                        <div class="detbox">
+                                                                <p class="name dark">Kira Roy</p>
+                                                                <p class="designation dark">Verified Graduate</p>
+                                                        </div>
+                                                </div>
+                                                <div class="review dark">
+                                                        <h4>My trip to Leh Ladakh was an adventure of a lifetime.</h4>
+                                                        <p>“ From the moment we arrived, the stark beauty of the region
+                                                                took my breath away. The dramatic landscapes, with their
+                                                                towering mountains, pristine lakes, and rugged terrain,
+                                                                felt like stepping into another world. Driving through
+                                                                the
+                                                                winding roads of Khardung La, one of the highest
+                                                                motorable passes in the world, was exhilarating. Each
+                                                                destination, from
+                                                                the serene Pangong Lake to the vibrant monasteries of
+                                                                Thiksey and Hemis, offered a unique glimpse into the
+                                                                rich culture
+                                                                and stunning natural beauty of Ladakh. Leh Ladakh is
+                                                                truly a paradise for nature lovers and adventure seekers
+                                                                alike. I can't wait to return! ”
+                                                        </p>
+                                                </div>
+                                        </div>
+                                        <!-- div4 -->
+                                        <div class="div4 eachdiv">
+                                                <div class="userdetails">
+                                                        <div class="imgbox">
+                                                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-jeanette.jpg"
+                                                                        alt="">
+                                                        </div>
+                                                        <div class="detbox">
+                                                                <p class="name dark">Trisha sharma</p>
+                                                                <p class="designation dark">Verified Graduate</p>
+                                                        </div>
+                                                </div>
+                                                <div class="review dark">
+                                                        <h4>My school trip to Goa was an absolute blast!</h4>
+                                                        <p>“ We enjoyed the sun, sand, and sea, explored historic forts,
+                                                                and had fun bonding with friends. It was an
+                                                                unforgettable
+                                                                experience! I wish to go again. Thank You! ”</p>
+                                                </div>
+                                        </div>
+                                        <!-- div5 -->
+                                        <div class="div5 eachdiv">
+                                                <div class="userdetails">
+                                                        <div class="imgbox">
+                                                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-patrick.jpg"
+                                                                        alt="">
+                                                        </div>
+                                                        <div class="detbox">
+                                                                <p class="name">Patrick Abrams</p>
+                                                                <p class="designation">Verified Graduate</p>
+                                                        </div>
+                                                </div>
+                                                <div class="review">
+                                                        <h4>My trip to the Seven Sisters of Northeast India was an
+                                                                unforgettable journey.
+                                                        </h4>
+                                                        <p>“ Assam, Mizoram, and beyond—was an unforgettable adventure.
+                                                                Each state offered its own unique charm, from Assam's
+                                                                lush
+                                                                tea gardens and vibrant festivals to Mizoram's rolling
+                                                                hills and rich tribal culture. The untouched natural
+                                                                beauty, warm
+                                                                hospitality, and diverse traditions made every moment
+                                                                special. Exploring the serene landscapes, majestic
+                                                                waterfalls, and
+                                                                quaint villages gave me a deeper appreciation for this
+                                                                incredible region. The Seven Sisters are a hidden gem,
+                                                                truly
+                                                                worth exploring. ”</p>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+                </section>
                 <section class="w-full flex justify-center bg-color7 overflow-hidden  ">
                         <div class="w-full container flex whitespace-nowrap overflow-hidden group  ">
                                 <div
@@ -762,10 +1353,8 @@
 
                 <section id="contact" class="w-full flex justify-center h-auto bg-color3">
                         <footer class="w-full container h-auto flex flex-col 2xl:px-36 footer">
-                                <div
-                                        class="flex justify-center border items-center border-1 border-color5 my-2 flex-wrap mx-4 footer-contact-phone">
-                                        <div
-                                                class="w-full lg:w-[30%] flex items-center py-1 lg:border-r-2 lg:border-r-color5 my-2 ps-4 lg:ps-0">
+                                <div class="flex justify-center items-center my-2 flex-wrap mx-4 footer-contact-phone">
+                                        <div class="w-full lg:w-[30%] flex items-center py-1 my-2 ps-4 lg:ps-0">
                                                 <i
                                                         class="bi bi-telephone-outbound text-4xl me-2 text-white bg-color1 p-2"></i>
                                                 <div class="w-full text-white">
@@ -774,7 +1363,7 @@
                                                 </div>
                                         </div>
                                         <div
-                                                class="w-full lg:w-[35%] flex items-center py-1 lg:border-r-2 lg:border-r-color5 my-2 ps-4 footer-contact-email">
+                                                class="w-full lg:w-[35%] flex items-center py-1  my-2 ps-4 footer-contact-email">
                                                 <i class="bi-envelope-paper text-4xl me-2 text-white bg-color1 p-2"></i>
                                                 <div class="w-full text-white">
                                                         <p class="font-secondary">Write to Us</p>

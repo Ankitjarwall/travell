@@ -1818,11 +1818,21 @@ video {
 }
 
 @media (max-width: 768px) {
+  #name {
+    font-size: 30px;
+    background-size: 40% 40%;
+  }
+
   .swiper-container {
     height: 100vw;
   }
 
+  .state {
+    font-size: medium;
+  }
+
   .swiper-image {
+
     width: 90%;
     /* Reduce image width for mobile view */
     margin-left: 5%;
@@ -1855,8 +1865,5 @@ video {
 
   .footer {
     width: 90%;
-  }
-  .footer-contact-phone{
-    
   }
 }
