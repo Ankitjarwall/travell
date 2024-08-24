@@ -1782,6 +1782,10 @@ video {
   .dis-text {
     font-size: 50%;
   }
+
+  .travelexp {
+    font-size: 10;
+  }
 }
 
 .dis-text {
@@ -1797,7 +1801,7 @@ video {
 
 .swiper-text {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 73%;
   transform: translate(-50%, -50%);
   color: rgb(118, 117, 117);
