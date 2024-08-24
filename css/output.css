@@ -1823,11 +1823,11 @@ video {
     /* Reset top position */
     left: 50%;
     /* Center text overlay */
-    bottom: 5%;
+    /* bottom: 5%; */
     /* Position text at the bottom */
     transform: translateX(-50%);
     /* Center text horizontally */
-    font-size: 16px;
+    font-size: 13px;
     /* Reduce font size for mobile */
     padding: 10px;
     /* Add padding for better text layout */
