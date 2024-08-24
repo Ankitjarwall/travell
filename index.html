@@ -415,6 +415,27 @@
                                 position: relative;
                         }
                 }
+
+                .dots-container {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-top: 10px;
+                }
+
+                .dot {
+                        width: 10px;
+                        height: 10px;
+                        background-color: rgb(201, 201, 201);
+                        border-radius: 50%;
+                        margin: 0 5px;
+                        transition: background-color 0.3s;
+                }
+
+                .dot.active {
+                        background-color: rgb(0, 119, 255);
+                        /* Highlight color */
+                }
         </style>
 
 </head>
@@ -639,9 +660,7 @@
                                                                                 </p>
                                                                         </div>
                                                                 </div>
-                                                                <a href=""
-                                                                        class="underline decoration-color1 text-color6 flex mb-2">Tour
-                                                                        details</a>
+                                                                
                                                         </div>
                                                         <img src="img/oa.jpg" alt=""
                                                                 class="w-[100%] h-[100%] object-cover brightness-75 absolute">
@@ -691,9 +710,7 @@
                                                                                 </p>
                                                                         </div>
                                                                 </div>
-                                                                <a href=""
-                                                                        class="underline decoration-color1 text-color6 flex mb-2">Tour
-                                                                        details</a>
+                                                                
                                                         </div>
                                                         <img src="img/2.jpg" alt=""
                                                                 class="w-[100%] h-[100%] object-cover brightness-75 absolute">
@@ -744,9 +761,7 @@
                                                                                 </p>
                                                                         </div>
                                                                 </div>
-                                                                <a href=""
-                                                                        class="underline decoration-color1 text-color6 flex mb-2">Tour
-                                                                        details</a>
+                                                                
                                                         </div>
                                                         <img src="img/france1.jpg" alt=""
                                                                 class="w-[100%] h-[100%] object-cover brightness-75 absolute">
@@ -800,9 +815,7 @@
                                                                                 </p>
                                                                         </div>
                                                                 </div>
-                                                                <a href=""
-                                                                        class="underline decoration-color1 text-color6 flex mb-2">Tour
-                                                                        details</a>
+                                                                
                                                         </div>
                                                         <img src="img/greece1.jpg" alt=""
                                                                 class="w-[100%] h-[100%] object-cover brightness-75 absolute">
@@ -853,9 +866,7 @@
                                                                                 </p>
                                                                         </div>
                                                                 </div>
-                                                                <a href=""
-                                                                        class="underline decoration-color1 text-color6 flex mb-2">Tour
-                                                                        details</a>
+                                                                
                                                         </div>
                                                         <img src="img/canada1.jpg" alt=""
                                                                 class="w-[100%] h-[100%] object-cover brightness-75 absolute">
@@ -908,9 +919,7 @@
                                                                                 </p>
                                                                         </div>
                                                                 </div>
-                                                                <a href=""
-                                                                        class="underline decoration-color1 text-color6 flex mb-2">Tour
-                                                                        details</a>
+                                                                
                                                         </div>
                                                         <img src="img/44-1.jpg" alt=""
                                                                 class="w-[100%] h-[100%] object-cover brightness-75 absolute">
@@ -990,6 +999,14 @@
                                                         to house the tomb of his beloved wife, Mumtaz Mahal; it
                                                         also houses the tomb of Shah Jahan himself.</p>
                                         </div>
+                                        <div class="dots-container">
+                                                <div class="dot active"></div> <!-- Highlighted dot -->
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                        </div>
                                 </div>
 
                                 <div class="swiper-slide" style="position: relative;">
@@ -1009,6 +1026,14 @@
                                                         winds “ has one of the best architecture in Jaipur.
                                                 </p>
                                         </div>
+                                        <div class="dots-container">
+                                                <div class="dot"></div>
+                                                <div class="dot active"></div> <!-- Highlighted dot -->
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                        </div>
                                 </div>
 
                                 <div class="swiper-slide" style="position: relative;">
@@ -1024,6 +1049,14 @@
                                                         construction of the Red Fort on 12 May 1639, when he
                                                         decided to
                                                         shift his capital from Agra to Delhi.</p>
+                                        </div>
+                                        <div class="dots-container">
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot active"></div> <!-- Highlighted dot -->
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
                                         </div>
                                 </div>
                                 <div class="swiper-slide" style="position: relative;">
@@ -1044,6 +1077,14 @@
                                                         2,000
                                                         temples, including Kashi Vishwanath.</p>
                                         </div>
+                                        <div class="dots-container">
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot active"></div> <!-- Highlighted dot -->
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                        </div>
                                 </div>
 
                                 <div class="swiper-slide" style="position: relative;">
@@ -1063,6 +1104,14 @@
                                                         other sanctuaries, are home to elephants, langur monkeys
                                                         and
                                                         tigers.</p>
+                                        </div>
+                                        <div class="dots-container">
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot active"></div> <!-- Highlighted dot -->
+                                                <div class="dot"></div>
                                         </div>
                                 </div>
 
@@ -1085,9 +1134,16 @@
                                                         Kullu Valley with the Lahaul and Spiti Valleys of
                                                         Himachal Pradesh, India.</p>
                                         </div>
+                                        <div class="dots-container">
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot"></div>
+                                                <div class="dot active"></div> <!-- Highlighted dot -->
+                                        </div>
                                 </div>
 
-                                <div class="swiper-pagination" style="z-index: 1;"></div>
                         </div>
                         <!-- </div> -->
                 </section>
