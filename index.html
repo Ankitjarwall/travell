@@ -433,6 +433,68 @@
                         background-color: rgb(0, 119, 255);
                         /* Highlight color */
                 }
+
+                .navbar1 ul li a {
+                        position: relative;
+                        padding: 10px 15px;
+                        border-radius: 5px;
+                        color: #fff;
+                        font-weight: 500;
+                        transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+                }
+
+                .navbar1 ul li a::before {
+                        content: '';
+                        position: absolute;
+                        width: 0;
+                        height: 3px;
+                        bottom: 0;
+                        left: 0;
+                        background-color: var(--color3);
+                        transition: width 0.3s ease-in-out;
+                }
+
+                .navbar1 ul li a:hover::before {
+                        width: 100%;
+                }
+
+                .navbar1 ul li a:hover {
+                        background-color: rgba(255, 255, 255, 0.209);
+                        transform: scale(1.05);
+                }
+
+                .menu ul li a {
+                        position: relative;
+                        padding: 5px 5px;
+                        color: var(--color2);
+                        font-weight: 600;
+                        transition: all 0.3s ease-in-out;
+                        background-color: rgba(255, 255, 255, 0.05);
+                        border-radius: 8px;
+                }
+
+                .menu ul li a:hover {
+                        background-color: var(--color4);
+                        color: #fff;
+                        transform: translateX(5px);
+                }
+
+                .menu ul li a::before {
+                        content: '';
+                        position: absolute;
+                        width: 5px;
+                        height: 100%;
+                        background-color: var(--color4);
+                        left: -10px;
+                        top: 0;
+                        opacity: 0;
+                        transition: all 0.3s ease-in-out;
+                }
+
+                .menu ul li a:hover::before {
+                        opacity: 1;
+                        left: 0;
+                }
         </style>
 
 </head>
@@ -458,6 +520,8 @@
                                 document.body.scrollTop = 0;
                                 document.documentElement.scrollTop = 0;
                         }
+
+
                 </script>
 
                 <section
@@ -471,19 +535,19 @@
                                                 </a>
                                         </figure>
 
-                                        <nav class="h-[100%] md:w-[70%]">
+                                        <nav class="h-[100%] md:w-[70%] navbar1">
                                                 <ul class="h-[100%] flex items-center gap-8 justify-end">
                                                         <li class="list-none  "><a
-                                                                        class="decoration-none text-white hover:text-color3 transition-all duration-500"
+                                                                        class="decoration-none text-white hover:text-color3 transition-all duration-1000"
                                                                         href="/">Home</a></li>
                                                         <li class="list-none"><a
-                                                                        class="decoration-none text-white  hover:text-color3 transition-all duration-500"
+                                                                        class="decoration-none text-white  hover:text-color3 transition-all duration-1000"
                                                                         href="./Packages.html">Packages</a></li>
                                                         <li class="list-none"><a
-                                                                        class="decoration-none text-white  hover:text-color3 transition-all duration-500"
+                                                                        class="decoration-none text-white  hover:text-color3 transition-all duration-1000"
                                                                         href="#aboutus">About Us</a></li>
                                                         <li class="list-none"><a
-                                                                        class="decoration-none text-white  hover:text-color3 transition-all duration-500"
+                                                                        class="decoration-none text-white  hover:text-color3 transition-all duration-1000"
                                                                         href="#contact">Contact</a></li>
                                                 </ul>
                                         </nav>
@@ -502,20 +566,20 @@
                                                         class="bi bi-list text-3xl text-white cursor-pointer ham-menu-icon"></i>
                                         </div>
                                         <nav
-                                                class="menu hidden h-[400px] w-full absolute bg-white left-0 top-[90px]   z-30 ">
+                                                class="menu hidden h-[250px] w-full absolute bg-custom left-0 top-[90px]   z-30 ">
                                                 <ul class="h-full w-full flex flex-col  justify-center ms-6">
-                                                        <li class="list-none my-3"><a
+                                                        <li class="list-none my-2"><a
                                                                         class="decoration-none text-color2 flex hover:text-color4  transition-all duration-600"
                                                                         href="/">Home</a></li>
-                                                        <li class="list-none my-3"><a
+                                                        <li class="list-none my-2"><a
                                                                         class="decoration-none text-color2 flex  hover:text-color4 transition-all duration-600"
                                                                         href="./Packages.html">Packages</a></li>
-                                                        <li class="list-none my-3"><a
+                                                        <li class="list-none my-2"><a
                                                                         class="decoration-none text-color2 flex  hover:text-color4  transition-all duration-600"
                                                                         href="#aboutus">About Us</a></li>
-                                                        <li class="list-none my-3"><a
+                                                        <li class="list-none my-2"><a
                                                                         class="decoration-none text-color2 flex   hover:text-color4 transition-all duration-600"
-                                                                        href="./Contact us.html">Contact</a></li>
+                                                                        href="#contact">Contact</a></li>
                                                 </ul>
                                         </nav>
                                 </header>
@@ -1007,7 +1071,7 @@
                                                         <div class="mobile-dot"></div>
                                                 </div>
                                         </div>
-                                        
+
                                         <div class="pc-dots-container">
                                                 <div class="pc-dot dot active"></div> <!-- Highlighted dot -->
                                                 <div class="pc-dot"></div>
@@ -1446,7 +1510,7 @@
                                                                         class="text-color6">Packages</a>
                                                         </li>
                                                         <li class="my-1 list-disc marker:text-color1">
-                                                                <a href="./Contact us.html" class="text-color6">Contact
+                                                                <a href="#contact" class="text-color6">Contact
                                                                         Us</a>
                                                         </li>
                                                 </ul>
