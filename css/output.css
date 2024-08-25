@@ -1906,6 +1906,9 @@ video {
     width: 100%;
   } */
 
+    #myBtn {
+      bottom: 25vw;}
+
   .h300 {
     height: 300px;
   }
