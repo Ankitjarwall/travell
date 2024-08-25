@@ -802,6 +802,10 @@ video {
   height: 500px;
 }
 
+.h-\[600px\] {
+  height: 600px;
+}
+
 .h-\[50vh\] {
   height: 50vh;
 }
@@ -1026,7 +1030,7 @@ video {
 }
 
 .bg-header {
-  background-image: url('../img/bg-cover.webp');
+  background-image: url('../img/bg-cover.png');
 }
 
 .bg-map {
