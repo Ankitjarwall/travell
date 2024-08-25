@@ -1909,8 +1909,8 @@ video {
     #myBtn {
       bottom: 25vw;}
 
-  .h300 {
-    height: 300px;
+  .custom-view-mb-h {
+    height: 320px;
   }
 
   #name {
