@@ -28,7 +28,7 @@
                 }
 
                 #name {
-                        font-size: 4rem;
+                        font-size: 60PX;
                         width: fit-content;
                         display: flex;
                         font-weight: 900;
@@ -211,7 +211,7 @@
                         cursor: pointer;
                 }
 
-               
+
 
                 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
 
@@ -401,14 +401,25 @@
                         }
                 }
 
-                .dots-container {
+                .pc-dots-container {
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        margin-top: 10px;
+                        margin-top: 1vw;
                 }
 
-                .dot {
+
+
+                .mobile-dot {
+                        width: 0px;
+                        height: 0px;
+                        background-color: rgb(201, 201, 201);
+                        border-radius: 50%;
+                        margin: 0 5px;
+                        transition: background-color 0.3s;
+                }
+
+                .pc-dot {
                         width: 10px;
                         height: 10px;
                         background-color: rgb(201, 201, 201);
@@ -479,7 +490,7 @@
 
                                 <!-- header for mobile -->
                                 <header
-                                        class="w-[95%] sm:w-[70%] md:w-[80%] container flex h-[60px] justify-between  items-center  lg:hidden  py-[45px] relative border-b-[1px] border-white border-opacity-40 ">
+                                        class="w-[95%] sm:w-[70%] md:w-[80%] container flex h-[60px] justify-between  items-center  lg:hidden  py-[45px] relative ">
                                         <figure class="w-[140px]">
                                                 <a href="/">
                                                         <img src="img/logo-light.png" alt="Logo" class="logo-light">
@@ -512,9 +523,9 @@
                         </section>
                         <section class="w-full flex justify-center mt-[180px]">
                                 <div class="w-[700px] md:w-[900px] container h-auto  ">
-                                        <p
+                                        <!-- <p
                                                 class="w-full text-center uppercase text-white tracking-widest [word-spacing:8px] mb-4">
-                                                Travel with us</p>
+                                                Travel with us</p> -->
                                         <h1
                                                 class="w-full text-center text-white text-5xl md:text-7xl font-secondary uppercase tracking-widest">
                                                 Explore <span class="travol">India</span> with us </h1>
@@ -530,38 +541,41 @@
                                                 <p class="text-color4 uppercase">The best travel agency</p>
                                                 <article class="discover text-color3 font-bold uppercase font-secondary"
                                                         id="name" data-aos="fade-up" data-aos-delay="200">
-                                                        <p class="jello discover dis-text">D</p>
-                                                        <p class="jello discover dis-text">i</p>
-                                                        <p class="jello discover dis-text">s</p>
-                                                        <p class="jello discover dis-text">c</p>
-                                                        <p class="jello discover dis-text">o</p>
-                                                        <p class="jello discover dis-text">v</p>
-                                                        <p class="jello discover dis-text">e</p>
-                                                        <p class="jello discover dis-text">r</p>
+                                                        <p class="jello discover dis-text">U</p>
+                                                        <p class="jello discover dis-text">N</p>
+                                                        <p class="jello discover dis-text">V</p>
+                                                        <p class="jello discover dis-text">E</p>
+                                                        <p class="jello discover dis-text">I</p>
+                                                        <p class="jello discover dis-text">L</p>
                                                         &nbsp;
-                                                        <p class="jello discover dis-text">w</p>
-                                                        <p class="jello discover dis-text">o</p>
-                                                        <p class="jello discover dis-text">r</p>
-                                                        <p class="jello discover dis-text">l</p>
-                                                        <p class="jello discover dis-text">d</p>
+                                                        <p class="jello discover dis-text">I</p>
+                                                        <p class="jello discover dis-text">N</p>
+
+                                                        <p class="jello discover dis-text">D</p>
+                                                        <p class="jello discover dis-text">I</p>
+                                                        <p class="jello discover dis-text">A</p>
+                                                        <p class="jello discover dis-text">'</p>
+                                                        <p class="jello discover dis-text">S</p>
                                                         &nbsp;
                                                 </article>
                                                 <article class="text-color3 font-bold uppercase font-secondary"
                                                         id="name" data-aos="fade-up" data-aos-delay="200">
+                                                        <p class="jello discover dis-text">W</p>
+                                                        <p class="jello discover dis-text">O</p>
+                                                        <p class="jello discover dis-text">N</p>
+                                                        <p class="jello discover dis-text">D</p>
+                                                        <p class="jello discover dis-text">E</p>
+                                                        <p class="jello discover dis-text">r</p>
+                                                        <p class="jello discover dis-text">S</p>
+                                                        &nbsp;
                                                         <p class="jello discover dis-text">w</p>
                                                         <p class="jello discover dis-text">i</p>
                                                         <p class="jello discover dis-text">t</p>
                                                         <p class="jello discover dis-text">h</p>
                                                         &nbsp;
-                                                        <p class="jello discover dis-text">o</p>
-                                                        <p class="jello discover dis-text">u</p>
-                                                        <p class="jello discover dis-text">r</p>
-                                                        &nbsp;
-                                                        <p class="jello discover dis-text">g</p>
-                                                        <p class="jello discover dis-text">u</p>
-                                                        <p class="jello discover dis-text">i</p>
-                                                        <p class="jello discover dis-text">d</p>
-                                                        <p class="jello discover dis-text">e</p>
+                                                        <p class="jello discover dis-text">U</p>
+                                                        <p class="jello discover dis-text">S</p>
+
                                                 </article>
                                                 <p class="text-color6">You can choose any country with good tourism.
                                                         Agency elementum
@@ -923,17 +937,18 @@
                         </div>
                 </section>
 
-                <section class="w-full bg-sea relative bg-cover bg-fixed flex justify-center after:content-[''] after:absolute after:w-[100%] after:h-[100%] after:bg-black after:bg-opacity-50 after:top-0 achivement"
-                        > <!-- Adjust height here -->
+                <section
+                        class="w-full bg-sea relative bg-cover bg-fixed flex justify-center after:content-[''] after:absolute after:w-[100%] after:h-[100%] after:bg-black after:bg-opacity-50 after:top-0 achivement">
+                        <!-- Adjust height here -->
                         <div
                                 class="w-full container 2xl:px-36 flex flex-wrap relative z-10 justify-center md:justify-between">
                                 <div class="w-full md:w-[20%] my-4">
                                         <figure class="flex flex-col items-center  group">
                                                 <div class="bg-white bg-opacity-50  rounded-[50%] p-5 flex items-center relative overflow-hidden outline outline-8  outline-offset-8 out  "
-                                                        style="background-image: url('./img/4.png'); background-size:160%; background-position: center;">
+                                                        style="background-image: url('./img/4.png'); background-size:200%; background-position: center;">
                                                 </div>
                                                 <figcaption class="text-center text-white font-secondary mt-10">
-                                                        <p class="text-xl">250 + Amazing Tour</p>
+                                                        <p class="text-xl">250+ Amazing Tour</p>
 
                                                 </figcaption>
                                         </figure>
@@ -941,10 +956,10 @@
                                 <div class="w-full md:w-[20%] my-4">
                                         <figure class="flex flex-col items-center  group">
                                                 <div class="bg-white bg-opacity-50  rounded-[50%] p-5 flex items-center relative overflow-hidden outline outline-8  outline-offset-8 out  "
-                                                        style="background-image: url('./img/school\ trip.png'); background-size:130%; background-position: center;">
+                                                        style="background-image: url('./img/school\ trip.png'); background-size:87%; background-position: center;">
                                                 </div>
                                                 <figcaption class="text-center text-white font-secondary mt-10">
-                                                        <p class="text-xl">250 + School Tour</p>
+                                                        <p class="text-xl">250+ School Tour</p>
                                                 </figcaption>
                                         </figure>
                                 </div>
@@ -980,14 +995,23 @@
                                                         Shah Jahan
                                                         to house the tomb of his beloved wife, Mumtaz Mahal; it
                                                         also houses the tomb of Shah Jahan himself.</p>
+                                                <div class="mobile-dots-container">
+                                                        <div class="mobile-dot dot active"></div>
+                                                        <!-- Highlighted dot -->
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                </div>
                                         </div>
-                                        <div class="dots-container">
-                                                <div class="dot active"></div> <!-- Highlighted dot -->
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
+                                        <div class="pc-dots-container">
+                                                <div class="pc-dot dot active"></div> <!-- Highlighted dot -->
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
                                         </div>
                                 </div>
 
@@ -1007,15 +1031,25 @@
                                                         palace of
                                                         winds “ has one of the best architecture in Jaipur.
                                                 </p>
+                                                <div class="mobile-dots-container">
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot dot active"></div>
+                                                        <!-- Highlighted dot -->
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                </div>
                                         </div>
-                                        <div class="dots-container">
-                                                <div class="dot"></div>
-                                                <div class="dot active"></div> <!-- Highlighted dot -->
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
+                                        <div class="pc-dots-container">
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot dot active"></div> <!-- Highlighted dot -->
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
                                         </div>
+
                                 </div>
 
                                 <div class="swiper-slide" style="position: relative;">
@@ -1031,15 +1065,25 @@
                                                         construction of the Red Fort on 12 May 1639, when he
                                                         decided to
                                                         shift his capital from Agra to Delhi.</p>
+                                                <div class="mobile-dots-container">
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot dot active"></div>
+                                                        <!-- Highlighted dot -->
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                </div>
                                         </div>
-                                        <div class="dots-container">
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot active"></div> <!-- Highlighted dot -->
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
+                                        <div class="pc-dots-container">
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot dot active"></div> <!-- Highlighted dot -->
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
                                         </div>
+
                                 </div>
                                 <div class="swiper-slide" style="position: relative;">
                                         <div class="swiper-button-next"></div>
@@ -1058,15 +1102,25 @@
                                                         funeral rites. Along the city's winding streets are some
                                                         2,000
                                                         temples, including Kashi Vishwanath.</p>
+                                                <div class="mobile-dots-container">
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot dot active"></div>
+                                                        <!-- Highlighted dot -->
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                </div>
                                         </div>
-                                        <div class="dots-container">
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot active"></div> <!-- Highlighted dot -->
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
+                                        <div class="pc-dots-container">
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot dot active"></div> <!-- Highlighted dot -->
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
                                         </div>
+
                                 </div>
 
                                 <div class="swiper-slide" style="position: relative;">
@@ -1086,15 +1140,25 @@
                                                         other sanctuaries, are home to elephants, langur monkeys
                                                         and
                                                         tigers.</p>
+                                                <div class="mobile-dots-container">
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot dot active"></div>
+                                                        <!-- Highlighted dot -->
+                                                        <div class="mobile-dot"></div>
+                                                </div>
                                         </div>
-                                        <div class="dots-container">
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot active"></div> <!-- Highlighted dot -->
-                                                <div class="dot"></div>
+                                        <div class="pc-dots-container">
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot dot active"></div> <!-- Highlighted dot -->
+                                                <div class="pc-dot"></div>
                                         </div>
+
                                 </div>
 
                                 <div class="swiper-slide" style="position: relative;">
@@ -1115,15 +1179,25 @@
                                                         connects the
                                                         Kullu Valley with the Lahaul and Spiti Valleys of
                                                         Himachal Pradesh, India.</p>
+                                                <div class="mobile-dots-container">
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot"></div>
+                                                        <div class="mobile-dot dot active"></div>
+                                                        <!-- Highlighted dot -->
+                                                </div>
                                         </div>
-                                        <div class="dots-container">
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot"></div>
-                                                <div class="dot active"></div> <!-- Highlighted dot -->
+                                        <div class="pc-dots-container">
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot"></div>
+                                                <div class="pc-dot dot active"></div> <!-- Highlighted dot -->
                                         </div>
+
                                 </div>
 
                         </div>
@@ -1168,7 +1242,8 @@
                                                                         class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
                                                                         data-id="1">
                                                         </div>
-                                                        <a href="https://traveltriangle.com/blog/unexplored-places-in-india/" target="_blank"
+                                                        <a href="https://traveltriangle.com/blog/unexplored-places-in-india/"
+                                                                target="_blank"
                                                                 class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
                                                                 <figcaption>
                                                                         <p class="uppercase text-color4">Tours</p>
@@ -1189,14 +1264,17 @@
                                                                         class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
                                                                         data-id="2">
                                                         </div>
-                                                        <a href="https://discoverindiabycar.com/india-a-land-of-culture-history-and-natural-beauty/" target="_blank" class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                                                        <a href="https://discoverindiabycar.com/india-a-land-of-culture-history-and-natural-beauty/"
+                                                                target="_blank"
+                                                                class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
 
                                                                 <figcaption>
                                                                         <p class="uppercase text-color4">Travel</p>
                                                                         <p
-                                                                        class="capitalize text-color3 font-secondary text-2xl">
-                                                                        Exploring India's Vibrant Culture & Scenic
-                                                                        Beauty</p>
+                                                                                class="capitalize text-color3 font-secondary text-2xl">
+                                                                                Exploring India's Vibrant Culture &
+                                                                                Scenic
+                                                                                Beauty</p>
                                                                 </figcaption>
                                                         </a>
                                                 </figure>
@@ -1208,14 +1286,17 @@
                                                                         class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
                                                                         data-id="3">
                                                         </div>
-                                                        <a href="https://www.shriramgi.com/article/road-trips-across-india" target="_blank"
+                                                        <a href="https://www.shriramgi.com/article/road-trips-across-india"
+                                                                target="_blank"
                                                                 class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
 
                                                                 <figcaption>
-                                                                        <p class="uppercase text-color4">Destinations</p>
+                                                                        <p class="uppercase text-color4">Destinations
+                                                                        </p>
                                                                         <p
-                                                                        class="capitalize text-color3 font-secondary text-2xl">
-                                                                        Himalayas to the Beaches, India Awaits You</p>
+                                                                                class="capitalize text-color3 font-secondary text-2xl">
+                                                                                Himalayas to the Beaches,
+                                                                                India Awaits You</p>
                                                                 </figcaption>
                                                         </a>
                                                 </figure>
@@ -1269,141 +1350,24 @@
                 </script> -->
 
                 <section class="testi">
-                        <div class="outerdiv">
-                                <div class="innerdiv">
-                                        <!-- div1 -->
-                                        <div class="div1 eachdiv">
-                                                <div class="userdetails">
-                                                        <div class="imgbox">
-                                                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-daniel.jpg"
-                                                                        alt="">
-                                                        </div>
-                                                        <div class="detbox">
-                                                                <p class="name">Anuj Gupta</p>
-                                                                <p class="designation">Verified Graduate</p>
-                                                        </div>
-                                                </div>
-                                                <div class="review">
-                                                        <h4>My trip to Rohtang Pass in Manali was nothing short of
-                                                                spectacular!
-                                                        </h4>
-                                                        <p>“ The breathtaking views of the snow-capped mountains left me
-                                                                in awe. The journey to the pass was an adventure in
-                                                                itself,
-                                                                with winding roads and stunning landscapes at every
-                                                                turn. The cool breeze and the serene environment made it
-                                                                a perfect
-                                                                escape from the hustle and bustle of city life. Our tour
-                                                                guide was knowledgeable and ensured we had the best
-                                                                experience
-                                                                possible. Whether you're an adventure enthusiast or
-                                                                simply looking for a peaceful retreat, Rohtang Pass is a
-                                                                must-visit.
-                                                                Highly recommended! ”</p>
-                                                </div>
+                        <div class="testimonials-section">
+                                <h2>What Our Clients Say</h2>
+                                <div class="testimonials-container">
+                                        <div class="testimonial">
+                                                <p class="quote">"My trip to Rohtang Pass in Manali was nothing short of spectacular!"</p>
+                                                <p class="author">- Anuj Gupta</p>
                                         </div>
-                                        <!-- div2 -->
-                                        <div class="div2 eachdiv">
-                                                <div class="userdetails">
-                                                        <div class="imgbox">
-                                                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-jonathan.jpg"
-                                                                        alt="">
-                                                        </div>
-                                                        <div class="detbox">
-                                                                <p class="name">Krishna Vankates</p>
-                                                                <p class="designation">Verified Graduate</p>
-                                                        </div>
-                                                </div>
-                                                <div class="review">
-                                                        <h4>My trip to Kerala was amazing my dream come true!</h4>
-                                                        <p>“ Cruising through the serene backwaters on a traditional
-                                                                houseboat was an unforgettable experience. The lush
-                                                                greenery,
-                                                                calm waters, and beautiful sunset views made it a
-                                                                perfect getaway. ”</p>
-                                                </div>
+                                        <div class="testimonial">
+                                                <p class="quote">"My trip to Kerala was amazing my dream come true!"</p>
+                                                <p class="author">- Krishna Vankates</p>
                                         </div>
-                                        <!-- div3 -->
-                                        <div class="div3 eachdiv">
-                                                <div class="userdetails">
-                                                        <div class="imgbox">
-                                                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-kira.jpg"
-                                                                        alt="">
-                                                        </div>
-                                                        <div class="detbox">
-                                                                <p class="name dark">Kira Roy</p>
-                                                                <p class="designation dark">Verified Graduate</p>
-                                                        </div>
-                                                </div>
-                                                <div class="review dark">
-                                                        <h4>My trip to Leh Ladakh was an adventure of a lifetime.</h4>
-                                                        <p>“ From the moment we arrived, the stark beauty of the region
-                                                                took my breath away. The dramatic landscapes, with their
-                                                                towering mountains, pristine lakes, and rugged terrain,
-                                                                felt like stepping into another world. Driving through
-                                                                the
-                                                                winding roads of Khardung La, one of the highest
-                                                                motorable passes in the world, was exhilarating. Each
-                                                                destination, from
-                                                                the serene Pangong Lake to the vibrant monasteries of
-                                                                Thiksey and Hemis, offered a unique glimpse into the
-                                                                rich culture
-                                                                and stunning natural beauty of Ladakh. Leh Ladakh is
-                                                                truly a paradise for nature lovers and adventure seekers
-                                                                alike. I can't wait to return! ”
-                                                        </p>
-                                                </div>
+                                        <div class="testimonial">
+                                                <p class="quote">"My trip to Leh Ladakh was an adventure of a lifetime."</p>
+                                                <p class="author">- Kira Roy</p>
                                         </div>
-                                        <!-- div4 -->
-                                        <div class="div4 eachdiv">
-                                                <div class="userdetails">
-                                                        <div class="imgbox">
-                                                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-jeanette.jpg"
-                                                                        alt="">
-                                                        </div>
-                                                        <div class="detbox">
-                                                                <p class="name dark">Trisha sharma</p>
-                                                                <p class="designation dark">Verified Graduate</p>
-                                                        </div>
-                                                </div>
-                                                <div class="review dark">
-                                                        <h4>My school trip to Goa was an absolute blast!</h4>
-                                                        <p>“ We enjoyed the sun, sand, and sea, explored historic forts,
-                                                                and had fun bonding with friends. It was an
-                                                                unforgettable
-                                                                experience! I wish to go again. Thank You! ”</p>
-                                                </div>
-                                        </div>
-                                        <!-- div5 -->
-                                        <div class="div5 eachdiv">
-                                                <div class="userdetails">
-                                                        <div class="imgbox">
-                                                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-patrick.jpg"
-                                                                        alt="">
-                                                        </div>
-                                                        <div class="detbox">
-                                                                <p class="name">Patrick Abrams</p>
-                                                                <p class="designation">Verified Graduate</p>
-                                                        </div>
-                                                </div>
-                                                <div class="review">
-                                                        <h4>My trip to the Seven Sisters of Northeast India was an
-                                                                unforgettable journey.
-                                                        </h4>
-                                                        <p>“ Assam, Mizoram, and beyond—was an unforgettable adventure.
-                                                                Each state offered its own unique charm, from Assam's
-                                                                lush
-                                                                tea gardens and vibrant festivals to Mizoram's rolling
-                                                                hills and rich tribal culture. The untouched natural
-                                                                beauty, warm
-                                                                hospitality, and diverse traditions made every moment
-                                                                special. Exploring the serene landscapes, majestic
-                                                                waterfalls, and
-                                                                quaint villages gave me a deeper appreciation for this
-                                                                incredible region. The Seven Sisters are a hidden gem,
-                                                                truly
-                                                                worth exploring. ”</p>
-                                                </div>
+                                        <div class="testimonial">
+                                                <p class="quote">"My school trip to Goa was an absolute blast!"</p>
+                                                <p class="author">- Trisha sharma</p>
                                         </div>
                                 </div>
                         </div>
