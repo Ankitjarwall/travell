@@ -777,6 +777,10 @@ video {
   height: 150px;
 }
 
+.h-\[350px\] {
+  height: 350px;
+}
+
 .h-\[400px\] {
   height: 400px;
 }
@@ -1004,7 +1008,7 @@ video {
 }
 
 .bg-header {
-  background-image: url('../img/hero.png');
+  background-image: url('../img/bg-cover.png');
 }
 
 .bg-map {
@@ -1864,6 +1868,7 @@ video {
 }
 
 @media (max-width: 768px) {
+
   /* .bg-header {
     background-image: url('../img/hero.png');
     width: 90%;
@@ -1873,9 +1878,14 @@ video {
     width: 100%;
   } */
 
+  .h300{
+    height: 300px;
+  }
+
   #name {
     font-size: 30px;
     background-size: 40% 40%;
+    line-height: 0.8;
   }
 
   .achivement {
@@ -1886,6 +1896,9 @@ video {
     height: 100vw;
   }
 
+  .state-head{
+    margin-top: 15px;
+  }
   .state {
     font-size: medium;
   }
@@ -1922,19 +1935,20 @@ video {
 
   }
 
-    .pc-dots-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 1vw;}
+  .pc-dots-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1vw;
+  }
 
   /* .mobile-dots-container {
     margin-top: 20vw;
   } */
 
   .mobile-dot {
-    width: 10px;
-    height: 10px;
+    width: 6px;
+    height: 6px;
     background-color: rgb(232, 232, 232);
     border-radius: 50%;
     margin: 0 5px;
@@ -1998,7 +2012,7 @@ video {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .testimonials-container {
-    margin: 0 1%;
+    margin: 0 3%;
     /* Side margins on mobile */
   }
 
