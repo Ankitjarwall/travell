@@ -801,9 +801,11 @@ video {
 .h-\[500px\] {
   height: 500px;
 }
+
 .h-\[550px\] {
   height: 520px;
 }
+
 .h-\[600px\] {
   height: 600px;
 }
@@ -827,9 +829,11 @@ video {
 .w-1\/2 {
   width: 50%;
 }
+
 .w-75 {
   width: 75%;
 }
+
 .w-\[100\%\] {
   width: 100%;
 }
@@ -1830,7 +1834,7 @@ video {
 #myBtn {
   display: none;
   position: fixed;
-  bottom: 20px;
+  bottom: 5vw;
   right: -40px;
   z-index: 99;
   /* font-size: 18px; */
@@ -1902,7 +1906,7 @@ video {
     width: 100%;
   } */
 
-  .h300{
+  .h300 {
     height: 300px;
   }
 
@@ -1920,9 +1924,10 @@ video {
     height: 100vw;
   }
 
-  .state-head{
+  .state-head {
     margin-top: 15px;
   }
+
   .state {
     font-size: medium;
   }
