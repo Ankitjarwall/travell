@@ -396,36 +396,6 @@ a:hover {
   }
 }
 
-
-.navbar1 ul li a {
-  position: relative;
-  padding: 10px 15px;
-  border-radius: 5px;
-  color: #fff;
-  font-weight: 500;
-  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.navbar1 ul li a::before {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 3px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--color3);
-  transition: width 0.3s ease-in-out;
-}
-
-.navbar1 ul li a:hover::before {
-  width: 100%;
-}
-
-.navbar1 ul li a:hover {
-  background-color: rgba(255, 255, 255, 0.209);
-  transform: scale(1.05);
-}
-
 .menu ul li a {
   position: relative;
   padding: 5px 5px;
@@ -2742,7 +2712,6 @@ video {
   }
 }
 
-
 .testimonials-section {
   background-color: #f9f9f9;
   padding: 50px 0;
@@ -2760,7 +2729,6 @@ video {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 20px;
-  /* Even gap between the testimonial boxes */
   margin: 0 5%;
   /* Side margins on PC */
 }
@@ -2772,6 +2740,17 @@ video {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  /* Smooth transition for hover effect */
+}
+
+.testimonial:hover {
+  transform: translateY(-10px);
+  /* Slightly raise the box */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  /* More pronounced shadow */
+  background-color: #f0f0f0;
+  /* Change background color on hover */
 }
 
 .testimonial .quote {
