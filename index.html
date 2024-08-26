@@ -563,7 +563,7 @@
                                                                         href="./Packages.html">Packages</a></li>
                                                         <li class="list-none"><a
                                                                         class="decoration-none text-white  hover:text-color3 transition-all duration-1000"
-                                                                        href="./aboutus.html">About Us</a></li>
+                                                                        href="/#aboutus">About Us</a></li>
                                                         <li class="list-none"><a
                                                                         class="decoration-none text-white  hover:text-color3 transition-all duration-1000"
                                                                         href="#contact">Contact</a></li>
@@ -594,7 +594,7 @@
                                                                         href="./Packages.html">Packages</a></li>
                                                         <li class="list-none my-2"><a
                                                                         class="decoration-none text-color2 flex  hover:text-color4  transition-all duration-600"
-                                                                        href="./aboutus.html">About Us</a></li>
+                                                                        href="/#aboutus">About Us</a></li>
                                                         <li class="list-none my-2"><a
                                                                         class="decoration-none text-color2 flex   hover:text-color4 transition-all duration-600"
                                                                         href="#contact">Contact</a></li>
@@ -1547,7 +1547,7 @@
                                                 message: document.getElementById('overlay-message').value,
                                         };
 
-                                        fetch('https://script.google.com/macros/s/AKfycbxZuLrx2cDDhvJAuXAqlsWne07gYf1eQ4AoLFmnCRFWZ-S2PLIFzsGFjg2w_xysluM_/exec', {
+                                        fetch('https://script.google.com/macros/s/AKfycbxEBqjZyfsqsSB6I1R9iTnRASoQreNoQIU15qXAxNSAKCIVC4IWlN2VKnAf5tdKcbyJ/exec', {
                                                 method: 'POST',
                                                 mode: 'no-cors',
                                                 headers: {
@@ -1568,14 +1568,12 @@
                                                         console.error('Error:', error);
                                                 })
                                                 .finally(() => {
-                                                // Hide loading animation
-                                                closeOverlay();
-                                                document.getElementById('loadingAnimation').style.display = 'none';
-                                                document.getElementById('submitBtn').style.display = 'block';
-                                        });
+                                                        // Hide loading animation
+                                                        closeOverlay();
+                                                        document.getElementById('loadingAnimation').style.display = 'none';
+                                                        document.getElementById('submitBtn').style.display = 'block';
+                                                });
                                 });
-
-
                         </script>
                 </section>
 
@@ -1589,7 +1587,7 @@
                                                         Links</p>
                                                 <ul class="mt-2 px-4">
                                                         <li class="my-1 list-disc text-white">
-                                                                <a href="./aboutus.html" class="text-white">About Us</a>
+                                                                <a href="/#aboutus" class="text-white">About Us</a>
                                                         </li>
                                                         <li class="list-disc text-white">
                                                                 <a href="./Packages.html"
@@ -1629,7 +1627,7 @@
                                                 <p class="font-secondary text-2xl text-white">Subscribe</p>
                                                 <p class="text-stone-300 mt-1">Sign up for regular updates.</p>
                                                 <form id="subscribeForm"
-                                                        action="https://script.google.com/macros/s/AKfycbwIsDPyLgVwsq_U9WjQR_F3XDvMEyQw-x9dkDZFvDpUSaf7MaXsnv5x1UA7cNz2NXCd/exec"
+                                                        action="https://script.google.com/macros/s/AKfycbxEBqjZyfsqsSB6I1R9iTnRASoQreNoQIU15qXAxNSAKCIVC4IWlN2VKnAf5tdKcbyJ/exec"
                                                         method="POST" class="mt-1 flex w-full flex-wrap">
                                                         <input type="email" name="email" placeholder="Email Address"
                                                                 class="px-2 py-1 w-[70%]" required>
