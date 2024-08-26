@@ -770,6 +770,10 @@ video {
   height: 100%;
 }
 
+.h-\[50px\] {
+  height: 20px;
+}
+
 .h-\[100px\] {
   height: 100px;
 }
@@ -1815,6 +1819,37 @@ video {
   }
 }
 
+.scrollable-container {
+  width: 70vw;
+  /* Set width to 70% of viewport width */
+  overflow: hidden;
+  position: relative;
+}
+
+.scrolling-content {
+  display: flex;
+  width: calc(100% * 2);
+  /* Double the width of the container */
+  animation: scroll-left 20s linear infinite;
+}
+
+.scrolling-content figure {
+  margin-right: 0;
+  /* Remove margin to ensure figures are aligned */
+  padding: 0;
+  /* Remove padding */
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 450px) {
   .bg-sea {
     background-image: url(../img/15.webp);
@@ -2092,6 +2127,11 @@ video {
 
 /* Responsive styling */
 @media (max-width: 768px) {
+
+  .scrollable-container {
+    width: 100vw;
+  }
+
   .overlay-7sec-container {
     top: 20vh;
     left: 5vw;
