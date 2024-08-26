@@ -2296,7 +2296,7 @@ video {
   }
 
   .bg-sea {
-    background-image: url(../img/15.webp);
+    background-image: url(../img/mobile-bg-15.webp);
     background-size: cover;
     /* Cover the entire container */
     background-position: center center;
