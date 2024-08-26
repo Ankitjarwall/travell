@@ -697,7 +697,7 @@
                                 <div
                                         class="w-full lg:w-[50%] flex flex-col justify-center items-center bg-color5 h-auto lg:pb-0 mt-10 lg:mt-0">
                                         <figure class="w-[80%] h-[550px] custom-view-mb-h relative">
-                                                
+
                                                 <img src="img/india.png" alt="india image"
                                                         class="w-[100%] h-[100%] absolute z-10 object-cover hover:scale-[.95] transition-all duration-500">
                                         </figure>
@@ -710,7 +710,7 @@
                 <section class="w-full flex justify-center bg-color7 py-1 ">
                         <div class="w-full container 2xl:px-36">
                                 <div>
-                                        <p class="text-color4 uppercase px-5">Choose your place</p>
+                                        <p class="text-color4 uppercase px-5">Pick Yours!</p>
                                         <p class="text-5xl font-secondary text-color3 px-5">Popular <span
                                                         class="text-color1">Tours</span></p>
                                         <div
@@ -1037,7 +1037,7 @@
                                                         style="background-image: url('./img/4.png'); background-size:200%; background-position: center;">
                                                 </div>
                                                 <figcaption class="text-center text-white font-secondary mt-10">
-                                                        <p class="text-xl">250+ Amazing Tour</p>
+                                                        <p class="text-xl">100+ Amazing Tour</p>
 
                                                 </figcaption>
                                         </figure>
@@ -1048,7 +1048,7 @@
                                                         style="background-image: url('./img/school\ trip.webp'); background-size:87%; background-position: center;">
                                                 </div>
                                                 <figcaption class="text-center text-white font-secondary mt-10">
-                                                        <p class="text-xl">250+ School Tour</p>
+                                                        <p class="text-xl">100+ School Tour</p>
                                                 </figcaption>
                                         </figure>
                                 </div>
@@ -1493,6 +1493,93 @@
                         </div>
                 </section>
 
+
+                <section>
+                        <div id="overlay-7sec" class="overlay-7sec">
+                                <div class="overlay-7sec-container">
+                                        <div class="overlay-7sec-brand-logo">
+                                                <img src="./img/logo-sm-dark.webp" alt="logo">
+                                        </div>
+                                        <div class="overlay-7sec-brand-title">THE ITINERARY COOK</div>
+                                        <form id="contactForm" class="overlay-7sec-inputs">
+                                                <label for="name">NAME</label>
+                                                <input id="overlay-name" type="text" placeholder="Your Name" required />
+                                                <label for="email">EMAIL</label>
+                                                <input id="overlay-email" type="email" placeholder="example@test.com"
+                                                        required />
+                                                <label for="phone">PHONE</label>
+                                                <input id="overlay-phone" type="tel" placeholder="Optional" />
+                                                <label for="message">MESSAGE</label>
+                                                <textarea id="overlay-message" placeholder="Your Message"
+                                                        required></textarea>
+                                                <button type="submit">SUBMIT</button>
+                                        </form>
+                                        <div id="loadingAnimation" style="display: none;">Sending...</div>
+                                        <button class="overlay-7sec-close-button" onclick="closeOverlay()">✕</button>
+
+                                </div>
+                        </div>
+
+                        <script>
+                                // Show the overlay after 5 seconds
+                                window.onload = function () {
+                                        setTimeout(function () {
+                                                document.getElementById('overlay-7sec').style.display = 'block';
+                                        }, 5000); // 5 seconds delay
+                                };
+
+                                // Close the overlay
+                                function closeOverlay() {
+                                        document.getElementById('overlay-7sec').style.display = 'none';
+                                }
+
+                                document.getElementById('contactForm').addEventListener('submit', function (e) {
+                                        e.preventDefault();
+
+                                        // Show loading animation
+                                        document.getElementById('contactForm').style.display = 'none';
+                                        document.getElementById('loadingAnimation').style.display = 'block';
+
+                                        const formData = {
+                                                name: document.getElementById('overlay-name').value,
+                                                email: document.getElementById('overlay-email').value,
+                                                phone: document.getElementById('overlay-phone').value,
+                                                message: document.getElementById('overlay-message').value,
+                                        };
+
+                                        fetch('https://script.google.com/macros/s/AKfycbxZuLrx2cDDhvJAuXAqlsWne07gYf1eQ4AoLFmnCRFWZ-S2PLIFzsGFjg2w_xysluM_/exec', {
+                                                method: 'POST',
+                                                mode: 'no-cors',
+                                                headers: {
+                                                        'Content-Type': 'application/json',
+                                                },
+                                                body: JSON.stringify(formData),
+                                        })
+                                                .then(response => {
+                                                        if (response.ok) {
+                                                                // alert('There was a problem submitting your form.');
+                                                                document.getElementById('contactForm').reset();
+                                                        } else {
+                                                                // alert('Form submitted successfully!');
+                                                                document.getElementById('contactForm').reset();
+                                                        }
+                                                })
+                                                .catch(error => {
+                                                        console.error('Error:', error);
+                                                })
+                                                .finally(() => {
+                                                // Hide loading animation
+                                                closeOverlay();
+                                                document.getElementById('loadingAnimation').style.display = 'none';
+                                                document.getElementById('submitBtn').style.display = 'block';
+                                        });
+                                });
+
+
+                        </script>
+                </section>
+
+
                 <section id="contact" class="w-full flex justify-center h-auto bg-color3">
                         <footer class="w-full container h-auto flex flex-col 2xl:px-36 footer">
 
@@ -1536,16 +1623,23 @@
                                                 </ul>
                                         </div>
 
+
+
                                         <div id="subscribeBox" class="w-full md:w-[28%] flex flex-col py-1 my-1 px-4">
                                                 <p class="font-secondary text-2xl text-white">Subscribe</p>
                                                 <p class="text-stone-300 mt-1">Sign up for regular updates.</p>
                                                 <form id="subscribeForm"
-                                                        action="https://script.google.com/macros/s/AKfycbzWdcQC6pfIXp1xcZh_0yjZPyin6PlOW9Ve6fq0547NoMdDOPFVxqZq63PI8xhfmD8w/exec"
+                                                        action="https://script.google.com/macros/s/AKfycbwIsDPyLgVwsq_U9WjQR_F3XDvMEyQw-x9dkDZFvDpUSaf7MaXsnv5x1UA7cNz2NXCd/exec"
                                                         method="POST" class="mt-1 flex w-full flex-wrap">
                                                         <input type="email" name="email" placeholder="Email Address"
                                                                 class="px-2 py-1 w-[70%]" required>
-                                                        <button type="submit"
-                                                                class="text-white bg-color4 py-1 px-2 ml-2">Send</button>
+                                                        <button type="submit" id="sendButton"
+                                                                class="text-white bg-color4 py-1 px-2 ml-2 relative">
+                                                                <span class="button-text">Send</span>
+                                                                <div class="spin-btn">
+                                                                        <span class="spinner hidden"></span>
+                                                                </div>
+                                                        </button>
                                                 </form>
                                         </div>
 
@@ -1554,6 +1648,13 @@
                                                         e.preventDefault();
                                                         var form = e.target;
                                                         var formData = new FormData(form);
+                                                        var sendButton = document.getElementById('sendButton');
+                                                        var buttonText = sendButton.querySelector('.button-text');
+                                                        var spinner = sendButton.querySelector('.spinner');
+
+                                                        // Show spinner and hide button text
+                                                        buttonText.classList.add('hidden');
+                                                        spinner.classList.remove('hidden');
 
                                                         fetch(form.action, {
                                                                 method: 'POST',
@@ -1575,6 +1676,11 @@
                                                                 })
                                                                 .catch(error => {
                                                                         console.error('Error:', error);
+                                                                })
+                                                                .finally(() => {
+                                                                        // Hide spinner and show button text again
+                                                                        buttonText.classList.remove('hidden');
+                                                                        spinner.classList.add('hidden');
                                                                 });
                                                 });
                                         </script>

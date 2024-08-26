@@ -1895,19 +1895,234 @@ video {
   height: 200px;
 }
 
-@media (max-width: 768px) {
+/*spinner */
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
 
-  /* .bg-header {
-    background-image: url('../img/hero.png');
-    width: 90%;
+/* Button dimensions */
+#sendButton {
+  position: relative;
+}
+
+.spin-btn {
+  width: 35px;
+}
+
+/* Spinner size matches the button size */
+#sendButton .spinner {
+  /* width: 100%; */
+  /* height: 100%; */
+  border-width: 3px;
+  border-top-width: 3px;
+  border-radius: 50%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
 
-  .bg-cover {
-    width: 100%;
-  } */
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* General overlay styling */
+.overlay-7sec {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
+  display: none;
+  /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-    #myBtn {
-      bottom: 25vw;}
+/* Container for the form and content */
+.overlay-7sec-container {
+  top: 10vh;
+  left: 38vw;
+  background: #f0f0f3;
+  /* Light background for neumorphism effect */
+  box-shadow: 8px 8px 16px #c9c9c9, -8px -8px 16px #ffffff;
+  /* Neumorphism shadow */
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+/* Brand logo styling */
+.overlay-7sec-brand-logo img {
+  margin-left: 35%;
+  border-radius: 50%;
+  /* max-height: 90px; */
+  max-width: 80px;
+  margin-bottom: 10px;
+}
+
+/* Brand title styling */
+.overlay-7sec-brand-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Form inputs and textarea styling */
+.overlay-7sec-inputs label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: 600;
+}
+
+.overlay-7sec-inputs input,
+.overlay-7sec-inputs textarea {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: inset 4px 4px 8px #c9c9c9, inset -4px -4px 8px #ffffff;
+  /* Neumorphism inset shadow */
+  background: #f0f0f3;
+  font-size: 14px;
+  color: #333;
+}
+
+.overlay-7sec-inputs button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #1da1f2;
+  /* Twitter brand color */
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 4px 4px 8px #c9c9c9, -4px -4px 8px #ffffff;
+  /* Neumorphism shadow */
+  transition: background 0.3s;
+}
+
+.overlay-7sec-inputs button:hover {
+  background: #0d8bec;
+  /* Darker shade on hover */
+}
+
+/* Close button styling */
+.overlay-7sec-close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  transition: background 0.3s, color 0.3s;
+}
+
+.overlay-7sec-close-button:hover {
+  background: #1da1f2;
+  /* Slight background on hover */
+  color: #1da1f2;
+  /* Darker text color on hover */
+}
+
+.overlay-7sec-close-button:focus {
+  outline: none;
+  /* Remove default focus outline */
+  box-shadow: 0 0 0 2px #1da1f2;
+  /* Custom focus outline in Twitter blue */
+}
+
+/* Close button styling */
+.overlay-7sec-container button {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+}
+
+.overlay-7sec-container button:hover {
+  color: #000;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .overlay-7sec-container {
+    top: 20vh;
+    left: 5vw;
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  .overlay-7sec-brand-title {
+    font-size: 20px;
+  }
+
+  .overlay-7sec-inputs input,
+  .overlay-7sec-inputs textarea {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .overlay-7sec-inputs button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay-7sec-container {
+    top: 15vh;
+    left: 5vw;
+    padding: 10px;
+  }
+
+  .overlay-7sec-brand-title {
+    font-size: 18px;
+  }
+
+  .overlay-7sec-inputs input,
+  .overlay-7sec-inputs textarea {
+    font-size: 10px;
+    padding: 6px;
+  }
+
+  .overlay-7sec-inputs button {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+
+
+  #myBtn {
+    bottom: 25vw;
+  }
 
   .custom-view-mb-h {
     height: 360px;
