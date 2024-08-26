@@ -1816,6 +1816,24 @@ video {
 }
 
 @media (max-width: 450px) {
+  .bg-sea {
+    background-image: url(../img/15.webp);
+    background-size: cover;
+    /* Cover the entire container */
+    background-position: center center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Prevent repeating the image */
+    background-attachment: fixed;
+    /* Keep the image fixed while scrolling */
+    height: 100vh;
+    /* Ensure it covers the full viewport height */
+    width: 100vw;
+    /* Ensure it covers the full viewport width */
+    /* Optional: Set min-height to ensure it's not smaller than the viewport */
+    min-height: 100vh;
+  }
+
   .dis-text {
     font-size: 50%;
   }
@@ -1936,6 +1954,7 @@ video {
     transform: rotate(360deg);
   }
 }
+
 /* General overlay styling */
 .overlay-7sec {
   position: fixed;
