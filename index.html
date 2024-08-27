@@ -120,10 +120,10 @@
 
                 nav ul li a {
                         text-decoration: none;
-                        color: #000000;
-                        padding: 10px 7px;
+                        /* color: #000000; */
+                        padding: 8px 7px;
                         /* Add padding for button-like appearance */
-                        border-radius: 10px;
+                        border-radius: 20px;
                         /* Rounded corners for the button */
                         transition: all 0.1s ease;
                         /* Smooth transition for hover effects */
@@ -131,9 +131,9 @@
 
                 nav ul li a:hover {
                         text-decoration: none;
-                        background-color: rgb(125, 161, 170);
+                        background-color: rgba(202, 200, 200, 0.699);
                         /* Replace #color3 with the desired hover background color */
-                        color: #090909;
+                        /* color: #090909; */
                         /* Ensure the text color remains readable on hover */
                         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                         /* Add a slight shadow for a button effect */
@@ -164,7 +164,12 @@
                 }
         </script>
         <section
-                class="w-full h-[100vh]  bg-header  bg-cover bg-no-repeat bg-center bg-color1 bg-blend-multiply bg-opacity-60 ">
+                class="w-full h-[100vh]  bg-header-video  bg-cover bg-no-repeat bg-center  bg-blend-multiply bg-opacity-60 ">
+                <!-- bg-header bg-color1 -->
+                <video autoplay muted loop playsinline class="bg-video">
+                        <source src="img/bg-cover-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                </video>
                 <section class="w-full flex flex-wrap justify-center ">
                         <header
                                 class="w-[85%]  xl:w-[73%]  container hidden lg:flex justify-between h-[60px]       items-center py-[45px]">
@@ -231,7 +236,10 @@
                                                         Travel with us</p> -->
                                 <h1
                                         class="w-full text-center text-white text-5xl md:text-7xl font-secondary uppercase tracking-widest">
-                                        Explore <span class="travol">India</span> with us </h1>
+                                        Explore <span class="travol">India</span> with us </h1><br>
+                                <h1
+                                        class="w-full text-center text-white text-2xl md:text-7xl font-secondary uppercase tracking-widest">
+                                        THE <span class="travol">ITINERARY</span> COOK </h1>
                         </div>
                 </section>
 
@@ -297,18 +305,18 @@
                                         <div class="flex items-center">
                                                 <i
                                                         class="bi bi-check text-white bg-color4 rounded-[50%] px-2 py-1 me-3"></i>
-                                                <p class="text-color6">5+ Years of Experience</p>
+                                                <p class="text-color6">2+ Years of Experience</p>
                                         </div>
                                         <div class="flex items-center my-2">
                                                 <i
                                                         class="bi bi-check text-white bg-color4 rounded-[50%] px-2 py-1 me-3"></i>
-                                                <p class="text-color6">100+ Tour Destinations</p>
+                                                <p class="text-color6">50+ Tour Destinations</p>
                                         </div>
 
                                         <div class="flex items-center">
                                                 <i class="bi bi-telephone-forward text-color1 text-xl me-3"></i>
                                                 <div>
-                                                        <p class="text-color6">For information - 09188085590</p>
+                                                        <p class="text-color6">For information +91 9530377377</p>
 
                                                 </div>
                                         </div>
@@ -1239,7 +1247,7 @@
 
                                                 <i
                                                         class="font-secondary bi bi-telephone-outbound text-1xl me-3 text-white">
-                                                </i><span class="text-white">9530377377</span><br>
+                                                </i><span class="text-white">+91 9530377377</span><br>
                                                 <i class="font-secondary bi bi-envelope-paper text-1xl me-3 text-white">
                                                 </i><span class="text-white">info@theitinerary.com</span><br>
 
@@ -1316,7 +1324,7 @@
                         </div>
                         <p
                                 class="text-stone-300 text-left py-1  text-[14px] relative before:content-[''] before:h-[3px] before:w-[100%] before:bg-stone-400 before:absolute before:top-0 before:bg-opacity-50">
-                                ©2023 Aman Khan. All rights reserved.</p>
+                                ©2022 Aman Khan. All rights reserved.</p>
                 </footer>
         </section>
 
