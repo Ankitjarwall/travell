@@ -117,10 +117,10 @@
 
         nav ul li a {
             text-decoration: none;
-            color: #000000;
-            padding: 10px 7px;
+            /* color: #000000; */
+            padding: 8px 7px;
             /* Add padding for button-like appearance */
-            border-radius: 10px;
+            border-radius: 20px;
             /* Rounded corners for the button */
             transition: all 0.1s ease;
             /* Smooth transition for hover effects */
@@ -128,9 +128,9 @@
 
         nav ul li a:hover {
             text-decoration: none;
-            background-color: rgb(125, 161, 170);
+            background-color: rgba(202, 200, 200, 0.14);
             /* Replace #color3 with the desired hover background color */
-            color: #090909;
+            /* color: #090909; */
             /* Ensure the text color remains readable on hover */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             /* Add a slight shadow for a button effect */
@@ -160,8 +160,11 @@
             document.documentElement.scrollTop = 0;
         }
     </script>
-    <section
-        class="w-full h-[500vh]  bg-header  bg-cover bg-no-repeat bg-center bg-color1 bg-blend-multiply bg-opacity-60 ">
+    <section class="w-full h-[500vh] bg-cover bg-no-repeat bg-center bg-blend-multiply bg-opacity-60">
+        <video autoplay muted loop playsinline class="bg-video-package">
+            <source src="img/bg-cover-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <section class="w-full flex flex-wrap justify-center ">
             <header
                 class="w-[85%]  xl:w-[73%]  container hidden lg:flex justify-between h-[60px]       items-center py-[45px]">
@@ -223,7 +226,7 @@
                 <div class="w-full container 2xl:px-36">
                     <div>
                         <p class="text-white uppercase px-5">Pick Yours!</p>
-                        <p class="text-5xl font-secondary text-color3 px-5">Popular <span
+                        <p class="text-5xl font-secondary text-color1 px-5">Popular <span
                                 class="text-white">Tours</span></p>
                         <div class="flex flex-wrap md:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3 ">
                             <figure

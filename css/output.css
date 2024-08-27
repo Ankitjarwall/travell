@@ -1504,6 +1504,22 @@ video {
   /* Place the video behind other content */
 }
 
+.bg-video-package {
+  position: fixed;
+  /* Keep the video fixed in place */
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  /* Cover the entire viewport */
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  /* Place the video behind other content */
+  pointer-events: none;
+  /* Prevent interaction with the video */
+}
+
 .bg-map {
   background-image: url(../img/map1.png);
 }
