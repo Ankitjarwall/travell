@@ -386,6 +386,15 @@
                 </div>
                 <nav class="menu hidden h-[350px] w-full absolute bg-custom left-0 top-[90px] z-30">
                     <ul class="h-full w-full flex flex-col justify-center ms-6">
+                        <li class="list-none search-item">
+                            <form id="search-form" class="search-item-form" onsubmit="event.preventDefault();"
+                                role="search">
+                                <label class="search-item-label" for="search">Search for stuff</label>
+                                <input class="search-item-input" id="search" type="search" placeholder="Search..."
+                                    autofocus required />
+                                <button class="search-item-button" type="submit">Go</button>
+                            </form>
+                        </li>
                         <li class="list-none my-2"><a
                                 class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
                                 href="/">Home</a></li>
@@ -402,15 +411,7 @@
                                 class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
                                 href="#contact">Contact</a></li>
 
-                        <li class="list-none search-item">
-                            <form id="search-form" class="search-item-form" onsubmit="event.preventDefault();"
-                                role="search">
-                                <label class="search-item-label" for="search">Search for stuff</label>
-                                <input class="search-item-input" id="search" type="search" placeholder="Search..."
-                                    autofocus required />
-                                <button class="search-item-button" type="submit">Go</button>
-                            </form>
-                        </li>
+
 
                     </ul>
                 </nav>
