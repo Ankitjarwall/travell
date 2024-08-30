@@ -135,6 +135,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             /* Add a slight shadow for a button effect */
         }
+
     </style>
 
 </head>
@@ -166,378 +167,381 @@
             Your browser does not support the video tag.
         </video>
         <section class="w-full flex flex-wrap justify-center ">
-            <header
-                class="w-[85%]  xl:w-[73%]  container hidden lg:flex justify-between h-[60px]       items-center py-[45px]">
+            <!-- Desktop header -->
+            <header class="w-[85%] xl:w-[73%] container hidden lg:flex justify-between h-[60px] items-center py-[45px]">
                 <figure class="w-[140px]">
                     <a href="/">
                         <img src="img/logo-light.webp" alt="Logo" class="logo-light">
                     </a>
                 </figure>
 
-                <nav class="h-[100%] md:w-[70%]">
-                    <ul class="h-[100%] flex items-center gap-8 justify-end">
-                        <li class="list-none  "><a
+                <nav class="h-[100%] md:w-[70%] flex items-center gap-8 justify-end">
+                    <ul class="h-[100%] flex items-center gap-8">
+                        <li class="list-none"><a
                                 class="decoration-none text-white hover:text-color3 transition-all duration-500"
                                 href="/">Home</a></li>
                         <li class="list-none"><a
-                                class="decoration-none text-white  hover:text-color3 transition-all duration-500"
+                                class="decoration-none text-white hover:text-color3 transition-all duration-500"
                                 href="./Packages.html">Packages</a></li>
                         <li class="list-none"><a
-                                class="decoration-none text-white  hover:text-color3 transition-all duration-500"
+                                class="decoration-none text-white hover:text-color3 transition-all duration-500"
+                                href="./Blogs.html">Blogs</a></li>
+                        <li class="list-none"><a
+                                class="decoration-none text-white hover:text-color3 transition-all duration-500"
                                 href="./#aboutus">About Us</a></li>
                         <li class="list-none"><a
-                                class="decoration-none text-white  hover:text-color3 transition-all duration-500"
+                                class="decoration-none text-white hover:text-color3 transition-all duration-500"
                                 href="./#contact">Contact Us</a></li>
+                        
                     </ul>
+
                 </nav>
             </header>
 
-            <!-- header for mobile -->
+            <!-- Mobile header -->
             <header
-                class="w-[95%] sm:w-[70%] md:w-[80%] container flex h-[60px] justify-between  items-center  lg:hidden  py-[45px] relative ">
+                class="w-[95%] sm:w-[70%] md:w-[80%] container flex h-[60px] justify-between items-center lg:hidden py-[45px] relative">
                 <figure class="w-[140px]">
                     <a href="/">
                         <img src="img/logo-light.webp" alt="Logo" class="logo-light">
                     </a>
                 </figure>
-                <div class=" w-1/2 h-full flex justify-end items-center ">
+                <div class="w-1/2 h-full flex justify-end items-center">
                     <i class="bi bi-list text-3xl text-white cursor-pointer ham-menu-icon"></i>
                 </div>
-                <nav class="menu hidden h-[250px] w-full absolute bg-custom left-0 top-[90px]   z-30 ">
-                    <ul class="h-full w-full flex flex-col  justify-center ms-6">
+                <nav class="menu hidden h-[250px] w-full absolute bg-custom left-0 top-[90px] z-30">
+                    <ul class="h-full w-full flex flex-col justify-center ms-6">
                         <li class="list-none my-2"><a
-                                class="decoration-none text-color2 flex hover:text-color4  transition-all duration-600"
+                                class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
                                 href="/">Home</a></li>
                         <li class="list-none my-2"><a
-                                class="decoration-none text-color2 flex  hover:text-color4 transition-all duration-600"
+                                class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
                                 href="./Packages.html">Packages</a></li>
                         <li class="list-none my-2"><a
-                                class="decoration-none text-color2 flex  hover:text-color4  transition-all duration-600"
+                                class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
+                                href="./Blogs.html">Blogs</a></li>
+                        <li class="list-none my-2"><a
+                                class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
                                 href="./#aboutus">About Us</a></li>
                         <li class="list-none my-2"><a
-                                class="decoration-none text-color2 flex   hover:text-color4 transition-all duration-600"
+                                class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
                                 href="#contact">Contact</a></li>
+                        <li class="list-none">
+                            <form id="search-form" class="flex items-center mobile-search-form">
+                                <input type="text" id="search-input" placeholder="Search..."
+                                    class="form-control mobile-search-input">
+                                <i id="search-icon"
+                                    class="fas fa-search cursor-pointer text-white mobile-search-icon"></i>
+                            </form>
+                        </li>
+
                     </ul>
                 </nav>
             </header>
+        </section>
+    </section>
 
 
-            <section class="w-full flex justify-center py-5 ">
-                <div class="w-full container 2xl:px-36">
-                    <div>
-                        <p class="text-white uppercase px-5">Pick Yours!</p>
-                        <p class="text-5xl font-secondary text-color1 px-5">Popular <span
-                                class="text-white">Tours</span></p>
-                        <div class="flex flex-wrap md:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3 ">
-                            <figure
-                                class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                                <div
-                                    class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-5">
-                                    <p class="text-2xl text-color3 capitalize font-secondary">
-                                        Chandigarh -
-                                        Shimla</p>
-                                    <p class="text-color1 mb-4">6000 Rs/Person</p>
-                                    <p class="text-color6">Discover Chandigarh's modernity
-                                        at Rock Garden.
-                                        Experience Shimla's colonial charm on Mall Road.
-                                        Blend urban
-                                        buzz with mountain tranquility.</p>
-                                    <div class="flex flex-wrap my-4">
-                                        <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                            <p class="text-color6 ms-2">5 Days</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                            <p class="text-color6 ms-2">Shimla</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                            <p class="text-color6 ms-2">6 +</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                            <p class="text-color6 ms-2">9.8 Superb
-                                            </p>
-                                        </div>
-                                    </div>
-
+    
+    <section class="w-full flex justify-center py-5 ">
+        <div class="w-full container 2xl:px-36">
+            <div>
+                <p class="text-white uppercase px-5">Pick Yours!</p>
+                <p class="text-5xl font-secondary text-color1 px-5">Popular <span class="text-white">Tours</span>
+                </p>
+                <div class="flex flex-wrap md:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3 ">
+                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-5">
+                            <p class="text-2xl text-color3 capitalize font-secondary">
+                                Chandigarh -
+                                Shimla</p>
+                            <p class="text-color1 mb-4">6000 Rs/Person</p>
+                            <p class="text-color6">Discover Chandigarh's modernity
+                                at Rock Garden.
+                                Experience Shimla's colonial charm on Mall Road.
+                                Blend urban
+                                buzz with mountain tranquility.</p>
+                            <div class="flex flex-wrap my-4">
+                                <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
+                                    <p class="text-color6 ms-2">5 Days</p>
                                 </div>
-                                <img src="img/oa.webp" alt=""
-                                    class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                                <p
-                                    class="absolute uppercase text-white bg-color3 px-4 py-1 right-1 top-12 rotate-[-90deg] ">
-                                    Shimla</p>
-                                <figcaption class="absolute text-white bottom-8 right-10 fig mx-2">
-                                    <p class="capitalize font-secondary text-3xl">Chandigarh
-                                        - Shimla</p>
-                                    <p class="text-right">6000 Rs/Person</p>
-                                </figcaption>
-                            </figure>
-                            <figure
-                                class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                                <div
-                                    class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-5">
-                                    <p class="text-2xl text-color3 capitalize font-secondary">
-                                        Chandigarh -
-                                        Manali</p>
-                                    <p class="text-color1 mb-1">7000 Rs/Person</p>
-                                    <p class="text-color6">Discover the best of Chandigarh's
-                                        urban charm and
-                                        Manali's Himalayan beauty! Our trip blends city
-                                        delights with
-                                        mountain adventures, ensuring an unforgettable
-                                        journey filled
-                                        with culture, nature, and thrill!</p>
-                                    <div class="flex flex-wrap my-1">
-                                        <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                            <p class="text-color6 ms-2">6 Days</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                            <p class="text-color6 ms-2">Chandigarh -
-                                                Manali</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                            <p class="text-color6 ms-2">7 +</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                            <p class="text-color6 ms-2"> 9.5 Superb
-                                            </p>
-                                        </div>
-                                    </div>
-
+                                <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
+                                    <p class="text-color6 ms-2">Shimla</p>
                                 </div>
-                                <img src="img/Chandigarh - Manali.webp" alt=""
-                                    class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                                <p
-                                    class="absolute uppercase text-white bg-color3 px-4 py-1 right-1 top-12 rotate-[-90deg] ">
-                                    Manali</p>
-                                <figcaption class="absolute text-white bottom-8 right-10 fig">
-                                    <p class="capitalize font-secondary text-3xl mx-2">
-                                        Chandigarh
-                                        - Manali</p>
-                                    <p class="text-right">7000 Rs/Person</p>
-                                </figcaption>
-                            </figure>
-                            <figure
-                                class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000">
-                                <div
-                                    class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
-                                    <p class="text-2xl text-color3 capitalize font-secondary">
-                                        Jaipur -
-                                        Udaipur - Jodhpur - Jaisalmer</p>
-                                    <p class="text-color1 mb-1">6500 Rs/Person</p>
-                                    <p class="text-color6">
-                                        Royal journey through Rajasthan's
-                                        gems: Jaipur's
-                                        vibrant culture, Udaipur's lakeside charm,
-                                        Jodhpur's majestic
-                                        forts, and Jaisalmer's golden sands. Experience
-                                        history, luxury,
-                                        and adventure in the land of kings.</p>
-                                    <div class="flex flex-wrap my-0">
-                                        <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                            <p class="text-color6 ms-2">7 Days</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                            <p class="text-color6 ms-2">
-                                                Jpr,Uda,Jod,Jas</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                            <p class="text-color6 ms-2">6+</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                            <p class="text-color6 ms-2">9.5 Superb
-                                            </p>
-                                        </div>
-                                    </div>
-
+                                <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
+                                    <p class="text-color6 ms-2">6 +</p>
                                 </div>
-                                <img src="img/Jaipur Udaipur Jodhpur Jaisalmer.webp" alt=""
-                                    class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                                <p
-                                    class="absolute uppercase text-white bg-color3 px-4 py-1 right-1 top-12 rotate-[-90deg] ">
-                                    Jpr - Jas</p>
-                                <figcaption class="absolute text-white bottom-8 right-10 fig">
-                                    <p class="capitalize font-secondary text-3xl mx-2">
-                                        Jaipur -
-                                        Udaipur - Jodhpur
-                                        - Jaisalmer</p>
-                                    <p class="text-right">6500 Rs/Person</p>
-                                </figcaption>
-                            </figure>
-                            <figure
-                                class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                                <div
-                                    class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-5">
-                                    <p class="text-2xl text-color3 capitalize font-secondary">
-                                        Mumbai - Goa
+                                <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
+                                    <p class="text-color6 ms-2">9.8 Superb
                                     </p>
-                                    <p class="text-color1 mb-1">7000 Rs/Person</p>
-                                    <p class="text-color6">
-                                        Experience the ultimate coastal getaway from
-                                        bustling Mumbai to
-                                        the laid-back beaches of Goa. Dive into vibrant
-                                        nightlife,
-                                        historic landmarks, and pristine sands. Indulge
-                                        in local
-                                        cuisine, water sports, and cultural richness
-                                        along this
-                                        unforgettable journey.</p>
-                                    <div class="flex flex-wrap my-1">
-                                        <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                            <p class="text-color6 ms-2">5 Days</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                            <p class="text-color6 ms-2">Mumbai - Goa
-                                            </p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                            <p class="text-color6 ms-2">7 +</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                            <p class="text-color6 ms-2">9.3 Superb
-                                            </p>
-                                        </div>
-                                    </div>
-
                                 </div>
-                                <img src="img/Mumbai-Goa.webp" alt=""
-                                    class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                                <p
-                                    class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
-                                    Mumbai-Goa</p>
-                                <figcaption class="absolute text-white bottom-8 right-10 fig">
-                                    <p class="capitalize font-secondary text-3xl ">Mumbai -
-                                        Goa</p>
-                                    <p class="text-right">7500 Rs/Person</p>
-                                </figcaption>
-                            </figure>
-                            <figure
-                                class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                                <div
-                                    class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
-                                    <p class="text-2xl text-color3 capitalize font-secondary">
-                                        Manali -
-                                        Shimla - Leh-Ladakh</p>
-                                    <p class="text-color1 mb-1">7000 Rs/Person</p>
-                                    <p class="text-color6">Embark on an exhilarating
-                                        mountain adventure from
-                                        the lush valleys of Manali to the colonial charm
-                                        of Shimla,
-                                        culminating in the rugged beauty of Leh-Ladakh.
-                                        Explore
-                                        snow-capped peaks, ancient monasteries, and
-                                        serene lakes.</p>
-                                    <div class="flex flex-wrap my-1">
-                                        <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                            <p class="text-color6 ms-2">7 Days</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                            <p class="text-color6 ms-2">Manali -
-                                                Shimla - Leh
-                                                -Ladakh</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                            <p class="text-color6 ms-2">7 +</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                            <p class="text-color6 ms-2"> 9.3 Superb
-                                            </p>
-                                        </div>
-                                    </div>
+                            </div>
 
+                        </div>
+                        <img src="img/oa.webp" alt="" class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <p class="absolute uppercase text-white bg-color3 px-4 py-1 right-1 top-12 rotate-[-90deg] ">
+                            Shimla</p>
+                        <figcaption class="absolute text-white bottom-8 right-10 fig mx-2">
+                            <p class="capitalize font-secondary text-3xl">Chandigarh
+                                - Shimla</p>
+                            <p class="text-right">6000 Rs/Person</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-5">
+                            <p class="text-2xl text-color3 capitalize font-secondary">
+                                Chandigarh -
+                                Manali</p>
+                            <p class="text-color1 mb-1">7000 Rs/Person</p>
+                            <p class="text-color6">Discover the best of Chandigarh's
+                                urban charm and
+                                Manali's Himalayan beauty! Our trip blends city
+                                delights with
+                                mountain adventures, ensuring an unforgettable
+                                journey filled
+                                with culture, nature, and thrill!</p>
+                            <div class="flex flex-wrap my-1">
+                                <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
+                                    <p class="text-color6 ms-2">6 Days</p>
                                 </div>
-                                <img src="img/oa.webp" alt=""
-                                    class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                                <p
-                                    class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
-                                    Leh-Ladakh</p>
-                                <figcaption class="absolute text-white bottom-8 right-10 fig">
-                                    <p class="capitalize font-secondary text-3xl mx-2">
-                                        Manali -
+                                <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
+                                    <p class="text-color6 ms-2">Chandigarh -
+                                        Manali</p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
+                                    <p class="text-color6 ms-2">7 +</p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
+                                    <p class="text-color6 ms-2"> 9.5 Superb
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <img src="img/Chandigarh - Manali.webp" alt=""
+                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <p class="absolute uppercase text-white bg-color3 px-4 py-1 right-1 top-12 rotate-[-90deg] ">
+                            Manali</p>
+                        <figcaption class="absolute text-white bottom-8 right-10 fig">
+                            <p class="capitalize font-secondary text-3xl mx-2">
+                                Chandigarh
+                                - Manali</p>
+                            <p class="text-right">7000 Rs/Person</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000">
+                        <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
+                            <p class="text-2xl text-color3 capitalize font-secondary">
+                                Jaipur -
+                                Udaipur - Jodhpur - Jaisalmer</p>
+                            <p class="text-color1 mb-1">6500 Rs/Person</p>
+                            <p class="text-color6">
+                                Royal journey through Rajasthan's
+                                gems: Jaipur's
+                                vibrant culture, Udaipur's lakeside charm,
+                                Jodhpur's majestic
+                                forts, and Jaisalmer's golden sands. Experience
+                                history, luxury,
+                                and adventure in the land of kings.</p>
+                            <div class="flex flex-wrap my-0">
+                                <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
+                                    <p class="text-color6 ms-2">7 Days</p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
+                                    <p class="text-color6 ms-2">
+                                        Jpr,Uda,Jod,Jas</p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
+                                    <p class="text-color6 ms-2">6+</p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
+                                    <p class="text-color6 ms-2">9.5 Superb
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <img src="img/Jaipur Udaipur Jodhpur Jaisalmer.webp" alt=""
+                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <p class="absolute uppercase text-white bg-color3 px-4 py-1 right-1 top-12 rotate-[-90deg] ">
+                            Jpr - Jas</p>
+                        <figcaption class="absolute text-white bottom-8 right-10 fig">
+                            <p class="capitalize font-secondary text-3xl mx-2">
+                                Jaipur -
+                                Udaipur - Jodhpur
+                                - Jaisalmer</p>
+                            <p class="text-right">6500 Rs/Person</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-5">
+                            <p class="text-2xl text-color3 capitalize font-secondary">
+                                Mumbai - Goa
+                            </p>
+                            <p class="text-color1 mb-1">7000 Rs/Person</p>
+                            <p class="text-color6">
+                                Experience the ultimate coastal getaway from
+                                bustling Mumbai to
+                                the laid-back beaches of Goa. Dive into vibrant
+                                nightlife,
+                                historic landmarks, and pristine sands. Indulge
+                                in local
+                                cuisine, water sports, and cultural richness
+                                along this
+                                unforgettable journey.</p>
+                            <div class="flex flex-wrap my-1">
+                                <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
+                                    <p class="text-color6 ms-2">5 Days</p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
+                                    <p class="text-color6 ms-2">Mumbai - Goa
+                                    </p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
+                                    <p class="text-color6 ms-2">7 +</p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
+                                    <p class="text-color6 ms-2">9.3 Superb
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <img src="img/Mumbai-Goa.webp" alt=""
+                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <p
+                            class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
+                            Mumbai-Goa</p>
+                        <figcaption class="absolute text-white bottom-8 right-10 fig">
+                            <p class="capitalize font-secondary text-3xl ">Mumbai -
+                                Goa</p>
+                            <p class="text-right">7500 Rs/Person</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
+                            <p class="text-2xl text-color3 capitalize font-secondary">
+                                Manali -
+                                Shimla - Leh-Ladakh</p>
+                            <p class="text-color1 mb-1">7000 Rs/Person</p>
+                            <p class="text-color6">Embark on an exhilarating
+                                mountain adventure from
+                                the lush valleys of Manali to the colonial charm
+                                of Shimla,
+                                culminating in the rugged beauty of Leh-Ladakh.
+                                Explore
+                                snow-capped peaks, ancient monasteries, and
+                                serene lakes.</p>
+                            <div class="flex flex-wrap my-1">
+                                <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
+                                    <p class="text-color6 ms-2">7 Days</p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
+                                    <p class="text-color6 ms-2">Manali -
                                         Shimla - Leh
                                         -Ladakh</p>
-                                    <p class="text-right">10000 Rs/Person</p>
-                                </figcaption>
-                            </figure>
-                            <figure
-                                class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                                <div
-                                    class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
-                                    <p class="text-2xl text-color3 capitalize font-secondary">
-                                        Delhi - Agra -
-                                        Jaipur</p>
-                                    <p class="text-color1 mb-1">6000 Rs/Person</p>
-                                    <p class="text-color6">Discover India's Golden Triangle:
-                                        Delhi's
-                                        historic charm, Agra's majestic Taj Mahal, and
-                                        Jaipur's vibrant
-                                        culture. Immerse in Mughal architecture, royal
-                                        heritage, and
-                                        bustling markets, creating timeless memories in
-                                        this iconic
-                                        journey through North India.</p>
-                                    <div class="flex flex-wrap my-1">
-                                        <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                            <p class="text-color6 ms-2">6 Days</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                            <p class="text-color6 ms-2">Delhi - Agra
-                                                - Jaipur</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                            <p class="text-color6 ms-2">7 +</p>
-                                        </div>
-                                        <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                            <p class="text-color6 ms-2">9.8 Superb
-                                            </p>
-                                        </div>
-                                    </div>
-
                                 </div>
-                                <img src="img/Delhi Agra Jaipur.webp" alt=""
-                                    class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                                <p
-                                    class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
-                                    Agra-Jaipur</p>
-                                <figcaption class="absolute text-white bottom-8 right-10 fig">
-                                    <p class="capitalize font-secondary text-3xl mx-2">Delhi
-                                        -
-                                        Agra - Jaipur</p>
-                                    <p class="text-right">6500 Rs/Person</p>
-                                </figcaption>
-                            </figure>
+                                <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
+                                    <p class="text-color6 ms-2">7 +</p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
+                                    <p class="text-color6 ms-2"> 9.3 Superb
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
+                        <img src="img/oa.webp" alt="" class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <p
+                            class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
+                            Leh-Ladakh</p>
+                        <figcaption class="absolute text-white bottom-8 right-10 fig">
+                            <p class="capitalize font-secondary text-3xl mx-2">
+                                Manali -
+                                Shimla - Leh
+                                -Ladakh</p>
+                            <p class="text-right">10000 Rs/Person</p>
+                        </figcaption>
+                    </figure>
+                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
+                            <p class="text-2xl text-color3 capitalize font-secondary">
+                                Delhi - Agra -
+                                Jaipur</p>
+                            <p class="text-color1 mb-1">6000 Rs/Person</p>
+                            <p class="text-color6">Discover India's Golden Triangle:
+                                Delhi's
+                                historic charm, Agra's majestic Taj Mahal, and
+                                Jaipur's vibrant
+                                culture. Immerse in Mughal architecture, royal
+                                heritage, and
+                                bustling markets, creating timeless memories in
+                                this iconic
+                                journey through North India.</p>
+                            <div class="flex flex-wrap my-1">
+                                <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
+                                    <p class="text-color6 ms-2">6 Days</p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
+                                    <p class="text-color6 ms-2">Delhi - Agra
+                                        - Jaipur</p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
+                                    <p class="text-color6 ms-2">7 +</p>
+                                </div>
+                                <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
+                                    <p class="text-color6 ms-2">9.8 Superb
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <img src="img/Delhi Agra Jaipur.webp" alt=""
+                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <p
+                            class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
+                            Agra-Jaipur</p>
+                        <figcaption class="absolute text-white bottom-8 right-10 fig">
+                            <p class="capitalize font-secondary text-3xl mx-2">Delhi
+                                -
+                                Agra - Jaipur</p>
+                            <p class="text-right">6500 Rs/Person</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="w-full flex justify-center h-auto bg-color3">
+        <footer class="w-full container h-auto flex flex-col 2xl:px-36 footer">
+            <div class="flex justify-center items-center my-2 flex-wrap mx-4 footer-contact-phone">
+                <div class="w-full lg:w-[30%] flex items-center py-1 my-2 ps-4 lg:ps-0">
+                    <i class="bi bi-telephone-outbound text-2xl me-2 text-white"></i>
+                    <div class="text-white">
+                        <p class="mb-0">9530377377</p>
                     </div>
                 </div>
-            </section>
-
-            <section id="contact" class="w-full flex justify-center h-auto bg-color3">
-                <footer class="w-full container h-auto flex flex-col 2xl:px-36 footer">
-                    <div class="flex justify-center items-center my-2 flex-wrap mx-4 footer-contact-phone">
-                        <div class="w-full lg:w-[30%] flex items-center py-1 my-2 ps-4 lg:ps-0">
-                            <i class="bi bi-telephone-outbound text-2xl me-2 text-white"></i>
-                            <div class="text-white">
-                                <p class="mb-0">9530377377</p>
-                            </div>
-                        </div>
-                        <div class="w-full lg:w-[35%] flex items-center py-1 my-2 ps-4 footer-contact-email">
-                            <i class="bi-envelope-paper text-2xl me-2 text-white"></i>
-                            <div class="text-white">
-                                <p class="mb-0">info@theitinerary.com</p>
-                            </div>
-                        </div>
-                        <div class="w-full lg:w-[30%] flex items-center py-1 my-2 ps-4 footer-contact-address">
-                            <i class="bi bi-geo-alt-fill text-2xl me-2 text-white"></i>
-                            <div class="text-white">
-                                <p class="mb-0">Jagatpura (302017), Jaipur</p>
-                            </div>
-                        </div>
+                <div class="w-full lg:w-[35%] flex items-center py-1 my-2 ps-4 footer-contact-email">
+                    <i class="bi-envelope-paper text-2xl me-2 text-white"></i>
+                    <div class="text-white">
+                        <p class="mb-0">info@theitinerary.com</p>
                     </div>
+                </div>
+                <div class="w-full lg:w-[30%] flex items-center py-1 my-2 ps-4 footer-contact-address">
+                    <i class="bi bi-geo-alt-fill text-2xl me-2 text-white"></i>
+                    <div class="text-white">
+                        <p class="mb-0">Jagatpura (302017), Jaipur</p>
+                    </div>
+                </div>
+            </div>
 
-                    <p
-                        class="text-stone-300 text-left py-1 text-[14px] relative before:content-[''] before:h-[3px] before:w-[100%] before:bg-stone-400 before:absolute before:top-0 before:bg-opacity-50">
-                        ©2023 Aman Khan. All rights reserved.
-                    </p>
-                </footer>
-            </section>
+            <p
+                class="text-stone-300 text-left py-1 text-[14px] relative before:content-[''] before:h-[3px] before:w-[100%] before:bg-stone-400 before:absolute before:top-0 before:bg-opacity-50">
+                ©2023 Aman Khan. All rights reserved.
+            </p>
+        </footer>
+    </section>
 
 
 </body>

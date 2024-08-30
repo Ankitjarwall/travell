@@ -148,27 +148,67 @@ body {
   height: 100%;
 }
 
+/* Add your styles for the search form here */
+#search-input {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
 /* Overlay styles */
 .overlay {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  display: none;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  overflow-y: auto;
+  /* Make overlay scrollable */
 }
 
 .overlay-content {
-  position: relative;
-  width: 90%;
-  max-width: 800px;
-  background: white;
+  background-color: #fff;
   padding: 20px;
-  border-radius: 10px;
+  width: 90%;
+  /* max-width: 70%; */
+  max-height: 90vh;
+  /* Limit height of content */
+  overflow-y: auto;
+  /* Make content scrollable if it exceeds max-height */
+  text-align: center;
+  position: relative;
+  /* For positioning close button */
+  scrollbar-width: none;
+  /* For Firefox */
+  -ms-overflow-style: none;
+  /* For Internet Explorer and Edge */
+  scrollbar-width: none;
+  /* For Firefox */
+  -ms-overflow-style: none;
+  /* For Internet Explorer and Edge */
+}
+
+.overlay-content::-webkit-scrollbar {
+  display: none;
+  /* For WebKit browsers like Chrome, Safari */
 }
 
 .overlay-image-wrapper {
@@ -198,12 +238,34 @@ body {
   margin: 10px 0;
 }
 
-.close-btn {
+.close-btn-1 {
+  z-index: 100;
   position: absolute;
-  top: -20px;
-  right: 5px;
-  font-size: 40px;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: #3f51b5;
+  /* Red background */
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  /* Circular button */
   cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  /* Drop shadow */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  /* Animation effects */
+}
+
+.close-btn-1:hover {
+  background-color: #3f8eb5;
+  /* Darker red on hover */
+  transform: scale(1.1);
+  /* Slightly larger on hover */
 }
 
 

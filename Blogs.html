@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>travel</title>
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <style>
+        html,
+        body {
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .logo-light {
+            margin-top: 15%;
+        }
+
+        /* Overlay styles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .overlay-content {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-y: auto;
+            /* Ensure the overlay content is scrollable */
+        }
+
+        .overlay-image-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .overlay.show {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .overlay.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .overlay-image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .overlay-content h2,
+        .overlay-content p {
+            margin: 10px 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            padding: 8px 7px;
+            border-radius: 20px;
+            transition: all 0.1s ease;
+        }
+
+        nav ul li a:hover {
+            text-decoration: none;
+            background-color: rgba(202, 200, 200, 0.14);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #popup-title,
+        #popup-description {
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            text-justify: inter-word;
+            hyphens: auto;
+            word-break: break-word;
+            line-height: 1.5;
+        }
+
+        #popup-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #popup-description {
+            font-size: 1rem;
+        }
+
+        .truncate-title {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            /* Limit to 3 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            /* Allow text wrapping */
+            line-height: 1.5;
+            /* Adjust line-height based on your design */
+        }
+
+        .form-control.hidden {
+            display: none;
+        }
+
+        .form-control.visible {
+            display: block;
+        }
+
+        /* Input box styling */
+        .form-control {
+            padding: 8px 12px;
+            margin-right: 10px;
+            /* Margin between the input box and the icon */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Search icon styling */
+        #search-icon {
+            padding: 8px;
+            /* Padding inside the icon area */
+            margin-left: 5px;
+            /* Space between the icon and the input */
+            cursor: pointer;
+            font-size: 20px;
+            /* Adjust the icon size */
+        }
+
+        #loading-indicator {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top-color: #3498db;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .hidden-spinner {
+            display: none;
+        }
+
+        /* Mobile view adjustments */
+        @media (max-width: 768px) {
+            .mobile-search-form {
+                /* flex-direction: column;   */
+                align-items: stretch;
+            }
+
+            .mobile-search-input {
+                width: 70%;
+                margin-bottom: 10px;
+                /* Space between input and icon */
+                padding: 10px;
+                /* Add padding for better touch experience */
+            }
+
+            .mobile-search-icon {
+                font-size: 24px;
+                /* Adjust size for better visibility on mobile */
+                margin: 0;
+                /* Remove margin for alignment */
+                z-index: 10;
+                /* Ensure icon is clickable */
+                cursor: pointer;
+                /* Ensure the pointer cursor is displayed */
+            }
+        }
+
+        .mobile-search-icon {
+            display: flex;
+            /* Flexbox for centering */
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            /* Adjust size as needed */
+            height: 50px;
+            /* Adjust size as needed */
+            padding: 10px;
+            /* Space around the icon */
+        }
+    </style>
+</head>
+
+<body class="font-primary">
+    <img id="myBtn" src="./img/back-to-top.png" onclick="topFunction()" />
+
+    <script>
+        let mybutton = document.getElementById("myBtn");
+
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+    </script>
+    <section class="w-full h-[500vh] bg-cover bg-no-repeat bg-center bg-blend-multiply bg-opacity-60">
+        <video autoplay muted loop playsinline class="bg-video-package">
+            <source src="img/bg-cover-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <section class="w-full flex flex-wrap justify-center ">
+            <!-- Desktop header -->
+            <header class="w-[85%] xl:w-[73%] container hidden lg:flex justify-between h-[60px] items-center py-[45px]">
+                <figure class="w-[140px]">
+                    <a href="/">
+                        <img src="img/logo-light.webp" alt="Logo" class="logo-light">
+                    </a>
+                </figure>
+
+                <nav class="h-[100%] md:w-[70%] flex items-center gap-8 justify-end">
+                    <ul class="h-[100%] flex items-center gap-8">
+                        <li class="list-none"><a
+                                class="decoration-none text-white hover:text-color3 transition-all duration-500"
+                                href="/">Home</a></li>
+                        <li class="list-none"><a
+                                class="decoration-none text-white hover:text-color3 transition-all duration-500"
+                                href="./Packages.html">Packages</a></li>
+                        <li class="list-none"><a
+                                class="decoration-none text-white hover:text-color3 transition-all duration-500"
+                                href="./Blogs.html">Blogs</a></li>
+                        <li class="list-none"><a
+                                class="decoration-none text-white hover:text-color3 transition-all duration-500"
+                                href="./#aboutus">About Us</a></li>
+                        <li class="list-none"><a
+                                class="decoration-none text-white hover:text-color3 transition-all duration-500"
+                                href="./#contact">Contact Us</a></li>
+                        <li class="list-none">
+                            <form id="search-form" class="flex items-center">
+                                <input type="text" id="search-input" placeholder="Search..." class="form-control">
+                                <i id="search-icon" class="fas fa-search cursor-pointer text-white ms-3"></i>
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Mobile header -->
+            <header
+                class="w-[95%] sm:w-[70%] md:w-[80%] container flex h-[60px] justify-between items-center lg:hidden py-[45px] relative">
+                <figure class="w-[140px]">
+                    <a href="/">
+                        <img src="img/logo-light.webp" alt="Logo" class="logo-light">
+                    </a>
+                </figure>
+                <div class="w-1/2 h-full flex justify-end items-center">
+                    <i class="bi bi-list text-3xl text-white cursor-pointer ham-menu-icon"></i>
+                </div>
+                <nav class="menu hidden h-[350px] w-full absolute bg-custom left-0 top-[90px] z-30">
+                    <ul class="h-full w-full flex flex-col justify-center ms-6">
+                        <li class="list-none my-2"><a
+                                class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
+                                href="/">Home</a></li>
+                        <li class="list-none my-2"><a
+                                class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
+                                href="./Packages.html">Packages</a></li>
+                        <li class="list-none my-2"><a
+                                class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
+                                href="./Blogs.html">Blogs</a></li>
+                        <li class="list-none my-2"><a
+                                class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
+                                href="./#aboutus">About Us</a></li>
+                        <li class="list-none my-2"><a
+                                class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
+                                href="#contact">Contact</a></li>
+
+                        <li class="list-none">
+                            <form id="search-form" class="flex items-center mobile-search-form">
+                                <input type="text" id="search-input" placeholder="Search..."
+                                    class="form-control mobile-search-input">
+                                <i id="search-icon"
+                                    class="fas fa-search cursor-pointer text-white mobile-search-icon"></i>
+                            </form>
+                        </li>
+
+                    </ul>
+                </nav>
+            </header>
+        </section>
+    </section>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('search-form');
+            const input = document.getElementById('search-input');
+            const searchIcon = document.getElementById('search-icon');
+
+            // Create and style the spinner
+            const loadingIndicator = document.createElement('div');
+            loadingIndicator.style.display = 'none';
+            loadingIndicator.style.position = 'fixed';
+            loadingIndicator.style.top = '50%';
+            loadingIndicator.style.left = '50%';
+            loadingIndicator.style.transform = 'translate(-50%, -50%)';
+            loadingIndicator.style.zIndex = '9999';
+
+            const spinner = document.createElement('div');
+            spinner.style.width = '80px'; // Increased size
+            spinner.style.height = '80px'; // Increased size
+            spinner.style.border = '8px solid rgba(0, 0, 0, 0.1)'; // Increased border width
+            spinner.style.borderRadius = '50%';
+            spinner.style.borderTopColor = '#3498db'; // Color of the spinner
+            spinner.style.animation = 'spin 1s ease-in-out infinite';
+
+
+
+            loadingIndicator.appendChild(spinner);
+            document.body.appendChild(loadingIndicator);
+
+            
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const query = input.value.trim();
+
+                if (query) {
+                    loadingIndicator.style.display = 'block'; // Show loading indicator
+                    searchBlogs(query);
+                }
+            });
+
+            function searchBlogs(query) {
+                fetch(`https://script.google.com/macros/s/AKfycbyfzI_PTKPOKuPWYyEAXIsTAgCRc-j-b0tJkugqT00sa8he5AUsKL7uTXRcGp6lc-YB/exec?search=${encodeURIComponent(query)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        loadingIndicator.style.display = 'none'; // Hide loading indicator
+
+                        const blogContainer = document.getElementById('blog-container');
+                        blogContainer.innerHTML = ''; // Clear existing content
+
+                        if (data.length > 0) {
+                            data.forEach(blog => {
+                                const blogHtml = `
+                            <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                                <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                                    <img src="${blog.banner_image}" alt="Blog Image"
+                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                                </div>
+                                <div class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                                    <figcaption>
+                                        <p class="capitalize text-color3 font-secondary text-2xl">
+                                            ${truncateTitle(blog.title)}
+                                        </p>
+                                        <p class="hidden blog-description">${blog.description}</p>
+                                    </figcaption>
+                                </div>
+                            </figure>
+                        `;
+                                blogContainer.insertAdjacentHTML('beforeend', blogHtml);
+                            });
+                        } else {
+                            blogContainer.innerHTML = '<p>No results found.</p>';
+                        }
+                    })
+                    .catch(error => {
+                        loadingIndicator.style.display = 'none'; // Hide loading indicator in case of error
+                        console.error('Error fetching data:', error);
+                    });
+            }
+
+            function truncateTitle(title) {
+                const maxLines = 3;
+                const maxWordsPerLine = 8;
+
+                const words = title.split(' ');
+                let truncatedTitle = '';
+
+                for (let i = 0; i < words.length; i++) {
+                    truncatedTitle += words[i] + ' ';
+
+                    if ((i + 1) % maxWordsPerLine === 0 && i < words.length - 1) {
+                        truncatedTitle += '<br>';
+                    }
+                }
+
+                const lines = truncatedTitle.split('<br>');
+                if (lines.length > maxLines) {
+                    truncatedTitle = lines.slice(0, maxLines).join('<br>') + '...';
+                }
+
+                return truncatedTitle;
+            }
+        });
+
+
+    </script>
+    <!-- -test -->
+    <section class="w-full flex justify-center py-8 h-auto">
+        <div class="w-full container 2xl:px-36 h-auto">
+            <div>
+                <p class="text-color4 uppercase px-5">TRAVEL BLOG</p>
+                <p class="travelexp text-4xl font-secondary text-color4 px-4">
+                    Travel<span class="text-white"> Experience</span>
+                </p>
+
+                <div id="loading-indicator" class="hidden-spinner">
+                    <div class="spinner"></div>
+                </div>
+
+
+
+
+
+
+                <div
+                    class="loading-skeleton-wrapper flex flex-wrap justify-center xl:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3">
+                    <figure
+                        class="skeleton-container w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="./img/loading.gif" alt="Loading..."
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+                        <div
+                            class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                    Loading ...
+                                </p>
+                                <p class="hidden blog-description">Loading ...</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+
+                    <figure
+                        class="skeleton-container w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="./img/loading.gif" alt="Loading..."
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+                        <div
+                            class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                    Loading ...
+                                </p>
+                                <p class="hidden blog-description">Loading ...</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+
+                    <figure
+                        class="skeleton-container w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="./img/loading.gif" alt="Loading..."
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+                        <div
+                            class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                    Loading ...
+                                </p>
+                                <p class="hidden blog-description">Loading ...</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+
+                    <figure
+                        class="skeleton-container w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="./img/loading.gif" alt="Loading..."
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+                        <div
+                            class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                    Loading ...
+                                </p>
+                                <p class="hidden blog-description">Loading ...</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+
+                    <figure
+                        class="skeleton-container w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="./img/loading.gif" alt="Loading..."
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+                        <div
+                            class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                    Loading ...
+                                </p>
+                                <p class="hidden blog-description">Loading ...</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+
+                    <figure
+                        class="skeleton-container w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="./img/loading.gif" alt="Loading..."
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+                        <div
+                            class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                    Loading ...
+                                </p>
+                                <p class="hidden blog-description">Loading ...</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+                </div>
+
+
+
+                <div id="blog-container"
+                    class="flex flex-wrap justify-center xl:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3">
+
+                    <!-- Repeat the above figure for multiple loading items -->
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Overlay Popup -->
+    <div id="overlay" class="overlay">
+        <div class="overlay-content">
+            <div class="overlay-image-wrapper">
+                <span class="close-btn-1" id="close-btn" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </span>
+                <img id="popup-img" src="" alt="Popup Image">
+            </div>
+            <h2 id="popup-title">Title</h2>
+            <p id="popup-description">Description</p>
+        </div>
+    </div>
+
+    <script>
+        // Fetch data from Google Sheets API
+        document.addEventListener('DOMContentLoaded', () => {
+            const blogContainer = document.getElementById('blog-container');
+
+            // Show skeleton loader initially
+            const skeletons = document.querySelectorAll('.skeleton-container');
+            skeletons.forEach(skeleton => skeleton.style.display = 'block');
+
+            // Fetch data from Google Sheets API
+            fetch('https://script.google.com/macros/s/AKfycbyfzI_PTKPOKuPWYyEAXIsTAgCRc-j-b0tJkugqT00sa8he5AUsKL7uTXRcGp6lc-YB/exec')
+                .then(response => response.json())
+                .then(data => {
+                    // Hide skeleton loader
+                    skeletons.forEach(skeleton => skeleton.style.display = 'none');
+
+                    // Loop through each blog post and create HTML structure
+                    data.forEach((blog, index) => {
+                        const blogHtml = `
+                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="${blog.banner_image}" alt="Blog Image"
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
+                                data-id="${index}">
+                        </div>
+                        <div
+                            class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                    ${blog.title}
+                                </p>
+                                <p class="hidden blog-description">${blog.description}</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+                `;
+
+                        // Append the blog post to the container
+                        blogContainer.insertAdjacentHTML('beforeend', blogHtml);
+                    });
+
+                    // Re-attach event listeners for the newly added blog posts
+                    attachEventListeners();
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+
+
+
+        function showOverlay() {
+            overlay.classList.remove('hide');
+            overlay.classList.add('show');
+        }
+
+        function hideOverlay() {
+            overlay.classList.remove('show');
+            overlay.classList.add('hide');
+        }
+
+        closeButton.addEventListener('click', () => {
+            overlay.style.display = 'none';
+        });
+
+
+        function attachEventListeners() {
+            const overlay = document.getElementById('overlay');
+            const closeButton = document.getElementById('close-btn');
+            const popupImg = document.getElementById('popup-img');
+            const popupTitle = document.getElementById('popup-title');
+            const popupDescription = document.getElementById('popup-description');
+
+            const cards = document.querySelectorAll('figure');
+
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const imgSrc = card.querySelector('img').src;
+                    const title = card.querySelector('figcaption p:first-child').innerText;
+                    const description = card.querySelector('.blog-description').innerText;
+
+                    popupImg.src = imgSrc;
+                    popupTitle.innerText = title;
+                    popupDescription.innerText = description;
+
+                    overlay.style.display = 'flex';
+                });
+            });
+
+            closeButton.addEventListener('click', () => {
+                overlay.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === overlay) {
+                    overlay.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+    <section id="contact" class="w-full flex justify-center h-auto bg-color3">
+        <footer class="w-full container h-auto flex flex-col 2xl:px-36 footer">
+            <div class="flex justify-center items-center my-2 flex-wrap mx-4 footer-contact-phone">
+                <div class="w-full lg:w-[30%] flex items-center py-1 my-2 ps-4 lg:ps-0">
+                    <i class="bi bi-telephone-outbound text-2xl me-2 text-white"></i>
+                    <div class="text-white">
+                        <p class="mb-0">9530377377</p>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[35%] flex items-center py-1 my-2 ps-4 footer-contact-email">
+                    <i class="bi-envelope-paper text-2xl me-2 text-white"></i>
+                    <div class="text-white">
+                        <p class="mb-0">info@theitinerary.com</p>
+                    </div>
+                </div>
+                <div class="w-full lg:w-[30%] flex items-center py-1 my-2 ps-4 footer-contact-address">
+                    <i class="bi bi-geo-alt-fill text-2xl me-2 text-white"></i>
+                    <div class="text-white">
+                        <p class="mb-0">Jagatpura (302017), Jaipur</p>
+                    </div>
+                </div>
+            </div>
+
+            <p
+                class="text-stone-300 text-left py-1 text-[14px] relative before:content-[''] before:h-[3px] before:w-[100%] before:bg-stone-400 before:absolute before:top-0 before:bg-opacity-50">
+                ©2023 Aman Khan. All rights reserved.
+            </p>
+        </footer>
+    </section>
+
+</body>
+<script src="js/master.js"></script>
+
+</html>
