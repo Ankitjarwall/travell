@@ -26,94 +26,6 @@
             /* width: 100%; */
         }
 
-        /* Overlay styles */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .overlay-content {
-            position: relative;
-            width: 90%;
-            max-width: 800px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .overlay-image-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            /* 16:9 Aspect Ratio */
-            background: #f0f0f0;
-            /* Fallback background color */
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .overlay-image-wrapper img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* Maintain aspect ratio */
-            border-radius: 10px;
-        }
-
-        .overlay-content h2,
-        .overlay-content p {
-            margin: 10px 0;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: -20px;
-            right: 5px;
-            font-size: 40px;
-            cursor: pointer;
-        }
-
-        .pc-dots-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 1vw;
-        }
-
-
-
-        .mobile-dot {
-            width: 0px;
-            height: 0px;
-            background-color: rgb(201, 201, 201);
-            border-radius: 50%;
-            margin: 0 5px;
-            transition: background-color 0.3s;
-        }
-
-        .pc-dot {
-            width: 10px;
-            height: 10px;
-            background-color: rgb(201, 201, 201);
-            border-radius: 50%;
-            margin: 0 5px;
-            transition: background-color 0.3s;
-        }
-
-        .dot.active {
-            background-color: rgb(0, 119, 255);
-        }
 
         nav ul li a {
             text-decoration: none;
@@ -136,6 +48,175 @@
             /* Add a slight shadow for a button effect */
         }
 
+        :root {
+            --rad: .7rem;
+            --dur: .3s;
+            --color-dark: #2f2f2f;
+            --color-light: #fff;
+            --color-brand: #57bd84;
+            --font-fam: 'Lato', sans-serif;
+            --height: 2.5rem;
+            --btn-width: 3rem;
+            --bez: cubic-bezier(0, 0, 0.43, 1.49);
+        }
+
+        .search-item {
+            background: var(--color-dark);
+            border-radius: var(--rad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.5rem;
+            box-sizing: border-box;
+            height: 10%;
+            font-size: 10px;
+            box-sizing: inherit;
+        }
+
+        .search-item-form {
+            position: relative;
+            width: 10rem;
+            background: var(--color-brand);
+            border-radius: var(--rad);
+        }
+
+        .search-item-input,
+        .search-item-button {
+            height: var(--height);
+            font-family: var(--font-fam);
+            border: 0;
+            color: var(--color-dark);
+            font-size: 1rem;
+        }
+
+        .search-item-input {
+            outline: 0;
+            width: 100%;
+            background: var(--color-light);
+            padding: 0 0.5rem;
+            border-radius: var(--rad);
+            appearance: none;
+            transition: all var(--dur) var(--bez);
+            transition-property: width, border-radius;
+            z-index: 1;
+            position: relative;
+        }
+
+        .search-item-button {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: var(--btn-width);
+            font-weight: bold;
+            background: var(--color-brand);
+            border-radius: 0 var(--rad) var(--rad) 0;
+        }
+
+        .search-item-input:not(:placeholder-shown) {
+            border-radius: var(--rad) 0 0 var(--rad);
+            width: calc(100% - var(--btn-width));
+        }
+
+        .search-item-input:not(:placeholder-shown)+.search-item-button {
+            display: block;
+        }
+
+        .search-item-label {
+            position: absolute;
+            clip: rect(1px, 1px, 1px, 1px);
+            padding: 0;
+            border: 0;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 767px) {
+            .search-item {
+                width: 90%;
+            }
+
+            .search-item {
+                height: auto;
+                min-height: auto;
+                font-size: 14px;
+            }
+
+            .search-item-form {
+                width: 100%;
+                background: var(--color-brand);
+                border-radius: var(--rad);
+                display: flex;
+                align-items: center;
+            }
+
+            .search-item-input {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+
+            .search-item-button {
+                display: block;
+                width: 3rem;
+                font-weight: bold;
+                background: var(--color-brand);
+                border-radius: 0 var(--rad) var(--rad) 0;
+            }
+        }
+
+        #loading-indicator {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+
+        .spinner {
+            border: 8px solid rgba(0, 0, 0, 0.1);
+            /* Light border */
+            border-top-color: #3498db;
+            /* Spinner color */
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hidden-spinner {
+            display: none;
+        }
+
+        /* Full-screen blur effect */
+        body.loading::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            /* Adjust the color and opacity as needed */
+            backdrop-filter: blur(10px);
+            /* Adjust the blur radius as needed */
+            z-index: 9998;
+            /* Ensure it’s above other content */
+            pointer-events: none;
+            /* Allow clicks to pass through */
+        }
     </style>
 
 </head>
@@ -161,6 +242,7 @@
             document.documentElement.scrollTop = 0;
         }
     </script>
+
     <section class="w-full h-[500vh] bg-cover bg-no-repeat bg-center bg-blend-multiply bg-opacity-60">
         <video autoplay muted loop playsinline class="bg-video-package">
             <source src="img/bg-cover-video.mp4" type="video/mp4">
@@ -192,9 +274,18 @@
                         <li class="list-none"><a
                                 class="decoration-none text-white hover:text-color3 transition-all duration-500"
                                 href="./#contact">Contact Us</a></li>
-                        
-                    </ul>
 
+                        <li class="list-none search-item">
+                            <form id="search-form" class="search-item-form" onsubmit="event.preventDefault();"
+                                role="search">
+                                <label class="search-item-label" for="search">Search for stuff</label>
+                                <input class="search-item-input" id="search" type="search" placeholder="Search..."
+                                    autofocus required />
+                                <button class="search-item-button" type="submit">Go</button>
+                            </form>
+                        </li>
+
+                    </ul>
                 </nav>
             </header>
 
@@ -209,7 +300,7 @@
                 <div class="w-1/2 h-full flex justify-end items-center">
                     <i class="bi bi-list text-3xl text-white cursor-pointer ham-menu-icon"></i>
                 </div>
-                <nav class="menu hidden h-[250px] w-full absolute bg-custom left-0 top-[90px] z-30">
+                <nav class="menu hidden h-[350px] w-full absolute bg-custom left-0 top-[90px] z-30">
                     <ul class="h-full w-full flex flex-col justify-center ms-6">
                         <li class="list-none my-2"><a
                                 class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
@@ -226,292 +317,439 @@
                         <li class="list-none my-2"><a
                                 class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
                                 href="#contact">Contact</a></li>
-                        <li class="list-none">
-                            <form id="search-form" class="flex items-center mobile-search-form">
-                                <input type="text" id="search-input" placeholder="Search..."
-                                    class="form-control mobile-search-input">
-                                <i id="search-icon"
-                                    class="fas fa-search cursor-pointer text-white mobile-search-icon"></i>
+                        <li class="list-none search-item">
+                            <form id="search-form" class="search-item-form" onsubmit="event.preventDefault();"
+                                role="search">
+                                <label class="search-item-label" for="search">Search for stuff</label>
+                                <input class="search-item-input" id="search" type="search" placeholder="Search..."
+                                    autofocus required />
+                                <button class="search-item-button" type="submit">Go</button>
                             </form>
                         </li>
-
                     </ul>
                 </nav>
             </header>
         </section>
     </section>
 
+    <!-- search js -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const apiUrl = 'https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet4';
 
-    
+            const loadingIndicator = document.createElement('div');
+            loadingIndicator.style.display = 'none';
+            loadingIndicator.style.position = 'fixed';
+            loadingIndicator.style.top = '50%';
+            loadingIndicator.style.left = '50%';
+            loadingIndicator.style.transform = 'translate(-50%, -50%)';
+            loadingIndicator.style.zIndex = '9999';
+
+            const spinner = document.createElement('div');
+            spinner.className = 'spinner'; // Apply the spinner class
+
+            loadingIndicator.appendChild(spinner);
+            document.body.appendChild(loadingIndicator);
+
+            // Show loading indicator and blur effect
+            function showLoading() {
+                document.body.classList.add('loading');
+                loadingIndicator.style.display = 'block';
+            }
+
+            // Hide loading indicator and blur effect
+            function hideLoading() {
+                document.body.classList.remove('loading');
+                loadingIndicator.style.display = 'none';
+            }
+
+            // Fetch and display data on page load
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    displayTourData(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+
+            // Add event listener for search form submission
+            document.getElementById('search-form').addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent form submission
+                const query = document.getElementById('search').value.trim();
+                if (query) {
+                    showLoading(); // Show loading effect during search
+                    searchTours(query);
+                }
+            });
+
+            // Function to fetch and display search results
+            function searchTours(query) {
+                const searchUrl = `${apiUrl}&search=${encodeURIComponent(query)}`;
+
+                fetch(searchUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        hideLoading(); // Hide loading effect when data is loaded
+                        displayTourData(data);
+                    })
+                    .catch(error => {
+                        hideLoading(); // Hide loading effect even if there's an error
+                        console.error('Error fetching search data:', error);
+                    });
+            }
+        });
+
+        function displayTourData(tourData) {
+            const container = document.querySelector('.tour-results');
+            container.innerHTML = ''; // Clear existing content if any
+
+            if (tourData.length === 0) {
+                container.innerHTML = '<p>No results found</p>';
+                return;
+            }
+
+            tourData.forEach(tour => {
+                const figure = document.createElement('figure');
+                figure.className = 'w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000';
+
+                figure.innerHTML = `
+            <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
+                <p class="text-2xl text-color3 capitalize font-secondary">${tour.place_name}</p>
+                <p class="text-color1 mb-1">${tour.price} Rs ${tour.people}</p>
+                <p class="text-color6">${tour.description}</p>
+                <div class="flex flex-wrap my-1">
+                    <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
+                        <p class="text-color6 ms-2">${tour.number_of_trip_days} Days</p>
+                    </div>
+                    <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
+                        <p class="text-color6 ms-2">${tour.covered_place_name}</p>
+                    </div>
+                    <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
+                        <p class="text-color6 ms-2">${tour.age_limit}+</p>
+                    </div>
+                    <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
+                        <p class="text-color6 ms-2">${tour.rating}</p>
+                    </div>
+                </div>
+            </div>
+            <img src="${tour.image_url}" alt="${tour.place_name}" class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+            <p class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg]">
+                ${tour.trip_name}</p>
+            <figcaption class="absolute text-white bottom-8 right-10 fig">
+                <p class="capitalize font-secondary text-3xl mx-2">${tour.place_name}</p>
+                <p class="text-right">${tour.price} Rs ${tour.people}</p>
+            </figcaption>
+        `;
+
+                container.appendChild(figure);
+            });
+        }
+
+    </script>
+
+
+
+    <!-- google sheet data fetch -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const apiUrl = 'https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet4';
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    displayTourData(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        });
+
+        function displayTourData(tourData) {
+            const container = document.querySelector('.flex.flex-wrap.md\\:justify-between.gap-10');
+            container.innerHTML = ''; // Clear existing content if any
+
+            tourData.forEach(tour => {
+                const figure = document.createElement('figure');
+                figure.className = 'w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000';
+
+                figure.innerHTML = `
+            <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
+                <p class="text-2xl text-color3 capitalize font-secondary">${tour.place_name}</p>
+                <p class="text-color1 mb-1">${tour.price} Rs ${tour.people}</p>
+                <p class="text-color6">${tour.description}</p>
+                <div class="flex flex-wrap my-1">
+                    <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
+                        <p class="text-color6 ms-2">${tour.number_of_trip_days} Days</p>
+                    </div>
+                    <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
+                        <p class="text-color6 ms-2">${tour.covered_place_name}</p>
+                    </div>
+                    <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
+                        <p class="text-color6 ms-2">${tour.age_limit}+</p>
+                    </div>
+                    <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
+                        <p class="text-color6 ms-2">${tour.rating}</p>
+                    </div>
+                </div>
+            </div>
+            <img src="${tour.image_url}" alt="${tour.place_name}" class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+            <p class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg]">
+                ${tour.trip_name}</p>
+            <figcaption class="absolute text-white bottom-8 right-10 fig">
+                <p class="capitalize font-secondary text-3xl mx-2">${tour.place_name}</p>
+                <p class="text-right">${tour.price} Rs ${tour.people}</p>
+            </figcaption>
+        `;
+                container.appendChild(figure);
+            });
+        }
+    </script>
+
     <section class="w-full flex justify-center py-5 ">
         <div class="w-full container 2xl:px-36">
             <div>
                 <p class="text-white uppercase px-5">Pick Yours!</p>
-                <p class="text-5xl font-secondary text-color1 px-5">Popular <span class="text-white">Tours</span>
-                </p>
+                <p class="text-5xl font-secondary text-color1 px-5">Popular <span class="text-white">Tours</span></p>
                 <div class="flex flex-wrap md:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3 ">
-                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                        <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-5">
-                            <p class="text-2xl text-color3 capitalize font-secondary">
-                                Chandigarh -
-                                Shimla</p>
-                            <p class="text-color1 mb-4">6000 Rs/Person</p>
-                            <p class="text-color6">Discover Chandigarh's modernity
-                                at Rock Garden.
-                                Experience Shimla's colonial charm on Mall Road.
-                                Blend urban
-                                buzz with mountain tranquility.</p>
-                            <div class="flex flex-wrap my-4">
-                                <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                    <p class="text-color6 ms-2">5 Days</p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                    <p class="text-color6 ms-2">Shimla</p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                    <p class="text-color6 ms-2">6 +</p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                    <p class="text-color6 ms-2">9.8 Superb
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <img src="img/oa.webp" alt="" class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <p class="absolute uppercase text-white bg-color3 px-4 py-1 right-1 top-12 rotate-[-90deg] ">
-                            Shimla</p>
-                        <figcaption class="absolute text-white bottom-8 right-10 fig mx-2">
-                            <p class="capitalize font-secondary text-3xl">Chandigarh
-                                - Shimla</p>
-                            <p class="text-right">6000 Rs/Person</p>
-                        </figcaption>
-                    </figure>
-                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                        <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-5">
-                            <p class="text-2xl text-color3 capitalize font-secondary">
-                                Chandigarh -
-                                Manali</p>
-                            <p class="text-color1 mb-1">7000 Rs/Person</p>
-                            <p class="text-color6">Discover the best of Chandigarh's
-                                urban charm and
-                                Manali's Himalayan beauty! Our trip blends city
-                                delights with
-                                mountain adventures, ensuring an unforgettable
-                                journey filled
-                                with culture, nature, and thrill!</p>
+                    <!-- Skeleton Loader -->
+                    <figure
+                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div
+                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
+                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
                             <div class="flex flex-wrap my-1">
-                                <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                    <p class="text-color6 ms-2">6 Days</p>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
                                 </div>
-                                <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                    <p class="text-color6 ms-2">Chandigarh -
-                                        Manali</p>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
                                 </div>
-                                <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                    <p class="text-color6 ms-2">7 +</p>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
                                 </div>
-                                <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                    <p class="text-color6 ms-2"> 9.5 Superb
-                                    </p>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
                                 </div>
                             </div>
-
                         </div>
-                        <img src="img/Chandigarh - Manali.webp" alt=""
+                        <img src="img/loading.gif" alt="Loading"
                             class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <p class="absolute uppercase text-white bg-color3 px-4 py-1 right-1 top-12 rotate-[-90deg] ">
-                            Manali</p>
-                        <figcaption class="absolute text-white bottom-8 right-10 fig">
-                            <p class="capitalize font-secondary text-3xl mx-2">
-                                Chandigarh
-                                - Manali</p>
-                            <p class="text-right">7000 Rs/Person</p>
-                        </figcaption>
+                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
+                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
                     </figure>
-                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000">
+
+                    <!-- search loading skeleton loader -->
+                    <div id="loading-indicator" class="hidden-spinner">
+                        <div class="spinner"></div>
+                    </div>
+
+                    <figure
+                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div
+                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
+                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="flex flex-wrap my-1">
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="img/loading.gif" alt="Loading"
+                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
+                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
+                    </figure>
+
+                    <figure
+                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div
+                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
+                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="flex flex-wrap my-1">
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="img/loading.gif" alt="Loading"
+                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
+                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
+                    </figure>
+
+                    <figure
+                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div
+                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
+                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="flex flex-wrap my-1">
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="img/loading.gif" alt="Loading"
+                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
+                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
+                    </figure>
+
+                    <figure
+                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div
+                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
+                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="flex flex-wrap my-1">
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="img/loading.gif" alt="Loading"
+                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
+                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
+                    </figure>
+
+                    <figure
+                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div
+                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
+                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="flex flex-wrap my-1">
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="img/loading.gif" alt="Loading"
+                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
+                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
+                    </figure>
+                    <!-- Original content will replace skeleton -->
+                    <figure id="tour-data"
+                        class="hidden w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
                         <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
-                            <p class="text-2xl text-color3 capitalize font-secondary">
-                                Jaipur -
-                                Udaipur - Jodhpur - Jaisalmer</p>
-                            <p class="text-color1 mb-1">6500 Rs/Person</p>
-                            <p class="text-color6">
-                                Royal journey through Rajasthan's
-                                gems: Jaipur's
-                                vibrant culture, Udaipur's lakeside charm,
-                                Jodhpur's majestic
-                                forts, and Jaisalmer's golden sands. Experience
-                                history, luxury,
-                                and adventure in the land of kings.</p>
-                            <div class="flex flex-wrap my-0">
-                                <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                    <p class="text-color6 ms-2">7 Days</p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                    <p class="text-color6 ms-2">
-                                        Jpr,Uda,Jod,Jas</p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                    <p class="text-color6 ms-2">6+</p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                    <p class="text-color6 ms-2">9.5 Superb
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <img src="img/Jaipur Udaipur Jodhpur Jaisalmer.webp" alt=""
-                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <p class="absolute uppercase text-white bg-color3 px-4 py-1 right-1 top-12 rotate-[-90deg] ">
-                            Jpr - Jas</p>
-                        <figcaption class="absolute text-white bottom-8 right-10 fig">
-                            <p class="capitalize font-secondary text-3xl mx-2">
-                                Jaipur -
-                                Udaipur - Jodhpur
-                                - Jaisalmer</p>
-                            <p class="text-right">6500 Rs/Person</p>
-                        </figcaption>
-                    </figure>
-                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                        <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-5">
-                            <p class="text-2xl text-color3 capitalize font-secondary">
-                                Mumbai - Goa
-                            </p>
-                            <p class="text-color1 mb-1">7000 Rs/Person</p>
-                            <p class="text-color6">
-                                Experience the ultimate coastal getaway from
-                                bustling Mumbai to
-                                the laid-back beaches of Goa. Dive into vibrant
-                                nightlife,
-                                historic landmarks, and pristine sands. Indulge
-                                in local
-                                cuisine, water sports, and cultural richness
-                                along this
-                                unforgettable journey.</p>
+                            <p class="text-2xl text-color3 capitalize font-secondary" id="place_name"></p>
+                            <p class="text-color1 mb-1" id="price_people"></p>
+                            <p class="text-color6" id="description"></p>
                             <div class="flex flex-wrap my-1">
                                 <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                    <p class="text-color6 ms-2">5 Days</p>
+                                    <p class="text-color6 ms-2" id="trip_days"></p>
                                 </div>
                                 <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                    <p class="text-color6 ms-2">Mumbai - Goa
-                                    </p>
+                                    <p class="text-color6 ms-2" id="covered_place"></p>
                                 </div>
                                 <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                    <p class="text-color6 ms-2">7 +</p>
+                                    <p class="text-color6 ms-2" id="age_limit"></p>
                                 </div>
                                 <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                    <p class="text-color6 ms-2">9.3 Superb
-                                    </p>
+                                    <p class="text-color6 ms-2" id="rating"></p>
                                 </div>
                             </div>
-
                         </div>
-                        <img src="img/Mumbai-Goa.webp" alt=""
-                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <p
+                        <img id="image_url" src="" alt="" class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <p id="trip_name"
                             class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
-                            Mumbai-Goa</p>
+                        </p>
                         <figcaption class="absolute text-white bottom-8 right-10 fig">
-                            <p class="capitalize font-secondary text-3xl ">Mumbai -
-                                Goa</p>
-                            <p class="text-right">7500 Rs/Person</p>
+                            <p id="caption_place_name" class="capitalize font-secondary text-3xl mx-2"></p>
+                            <p id="caption_price_people" class="text-right"></p>
                         </figcaption>
                     </figure>
-                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                        <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
-                            <p class="text-2xl text-color3 capitalize font-secondary">
-                                Manali -
-                                Shimla - Leh-Ladakh</p>
-                            <p class="text-color1 mb-1">7000 Rs/Person</p>
-                            <p class="text-color6">Embark on an exhilarating
-                                mountain adventure from
-                                the lush valleys of Manali to the colonial charm
-                                of Shimla,
-                                culminating in the rugged beauty of Leh-Ladakh.
-                                Explore
-                                snow-capped peaks, ancient monasteries, and
-                                serene lakes.</p>
-                            <div class="flex flex-wrap my-1">
-                                <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                    <p class="text-color6 ms-2">7 Days</p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                    <p class="text-color6 ms-2">Manali -
-                                        Shimla - Leh
-                                        -Ladakh</p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                    <p class="text-color6 ms-2">7 +</p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                    <p class="text-color6 ms-2"> 9.3 Superb
-                                    </p>
-                                </div>
-                            </div>
 
-                        </div>
-                        <img src="img/oa.webp" alt="" class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <p
-                            class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
-                            Leh-Ladakh</p>
-                        <figcaption class="absolute text-white bottom-8 right-10 fig">
-                            <p class="capitalize font-secondary text-3xl mx-2">
-                                Manali -
-                                Shimla - Leh
-                                -Ladakh</p>
-                            <p class="text-right">10000 Rs/Person</p>
-                        </figcaption>
-                    </figure>
-                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                        <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
-                            <p class="text-2xl text-color3 capitalize font-secondary">
-                                Delhi - Agra -
-                                Jaipur</p>
-                            <p class="text-color1 mb-1">6000 Rs/Person</p>
-                            <p class="text-color6">Discover India's Golden Triangle:
-                                Delhi's
-                                historic charm, Agra's majestic Taj Mahal, and
-                                Jaipur's vibrant
-                                culture. Immerse in Mughal architecture, royal
-                                heritage, and
-                                bustling markets, creating timeless memories in
-                                this iconic
-                                journey through North India.</p>
-                            <div class="flex flex-wrap my-1">
-                                <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                    <p class="text-color6 ms-2">6 Days</p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                    <p class="text-color6 ms-2">Delhi - Agra
-                                        - Jaipur</p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                    <p class="text-color6 ms-2">7 +</p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                    <p class="text-color6 ms-2">9.8 Superb
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-                        <img src="img/Delhi Agra Jaipur.webp" alt=""
-                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <p
-                            class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
-                            Agra-Jaipur</p>
-                        <figcaption class="absolute text-white bottom-8 right-10 fig">
-                            <p class="capitalize font-secondary text-3xl mx-2">Delhi
-                                -
-                                Agra - Jaipur</p>
-                            <p class="text-right">6500 Rs/Person</p>
-                        </figcaption>
-                    </figure>
+                    <!-- search result -->
+                    <div class="tour-results flex flex-wrap md:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3"></div>
                 </div>
             </div>
         </div>
     </section>
+
+
+
 
     <section id="contact" class="w-full flex justify-center h-auto bg-color3">
         <footer class="w-full container h-auto flex flex-col 2xl:px-36 footer">

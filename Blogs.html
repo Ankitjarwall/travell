@@ -132,33 +132,124 @@
             /* Adjust line-height based on your design */
         }
 
-        .form-control.hidden {
-            display: none;
+        :root {
+            --rad: .7rem;
+            --dur: .3s;
+            --color-dark: #2f2f2f;
+            --color-light: #fff;
+            --color-brand: #57bd84;
+            --font-fam: 'Lato', sans-serif;
+            --height: 2.5rem;
+            --btn-width: 3rem;
+            --bez: cubic-bezier(0, 0, 0.43, 1.49);
         }
 
-        .form-control.visible {
+        .search-item {
+            background: var(--color-dark);
+            border-radius: var(--rad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.5rem;
+            box-sizing: border-box;
+            height: 10%;
+            font-size: 10px;
+            box-sizing: inherit;
+        }
+
+        .search-item-form {
+            position: relative;
+            width: 10rem;
+            background: var(--color-brand);
+            border-radius: var(--rad);
+        }
+
+        .search-item-input,
+        .search-item-button {
+            height: var(--height);
+            font-family: var(--font-fam);
+            border: 0;
+            color: var(--color-dark);
+            font-size: 1rem;
+        }
+
+        .search-item-input {
+            outline: 0;
+            width: 100%;
+            background: var(--color-light);
+            padding: 0 0.5rem;
+            border-radius: var(--rad);
+            appearance: none;
+            transition: all var(--dur) var(--bez);
+            transition-property: width, border-radius;
+            z-index: 1;
+            position: relative;
+        }
+
+        .search-item-button {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: var(--btn-width);
+            font-weight: bold;
+            background: var(--color-brand);
+            border-radius: 0 var(--rad) var(--rad) 0;
+        }
+
+        .search-item-input:not(:placeholder-shown) {
+            border-radius: var(--rad) 0 0 var(--rad);
+            width: calc(100% - var(--btn-width));
+        }
+
+        .search-item-input:not(:placeholder-shown)+.search-item-button {
             display: block;
         }
 
-        /* Input box styling */
-        .form-control {
-            padding: 8px 12px;
-            margin-right: 10px;
-            /* Margin between the input box and the icon */
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .search-item-label {
+            position: absolute;
+            clip: rect(1px, 1px, 1px, 1px);
+            padding: 0;
+            border: 0;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
         }
 
-        /* Search icon styling */
-        #search-icon {
-            padding: 8px;
-            /* Padding inside the icon area */
-            margin-left: 5px;
-            /* Space between the icon and the input */
-            cursor: pointer;
-            font-size: 20px;
-            /* Adjust the icon size */
+        /* Mobile styles */
+        @media (max-width: 767px) {
+            .search-item {
+                width: 90%;
+            }
+
+            .search-item {
+                height: auto;
+                min-height: auto;
+                font-size: 14px;
+            }
+
+            .search-item-form {
+                width: 100%;
+                background: var(--color-brand);
+                border-radius: var(--rad);
+                display: flex;
+                align-items: center;
+            }
+
+            .search-item-input {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+
+            .search-item-button {
+                display: block;
+                width: 3rem;
+                font-weight: bold;
+                background: var(--color-brand);
+                border-radius: 0 var(--rad) var(--rad) 0;
+            }
         }
+
 
         #loading-indicator {
             display: none;
@@ -170,12 +261,14 @@
         }
 
         .spinner {
-            width: 40px;
-            height: 40px;
-            border: 5px solid rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
+            border: 8px solid rgba(0, 0, 0, 0.1);
+            /* Light border */
             border-top-color: #3498db;
-            animation: spin 1s ease-in-out infinite;
+            /* Spinner color */
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            animation: spin 1s linear infinite;
         }
 
         @keyframes spin {
@@ -188,49 +281,26 @@
             }
         }
 
-
         .hidden-spinner {
             display: none;
         }
 
-        /* Mobile view adjustments */
-        @media (max-width: 768px) {
-            .mobile-search-form {
-                /* flex-direction: column;   */
-                align-items: stretch;
-            }
-
-            .mobile-search-input {
-                width: 70%;
-                margin-bottom: 10px;
-                /* Space between input and icon */
-                padding: 10px;
-                /* Add padding for better touch experience */
-            }
-
-            .mobile-search-icon {
-                font-size: 24px;
-                /* Adjust size for better visibility on mobile */
-                margin: 0;
-                /* Remove margin for alignment */
-                z-index: 10;
-                /* Ensure icon is clickable */
-                cursor: pointer;
-                /* Ensure the pointer cursor is displayed */
-            }
-        }
-
-        .mobile-search-icon {
-            display: flex;
-            /* Flexbox for centering */
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            /* Adjust size as needed */
-            height: 50px;
-            /* Adjust size as needed */
-            padding: 10px;
-            /* Space around the icon */
+        /* Full-screen blur effect */
+        body.loading::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            /* Adjust the color and opacity as needed */
+            backdrop-filter: blur(10px);
+            /* Adjust the blur radius as needed */
+            z-index: 9998;
+            /* Ensure it’s above other content */
+            pointer-events: none;
+            /* Allow clicks to pass through */
         }
     </style>
 </head>
@@ -288,12 +358,17 @@
                         <li class="list-none"><a
                                 class="decoration-none text-white hover:text-color3 transition-all duration-500"
                                 href="./#contact">Contact Us</a></li>
-                        <li class="list-none">
-                            <form id="search-form" class="flex items-center">
-                                <input type="text" id="search-input" placeholder="Search..." class="form-control">
-                                <i id="search-icon" class="fas fa-search cursor-pointer text-white ms-3"></i>
+
+                        <li class="list-none search-item">
+                            <form id="search-form" class="search-item-form" onsubmit="event.preventDefault();"
+                                role="search">
+                                <label class="search-item-label" for="search">Search for stuff</label>
+                                <input class="search-item-input" id="search" type="search" placeholder="Search..."
+                                    autofocus required />
+                                <button class="search-item-button" type="submit">Go</button>
                             </form>
                         </li>
+
                     </ul>
                 </nav>
             </header>
@@ -327,12 +402,13 @@
                                 class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
                                 href="#contact">Contact</a></li>
 
-                        <li class="list-none">
-                            <form id="search-form" class="flex items-center mobile-search-form">
-                                <input type="text" id="search-input" placeholder="Search..."
-                                    class="form-control mobile-search-input">
-                                <i id="search-icon"
-                                    class="fas fa-search cursor-pointer text-white mobile-search-icon"></i>
+                        <li class="list-none search-item">
+                            <form id="search-form" class="search-item-form" onsubmit="event.preventDefault();"
+                                role="search">
+                                <label class="search-item-label" for="search">Search for stuff</label>
+                                <input class="search-item-input" id="search" type="search" placeholder="Search..."
+                                    autofocus required />
+                                <button class="search-item-button" type="submit">Go</button>
                             </form>
                         </li>
 
@@ -347,8 +423,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('search-form');
-            const input = document.getElementById('search-input');
-            const searchIcon = document.getElementById('search-icon');
+            const input = document.getElementById('search'); // Updated to match the id in HTML
+            const searchIcon = document.getElementById('search-icon'); // This element is not used in your current code
 
             // Create and style the spinner
             const loadingIndicator = document.createElement('div');
@@ -360,35 +436,38 @@
             loadingIndicator.style.zIndex = '9999';
 
             const spinner = document.createElement('div');
-            spinner.style.width = '80px'; // Increased size
-            spinner.style.height = '80px'; // Increased size
-            spinner.style.border = '8px solid rgba(0, 0, 0, 0.1)'; // Increased border width
-            spinner.style.borderRadius = '50%';
-            spinner.style.borderTopColor = '#3498db'; // Color of the spinner
-            spinner.style.animation = 'spin 1s ease-in-out infinite';
-
-
+            spinner.className = 'spinner'; // Apply the spinner class
 
             loadingIndicator.appendChild(spinner);
             document.body.appendChild(loadingIndicator);
 
-            
+            // Show loading indicator and blur effect
+            function showLoading() {
+                document.body.classList.add('loading');
+                loadingIndicator.style.display = 'block';
+            }
+
+            // Hide loading indicator and blur effect
+            function hideLoading() {
+                document.body.classList.remove('loading');
+                loadingIndicator.style.display = 'none';
+            }
 
             form.addEventListener('submit', function (event) {
                 event.preventDefault();
                 const query = input.value.trim();
 
                 if (query) {
-                    loadingIndicator.style.display = 'block'; // Show loading indicator
+                    showLoading(); // Show loading indicator and blur effect
                     searchBlogs(query);
                 }
             });
 
             function searchBlogs(query) {
-                fetch(`https://script.google.com/macros/s/AKfycbyfzI_PTKPOKuPWYyEAXIsTAgCRc-j-b0tJkugqT00sa8he5AUsKL7uTXRcGp6lc-YB/exec?search=${encodeURIComponent(query)}`)
+                fetch(`https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet3&search=${encodeURIComponent(query)}`)
                     .then(response => response.json())
                     .then(data => {
-                        loadingIndicator.style.display = 'none'; // Hide loading indicator
+                        hideLoading(); // Hide loading indicator and blur effect
 
                         const blogContainer = document.getElementById('blog-container');
                         blogContainer.innerHTML = ''; // Clear existing content
@@ -396,21 +475,21 @@
                         if (data.length > 0) {
                             data.forEach(blog => {
                                 const blogHtml = `
-                            <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
-                                <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
-                                    <img src="${blog.banner_image}" alt="Blog Image"
-                                        class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
-                                </div>
-                                <div class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
-                                    <figcaption>
-                                        <p class="capitalize text-color3 font-secondary text-2xl">
-                                            ${truncateTitle(blog.title)}
-                                        </p>
-                                        <p class="hidden blog-description">${blog.description}</p>
-                                    </figcaption>
-                                </div>
-                            </figure>
-                        `;
+                        <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                            <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                                <img src="${blog.banner_image}" alt="Blog Image"
+                                    class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                            </div>
+                            <div class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                                <figcaption>
+                                    <p class="capitalize text-color3 font-secondary text-2xl">
+                                        ${truncateTitle(blog.title)}
+                                    </p>
+                                    <p class="hidden blog-description">${blog.description}</p>
+                                </figcaption>
+                            </div>
+                        </figure>
+                    `;
                                 blogContainer.insertAdjacentHTML('beforeend', blogHtml);
                             });
                         } else {
@@ -418,7 +497,7 @@
                         }
                     })
                     .catch(error => {
-                        loadingIndicator.style.display = 'none'; // Hide loading indicator in case of error
+                        hideLoading(); // Hide loading indicator and blur effect in case of error
                         console.error('Error fetching data:', error);
                     });
             }
@@ -446,7 +525,6 @@
                 return truncatedTitle;
             }
         });
-
 
     </script>
     <!-- -test -->
