@@ -144,8 +144,11 @@ body {
 }
 
 .logo-light {
-  margin-top: 30%;
-  height: 100%;
+  margin-top: 15%;
+  height: auto;
+  width: 100%;
+  /* or a fixed width */
+  object-fit: contain;
 }
 
 /* Add your styles for the search form here */
@@ -1564,6 +1567,9 @@ video {
   transform: translate(-50%, -50%);
   z-index: -1;
   /* Place the video behind other content */
+
+  pointer-events: none;
+  /* Prevent interaction with the video */
 }
 
 .bg-video-package {
@@ -1580,6 +1586,24 @@ video {
   /* Place the video behind other content */
   pointer-events: none;
   /* Prevent interaction with the video */
+  
+}
+
+.bg-video::-webkit-media-controls {
+  display: none !important;
+}
+
+.bg-video::-webkit-media-controls-play-button,
+.bg-video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+.bg-video::-webkit-media-controls-volume-slider {
+  display: none !important;
+}
+
+.bg-video::-webkit-media-controls-fullscreen-button {
+  display: none !important;
 }
 
 .bg-map {
@@ -2711,7 +2735,7 @@ video {
 
   .overlay-7sec-inputs input,
   .overlay-7sec-inputs textarea {
-    font-size: 10px;
+    font-size: 15px;
     padding: 6px;
   }
 

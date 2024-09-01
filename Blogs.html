@@ -20,10 +20,6 @@
             overflow-x: hidden;
         }
 
-        .logo-light {
-            margin-top: 15%;
-        }
-
         /* Overlay styles */
         .overlay {
             position: fixed;
@@ -36,6 +32,7 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            overflow-y: auto;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
@@ -46,7 +43,7 @@
             background: white;
             padding: 20px;
             border-radius: 10px;
-            overflow-y: auto;
+            overflow: auto;
             /* Ensure the overlay content is scrollable */
         }
 
@@ -351,6 +348,7 @@
         }
 
     </script>
+
     <section class="w-full h-[500vh] bg-cover bg-no-repeat bg-center bg-blend-multiply bg-opacity-60">
         <video autoplay muted loop playsinline class="bg-video-package">
             <source src="img/bg-cover-video.mp4" type="video/mp4">
@@ -434,9 +432,6 @@
                         <li class="list-none my-2"><a
                                 class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
                                 href="#contact">Contact</a></li>
-
-
-
                     </ul>
                 </nav>
             </header>
@@ -444,12 +439,31 @@
     </section>
 
 
+    <!-- Overlay Popup -->
+    <div id="overlay" class="overlay" onclick="topFunction()">
+        <div class="overlay-content">
+            <div class="overlay-image-wrapper">
+                <span class="close-btn-1" id="close-btn" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </span>
+                <img id="popup-img" src="" alt="Popup Image">
+            </div>
+            <h2 id="popup-title">Title</h2>
+            <p id="popup-description">Description</p>
+        </div>
+    </div>
 
+
+    <!-- search script -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('search-form');
-            const input = document.getElementById('search'); // Updated to match the id in HTML
-            const searchIcon = document.getElementById('search-icon'); // This element is not used in your current code
+            const input = document.getElementById('search');
+            const overlay = document.getElementById('overlay');
+            const closeButton = document.getElementById('close-btn');
+            const popupImg = document.getElementById('popup-img');
+            const popupTitle = document.getElementById('popup-title');
+            const popupDescription = document.getElementById('popup-description');
 
             // Create and style the spinner
             const loadingIndicator = document.createElement('div');
@@ -461,8 +475,7 @@
             loadingIndicator.style.zIndex = '9999';
 
             const spinner = document.createElement('div');
-            spinner.className = 'spinner'; // Apply the spinner class
-
+            spinner.className = 'spinner';
             loadingIndicator.appendChild(spinner);
             document.body.appendChild(loadingIndicator);
 
@@ -483,7 +496,7 @@
                 const query = input.value.trim();
 
                 if (query) {
-                    showLoading(); // Show loading indicator and blur effect
+                    showLoading();
                     searchBlogs(query);
                 }
             });
@@ -492,43 +505,45 @@
                 fetch(`https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet3&search=${encodeURIComponent(query)}`)
                     .then(response => response.json())
                     .then(data => {
-                        hideLoading(); // Hide loading indicator and blur effect
+                        hideLoading();
 
                         const blogContainer = document.getElementById('blog-container');
-                        blogContainer.innerHTML = ''; // Clear existing content
+                        blogContainer.innerHTML = '';
 
                         if (data.length > 0) {
                             data.forEach(blog => {
                                 const blogHtml = `
-                        <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
-                            <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
-                                <img src="${blog.banner_image}" alt="Blog Image"
-                                    class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
-                            </div>
-                            <div class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
-                                <figcaption>
-                                    <p class="capitalize text-color3 font-secondary text-2xl">
-                                        ${truncateTitle(blog.title)}
-                                    </p>
-                                    <p class="hidden blog-description">${blog.description}</p>
-                                </figcaption>
-                            </div>
-                        </figure>
-                    `;
+                                <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                                    <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                                        <img src="${blog.banner_image}" alt="Blog Image"
+                                            class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                                    </div>
+                                    <div class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                                        <figcaption>
+                                            <p class="capitalize text-color3 font-secondary text-2xl">
+                                                ${truncateTitle(blog.title)}
+                                            </p>
+                                            <p class="hidden blog-description">${blog.description}</p>
+                                        </figcaption>
+                                    </div>
+                                </figure>
+                            `;
                                 blogContainer.insertAdjacentHTML('beforeend', blogHtml);
+                                attachEventListeners();
                             });
+
                         } else {
                             const noResultsHtml = `
-                    <div class="no-results-container text-center">
-                        <img src="img/noresults.gif" alt="No Results Found" class="no-results-gif mx-auto mb-4">
-                        <p class="text-3xl font-secondary text-white">Sorry, no results found for your search.</p>
-                    </div>
-                `;
+                            <div class="no-results-container text-center">
+                                <img src="img/noresults.gif" alt="No Results Found" class="no-results-gif mx-auto mb-4">
+                                <p class="text-3xl font-secondary text-white">Sorry, no results found for your search.</p>
+                            </div>
+                        `;
                             blogContainer.innerHTML = noResultsHtml;
                         }
                     })
                     .catch(error => {
-                        hideLoading(); // Hide loading indicator and blur effect in case of error
+                        hideLoading();
                         console.error('Error fetching data:', error);
                     });
             }
@@ -556,9 +571,9 @@
                 return truncatedTitle;
             }
         });
-
     </script>
-    <!-- -test -->
+
+    <!-- -content-->
     <section class="w-full flex justify-center py-8 h-auto">
         <div class="w-full container 2xl:px-36 h-auto">
             <div>
@@ -570,11 +585,6 @@
                 <div id="loading-indicator" class="hidden-spinner">
                     <div class="spinner"></div>
                 </div>
-
-
-
-
-
 
                 <div
                     class="loading-skeleton-wrapper flex flex-wrap justify-center xl:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3">
@@ -645,22 +655,6 @@
     </section>
 
 
-
-
-    <!-- Overlay Popup -->
-    <div id="overlay" class="overlay">
-        <div class="overlay-content">
-            <div class="overlay-image-wrapper">
-                <span class="close-btn-1" id="close-btn" aria-label="Close">
-                    <i class="fas fa-times"></i>
-                </span>
-                <img id="popup-img" src="" alt="Popup Image">
-            </div>
-            <h2 id="popup-title">Title</h2>
-            <p id="popup-description">Description</p>
-        </div>
-    </div>
-
     <script>
         // Fetch data from Google Sheets API
         document.addEventListener('DOMContentLoaded', () => {
@@ -713,11 +707,13 @@
         function showOverlay() {
             overlay.classList.remove('hide');
             overlay.classList.add('show');
+            overlay.scrollTop = 0;
         }
 
         function hideOverlay() {
             overlay.classList.remove('show');
             overlay.classList.add('hide');
+            overlay.scrollTop = 0;
         }
 
         closeButton.addEventListener('click', () => {

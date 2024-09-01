@@ -7,6 +7,7 @@
     <title>travel</title>
     <link rel="stylesheet" href="css/output.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -19,33 +20,113 @@
             overflow-x: hidden;
         }
 
-
-        .logo-light {
-            margin-top: 15%;
-            /* height: 100%; */
-            /* width: 100%; */
+        /* Overlay styles */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow-y: auto;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
+        .overlay-content {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            overflow: auto;
+            /* Ensure the overlay content is scrollable */
+        }
+
+        .overlay-image-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .overlay.show {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .overlay.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .overlay-image-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .overlay-content h2,
+        .overlay-content p {
+            margin: 10px 0;
+        }
 
         nav ul li a {
             text-decoration: none;
-            /* color: #000000; */
             padding: 8px 7px;
-            /* Add padding for button-like appearance */
             border-radius: 20px;
-            /* Rounded corners for the button */
             transition: all 0.1s ease;
-            /* Smooth transition for hover effects */
         }
 
         nav ul li a:hover {
             text-decoration: none;
             background-color: rgba(202, 200, 200, 0.14);
-            /* Replace #color3 with the desired hover background color */
-            /* color: #090909; */
-            /* Ensure the text color remains readable on hover */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            /* Add a slight shadow for a button effect */
+        }
+
+        #popup-title,
+        #popup-description {
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            text-justify: inter-word;
+            hyphens: auto;
+            word-break: break-word;
+            line-height: 1.5;
+        }
+
+        #popup-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #popup-description {
+            font-size: 1rem;
+        }
+
+        .truncate-title {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            /* Limit to 3 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            /* Allow text wrapping */
+            line-height: 1.5;
+            /* Adjust line-height based on your design */
         }
 
         :root {
@@ -166,6 +247,7 @@
             }
         }
 
+
         #loading-indicator {
             display: none;
             position: fixed;
@@ -217,8 +299,31 @@
             pointer-events: none;
             /* Allow clicks to pass through */
         }
-    </style>
 
+        .no-results-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 50vh;
+            /* Ensures it takes the full height of the viewport */
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+        }
+
+        .no-results-gif {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .no-results-container p {
+            font-size: 1.5rem;
+            color: #555;
+        }
+    </style>
 </head>
 
 <body class="font-primary">
@@ -241,6 +346,7 @@
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }
+
     </script>
 
     <section class="w-full h-[500vh] bg-cover bg-no-repeat bg-center bg-blend-multiply bg-opacity-60">
@@ -249,7 +355,6 @@
             Your browser does not support the video tag.
         </video>
         <section class="w-full flex flex-wrap justify-center ">
-            <!-- Desktop header -->
             <!-- Desktop header -->
             <header class="w-[85%] xl:w-[73%] container hidden lg:flex justify-between h-[60px] items-center py-[45px]">
                 <figure class="w-[140px]">
@@ -277,13 +382,15 @@
                                 href="./#contact">Contact Us</a></li>
 
                         <li class="list-none search-item">
-                            <form id="desktop-search-form" class="search-item-form" role="search">
-                                <label class="search-item-label" for="desktop-search">Search for stuff</label>
-                                <input class="search-item-input" id="desktop-search" type="search"
-                                    placeholder="Search..." autofocus required />
+                            <form id="search-form" class="search-item-form" onsubmit="event.preventDefault();"
+                                role="search">
+                                <label class="search-item-label" for="search">Search for stuff</label>
+                                <input class="search-item-input" id="search" type="search" placeholder="Search..."
+                                    autofocus required />
                                 <button class="search-item-button" type="submit">Go</button>
                             </form>
                         </li>
+
                     </ul>
                 </nav>
             </header>
@@ -301,17 +408,15 @@
                 </div>
                 <nav class="menu hidden h-[350px] w-full absolute bg-custom left-0 top-[90px] z-30">
                     <ul class="h-full w-full flex flex-col justify-center ms-6">
-
                         <li class="list-none search-item">
-                            <form id="mobile-search-form" class="search-item-form" role="search">
-                                <label class="search-item-label" for="mobile-search">Search for stuff</label>
-                                <input class="search-item-input" id="mobile-search" type="search"
-                                    placeholder="Search..." autofocus required />
+                            <form id="search-form" class="search-item-form" onsubmit="event.preventDefault();"
+                                role="search">
+                                <label class="search-item-label" for="search">Search for stuff</label>
+                                <input class="search-item-input" id="search" type="search" placeholder="Search..."
+                                    autofocus required />
                                 <button class="search-item-button" type="submit">Go</button>
                             </form>
                         </li>
-
-                        <!-- Other navigation links -->
                         <li class="list-none my-2"><a
                                 class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
                                 href="/">Home</a></li>
@@ -330,15 +435,37 @@
                     </ul>
                 </nav>
             </header>
-
         </section>
     </section>
 
-    <!-- search js -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const apiUrl = 'https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet4';
 
+    <!-- Overlay Popup -->
+    <div id="overlay" class="overlay" onclick="topFunction()">
+        <div class="overlay-content">
+            <div class="overlay-image-wrapper">
+                <span class="close-btn-1" id="close-btn" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </span>
+                <img id="popup-img" src="" alt="Popup Image">
+            </div>
+            <h2 id="popup-title">Title</h2>
+            <p id="popup-description">Description</p>
+        </div>
+    </div>
+
+
+    <!-- search script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('search-form');
+            const input = document.getElementById('search');
+            const overlay = document.getElementById('overlay');
+            const closeButton = document.getElementById('close-btn');
+            const popupImg = document.getElementById('popup-img');
+            const popupTitle = document.getElementById('popup-title');
+            const popupDescription = document.getElementById('popup-description');
+
+            // Create and style the spinner
             const loadingIndicator = document.createElement('div');
             loadingIndicator.style.display = 'none';
             loadingIndicator.style.position = 'fixed';
@@ -349,451 +476,285 @@
 
             const spinner = document.createElement('div');
             spinner.className = 'spinner';
-
             loadingIndicator.appendChild(spinner);
             document.body.appendChild(loadingIndicator);
 
+            // Show loading indicator and blur effect
             function showLoading() {
                 document.body.classList.add('loading');
                 loadingIndicator.style.display = 'block';
             }
 
+            // Hide loading indicator and blur effect
             function hideLoading() {
                 document.body.classList.remove('loading');
                 loadingIndicator.style.display = 'none';
             }
 
-            function fetchData(url) {
-                return fetch(url)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`Network response was not ok: ${response.statusText}`);
-                        }
-                        return response.json();
-                    })
-                    .catch(error => {
-                        console.error('Error fetching data:', error);
-                        throw error;
-                    });
-            }
-            
-            fetchData(apiUrl)
-                .then(data => {
-                    displayTourData(data);
-                });
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const query = input.value.trim();
 
-            function searchTours(query) {
-                const searchUrl = `${apiUrl}&search=${encodeURIComponent(query)}`;
+                if (query) {
+                    showLoading();
+                    searchBlogs(query);
+                }
+            });
 
-                fetchData(searchUrl)
+            function searchBlogs(query) {
+                fetch(`https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet3&search=${encodeURIComponent(query)}`)
+                    .then(response => response.json())
                     .then(data => {
                         hideLoading();
-                        displayTourData(data);
+
+                        const blogContainer = document.getElementById('blog-container');
+                        blogContainer.innerHTML = '';
+
+                        if (data.length > 0) {
+                            data.forEach(blog => {
+                                const blogHtml = `
+                                <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                                    <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                                        <img src="${blog.banner_image}" alt="Blog Image"
+                                            class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                                    </div>
+                                    <div class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                                        <figcaption>
+                                            <p class="capitalize text-color3 font-secondary text-2xl">
+                                                ${truncateTitle(blog.title)}
+                                            </p>
+                                            <p class="hidden blog-description">${blog.description}</p>
+                                        </figcaption>
+                                    </div>
+                                </figure>
+                            `;
+                                blogContainer.insertAdjacentHTML('beforeend', blogHtml);
+                                attachEventListeners();
+                            });
+
+                        } else {
+                            const noResultsHtml = `
+                            <div class="no-results-container text-center">
+                                <img src="img/noresults.gif" alt="No Results Found" class="no-results-gif mx-auto mb-4">
+                                <p class="text-3xl font-secondary text-white">Sorry, no results found for your search.</p>
+                            </div>
+                        `;
+                            blogContainer.innerHTML = noResultsHtml;
+                        }
                     })
                     .catch(error => {
                         hideLoading();
-                        console.error('Error fetching search data:', error);
+                        console.error('Error fetching data:', error);
                     });
             }
 
+            function truncateTitle(title) {
+                const maxLines = 3;
+                const maxWordsPerLine = 8;
 
-            // Handle search button click for desktop
-            document.getElementById('desktop-search-form').addEventListener('submit', (event) => {
-                event.preventDefault(); // Prevent form submission
-                const query = document.getElementById('desktop-search').value.trim();
-                if (query) {
-                    showLoading();
-                    searchTours(query);
-                }
-            });
+                const words = title.split(' ');
+                let truncatedTitle = '';
 
-            // Handle search button click for mobile
-            document.getElementById('mobile-search-form').addEventListener('submit', (event) => {
-                event.preventDefault(); // Prevent form submission
-                const query = document.getElementById('mobile-search').value.trim();
-                if (query) {
-                    showLoading();
-                    searchTours(query);
-                }
-            });
+                for (let i = 0; i < words.length; i++) {
+                    truncatedTitle += words[i] + ' ';
 
-            // Handle enter key in search input
-            document.querySelectorAll('input[type="search"]').forEach(input => {
-                input.addEventListener('keydown', (event) => {
-                    if (event.key === 'Enter') {
-                        event.preventDefault(); // Prevent form submission
-                        const query = event.target.value.trim();
-                        if (query) {
-                            showLoading();
-                            searchTours(query);
-                        }
+                    if ((i + 1) % maxWordsPerLine === 0 && i < words.length - 1) {
+                        truncatedTitle += '<br>';
                     }
-                });
-            });
-
-            fetchData(apiUrl)
-                .then(data => {
-                    displayTourData(data);
-                })
-                .catch(error => {
-                    console.error('Error fetching initial data:', error);
-                });
-
-            function displayTourData(tourData) {
-                const container = document.querySelector('.tour-results');
-                container.innerHTML = '';
-
-                if (tourData.length === 0) {
-                    container.innerHTML = '<p>No results found</p>';
-                    return;
                 }
 
-                tourData.forEach(tour => {
-                    const figure = document.createElement('figure');
-                    figure.className = 'w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000';
+                const lines = truncatedTitle.split('<br>');
+                if (lines.length > maxLines) {
+                    truncatedTitle = lines.slice(0, maxLines).join('<br>') + '...';
+                }
 
-                    figure.innerHTML = `
-            <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
-                <p class="text-2xl text-color3 capitalize font-secondary">${tour.place_name}</p>
-                <p class="text-color1 mb-1">${tour.price} Rs ${tour.people}</p>
-                <p class="text-color6">${tour.description}</p>
-                <div class="flex flex-wrap my-1">
-                    <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                        <p class="text-color6 ms-2">${tour.number_of_trip_days} Days</p>
-                    </div>
-                    <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                        <p class="text-color6 ms-2">${tour.covered_place_name}</p>
-                    </div>
-                    <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                        <p class="text-color6 ms-2">${tour.age_limit}+</p>
-                    </div>
-                    <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                        <p class="text-color6 ms-2">${tour.rating}</p>
-                    </div>
-                </div>
-            </div>
-            <img src="${tour.image_url}" alt="${tour.place_name}" class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-            <p class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg]">
-                ${tour.trip_name}</p>
-            <figcaption class="absolute text-white bottom-8 right-10 fig">
-                <p class="capitalize font-secondary text-3xl mx-2">${tour.place_name}</p>
-                <p class="text-right">${tour.price} Rs ${tour.people}</p>
-            </figcaption>
-        `;
-
-                    container.appendChild(figure);
-                });
+                return truncatedTitle;
             }
         });
-
     </script>
 
-
-
-
-
-
-
-    <!-- google sheet data fetch -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const apiUrl = 'https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet4';
-
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    displayTourData(data);
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
-        });
-
-        function displayTourData(tourData) {
-            const container = document.querySelector('.flex.flex-wrap.md\\:justify-between.gap-10');
-            container.innerHTML = ''; // Clear existing content if any
-
-            tourData.forEach(tour => {
-                const figure = document.createElement('figure');
-                figure.className = 'w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000';
-
-                figure.innerHTML = `
-            <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
-                <p class="text-2xl text-color3 capitalize font-secondary">${tour.place_name}</p>
-                <p class="text-color1 mb-1">${tour.price} Rs ${tour.people}</p>
-                <p class="text-color6">${tour.description}</p>
-                <div class="flex flex-wrap my-1">
-                    <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                        <p class="text-color6 ms-2">${tour.number_of_trip_days} Days</p>
-                    </div>
-                    <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                        <p class="text-color6 ms-2">${tour.covered_place_name}</p>
-                    </div>
-                    <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                        <p class="text-color6 ms-2">${tour.age_limit}+</p>
-                    </div>
-                    <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                        <p class="text-color6 ms-2">${tour.rating}</p>
-                    </div>
-                </div>
-            </div>
-            <img src="${tour.image_url}" alt="${tour.place_name}" class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-            <p class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg]">
-                ${tour.trip_name}</p>
-            <figcaption class="absolute text-white bottom-8 right-10 fig">
-                <p class="capitalize font-secondary text-3xl mx-2">${tour.place_name}</p>
-                <p class="text-right">${tour.price} Rs ${tour.people}</p>
-            </figcaption>
-        `;
-                container.appendChild(figure);
-            });
-        }
-    </script>
-
-    <section class="w-full flex justify-center py-5 ">
-        <div class="w-full container 2xl:px-36">
+    <!-- -content-->
+    <section class="w-full flex justify-center py-8 h-auto">
+        <div class="w-full container 2xl:px-36 h-auto">
             <div>
-                <p class="text-white uppercase px-5">Pick Yours!</p>
-                <p class="text-5xl font-secondary text-color1 px-5">Popular <span class="text-white">Tours</span></p>
-                <div class="flex flex-wrap md:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3 ">
-                    <!-- Skeleton Loader -->
-                    <figure
-                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                        <div
-                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
-                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
-                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
-                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
-                            <div class="flex flex-wrap my-1">
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="img/loading.gif" alt="Loading"
-                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
-                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
-                    </figure>
+                <p class="text-color4 uppercase px-5">TRAVEL BLOG</p>
+                <p class="travelexp text-4xl font-secondary text-color4 px-4">
+                    Travel<span class="text-white"> Experience</span>
+                </p>
 
-                    <!-- search loading skeleton loader -->
-                    <div id="loading-indicator" class="hidden-spinner">
-                        <div class="spinner"></div>
-                    </div>
-
-                    <figure
-                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                        <div
-                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
-                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
-                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
-                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
-                            <div class="flex flex-wrap my-1">
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="img/loading.gif" alt="Loading"
-                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
-                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
-                    </figure>
-
-                    <figure
-                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                        <div
-                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
-                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
-                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
-                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
-                            <div class="flex flex-wrap my-1">
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="img/loading.gif" alt="Loading"
-                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
-                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
-                    </figure>
-
-                    <figure
-                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                        <div
-                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
-                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
-                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
-                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
-                            <div class="flex flex-wrap my-1">
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="img/loading.gif" alt="Loading"
-                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
-                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
-                    </figure>
-
-                    <figure
-                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                        <div
-                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
-                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
-                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
-                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
-                            <div class="flex flex-wrap my-1">
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="img/loading.gif" alt="Loading"
-                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
-                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
-                    </figure>
-
-                    <figure
-                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                        <div
-                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
-                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
-                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
-                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
-                            <div class="flex flex-wrap my-1">
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                                <div class="w-[50%] flex items-center">
-                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
-                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <img src="img/loading.gif" alt="Loading"
-                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
-                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
-                    </figure>
-                    <!-- Original content will replace skeleton -->
-                    <figure id="tour-data"
-                        class="hidden w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
-                        <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
-                            <p class="text-2xl text-color3 capitalize font-secondary" id="place_name"></p>
-                            <p class="text-color1 mb-1" id="price_people"></p>
-                            <p class="text-color6" id="description"></p>
-                            <div class="flex flex-wrap my-1">
-                                <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
-                                    <p class="text-color6 ms-2" id="trip_days"></p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
-                                    <p class="text-color6 ms-2" id="covered_place"></p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
-                                    <p class="text-color6 ms-2" id="age_limit"></p>
-                                </div>
-                                <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
-                                    <p class="text-color6 ms-2" id="rating"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <img id="image_url" src="" alt="" class="w-[100%] h-[100%] object-cover brightness-75 absolute">
-                        <p id="trip_name"
-                            class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg] ">
-                        </p>
-                        <figcaption class="absolute text-white bottom-8 right-10 fig">
-                            <p id="caption_place_name" class="capitalize font-secondary text-3xl mx-2"></p>
-                            <p id="caption_price_people" class="text-right"></p>
-                        </figcaption>
-                    </figure>
-
-                    <!-- search result -->
-                    <div class="tour-results flex flex-wrap md:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3"></div>
+                <div id="loading-indicator" class="hidden-spinner">
+                    <div class="spinner"></div>
                 </div>
+
+                <div
+                    class="loading-skeleton-wrapper flex flex-wrap justify-center xl:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3">
+                    <figure
+                        class="skeleton-container w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="./img/loading.gif" alt="Loading..."
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+                        <div
+                            class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                    Loading ...
+                                </p>
+                                <p class="hidden blog-description">Loading ...</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+
+                    <figure
+                        class="skeleton-container w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="./img/loading.gif" alt="Loading..."
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+                        <div
+                            class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                    Loading ...
+                                </p>
+                                <p class="hidden blog-description">Loading ...</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+
+                    <figure
+                        class="skeleton-container w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="./img/loading.gif" alt="Loading..."
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+                        <div
+                            class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                    Loading ...
+                                </p>
+                                <p class="hidden blog-description">Loading ...</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+
+                </div>
+
+
+
+                <div id="blog-container"
+                    class="flex flex-wrap justify-center xl:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3">
+
+                    <!-- Repeat the above figure for multiple loading items -->
+                </div>
+
             </div>
+        </div>
         </div>
     </section>
 
 
+    <script>
+        // Fetch data from Google Sheets API
+        document.addEventListener('DOMContentLoaded', () => {
+            const blogContainer = document.getElementById('blog-container');
 
+            // Show skeleton loader initially
+            const skeletons = document.querySelectorAll('.skeleton-container');
+            skeletons.forEach(skeleton => skeleton.style.display = 'block');
+
+            // Fetch data from Google Sheets API
+            fetch('https://script.google.com/macros/s/AKfycbyfzI_PTKPOKuPWYyEAXIsTAgCRc-j-b0tJkugqT00sa8he5AUsKL7uTXRcGp6lc-YB/exec')
+                .then(response => response.json())
+                .then(data => {
+                    // Hide skeleton loader
+                    skeletons.forEach(skeleton => skeleton.style.display = 'none');
+
+                    // Loop through each blog post and create HTML structure
+                    data.forEach((blog, index) => {
+                        const blogHtml = `
+                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="${blog.banner_image}" alt="Blog Image"
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
+                                data-id="${index}">
+                        </div>
+                        <div
+                            class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                    ${blog.title}
+                                </p>
+                                <p class="hidden blog-description">${blog.description}</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+                `;
+
+                        // Append the blog post to the container
+                        blogContainer.insertAdjacentHTML('beforeend', blogHtml);
+                    });
+
+                    // Re-attach event listeners for the newly added blog posts
+                    attachEventListeners();
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+
+
+
+        function showOverlay() {
+            overlay.classList.remove('hide');
+            overlay.classList.add('show');
+            overlay.scrollTop = 0;
+        }
+
+        function hideOverlay() {
+            overlay.classList.remove('show');
+            overlay.classList.add('hide');
+            overlay.scrollTop = 0;
+        }
+
+        closeButton.addEventListener('click', () => {
+            overlay.style.display = 'none';
+        });
+
+
+        function attachEventListeners() {
+            const overlay = document.getElementById('overlay');
+            const closeButton = document.getElementById('close-btn');
+            const popupImg = document.getElementById('popup-img');
+            const popupTitle = document.getElementById('popup-title');
+            const popupDescription = document.getElementById('popup-description');
+
+            const cards = document.querySelectorAll('figure');
+
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const imgSrc = card.querySelector('img').src;
+                    const title = card.querySelector('figcaption p:first-child').innerText;
+                    const description = card.querySelector('.blog-description').innerText;
+
+                    popupImg.src = imgSrc;
+                    popupTitle.innerText = title;
+                    popupDescription.innerText = description;
+
+                    overlay.style.display = 'flex';
+                });
+            });
+
+            closeButton.addEventListener('click', () => {
+                overlay.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === overlay) {
+                    overlay.style.display = 'none';
+                }
+            });
+        }
+    </script>
 
     <section id="contact" class="w-full flex justify-center h-auto bg-color3">
         <footer class="w-full container h-auto flex flex-col 2xl:px-36 footer">
@@ -824,7 +785,6 @@
             </p>
         </footer>
     </section>
-
 
 </body>
 <script src="js/master.js"></script>
