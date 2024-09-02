@@ -306,22 +306,123 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            height: 50vh;
-            /* Ensures it takes the full height of the viewport */
-            /* position: absolute; */
+            height: 10vh;
             top: 0;
             left: 0;
         }
 
-        .no-results-gif {
-            width: 200px;
-            height: auto;
-            margin-bottom: 20px;
-        }
+
 
         .no-results-container p {
             font-size: 1.5rem;
             color: #555;
+        }
+
+
+        .mobile-search-item {
+            background: var(--color-dark);
+            border-radius: var(--rad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.5rem;
+            box-sizing: border-box;
+            height: 10%;
+            font-size: 10px;
+            box-sizing: inherit;
+        }
+
+        .mobile-search-item-form {
+            position: relative;
+            width: 10rem;
+            background: var(--color-brand);
+            border-radius: var(--rad);
+        }
+
+        .mobile-search-item-input,
+        .mobile-search-item-button {
+            height: var(--height);
+            font-family: var(--font-fam);
+            border: 0;
+            color: var(--color-dark);
+            font-size: 1rem;
+        }
+
+        .mobile-search-item-input {
+            outline: 0;
+            width: 100%;
+            background: var(--color-light);
+            padding: 0 0.5rem;
+            border-radius: var(--rad);
+            appearance: none;
+            transition: all var(--dur) var(--bez);
+            transition-property: width, border-radius;
+            z-index: 1;
+            position: relative;
+        }
+
+        .mobile-search-item-button {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: var(--btn-width);
+            font-weight: bold;
+            background: var(--color-brand);
+            border-radius: 0 var(--rad) var(--rad) 0;
+        }
+
+        .mobile-search-item-input:not(:placeholder-shown) {
+            border-radius: var(--rad) 0 0 var(--rad);
+            width: calc(100% - var(--btn-width));
+        }
+
+        .mobile-search-item-input:not(:placeholder-shown)+.search-item-button {
+            display: block;
+        }
+
+        .mobile-search-item-label {
+            position: absolute;
+            clip: rect(1px, 1px, 1px, 1px);
+            padding: 0;
+            border: 0;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 767px) {
+            .mobile-search-item {
+                width: 90%;
+            }
+
+            .mobile-search-item {
+                height: auto;
+                min-height: auto;
+                font-size: 14px;
+            }
+
+            .mobile-search-item-form {
+                width: 100%;
+                background: var(--color-brand);
+                border-radius: var(--rad);
+                display: flex;
+                align-items: center;
+            }
+
+            .mobile-search-item-input {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+
+            .mobile-search-item-button {
+                display: block;
+                width: 3rem;
+                font-weight: bold;
+                background: var(--color-brand);
+                border-radius: 0 var(--rad) var(--rad) 0;
+            }
         }
     </style>
 </head>
@@ -408,15 +509,16 @@
                 </div>
                 <nav class="menu hidden h-[350px] w-full absolute bg-custom left-0 top-[90px] z-30">
                     <ul class="h-full w-full flex flex-col justify-center ms-6">
-                        <li class="list-none search-item">
-                            <form id="search-form" class="search-item-form" onsubmit="event.preventDefault();"
-                                role="search">
-                                <label class="search-item-label" for="search">Search for stuff</label>
-                                <input class="search-item-input" id="search" type="search" placeholder="Search..."
-                                    autofocus required />
-                                <button class="search-item-button" type="submit">Go</button>
+
+                        <li class="list-none mobile-search-item">
+                            <form id="mobile-search-form" class="mobile-search-item-form" role="search">
+                                <label class="mobile-search-item-label" for="search">Search for stuff</label>
+                                <input class="mobile-search-item-input" id="mobile-search" type="search"
+                                    placeholder="Search..." autofocus required />
+                                <button class="mobile-search-item-button" type="submit">Go</button>
                             </form>
                         </li>
+
                         <li class="list-none my-2"><a
                                 class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
                                 href="/">Home</a></li>
@@ -432,11 +534,14 @@
                         <li class="list-none my-2"><a
                                 class="decoration-none text-color2 flex hover:text-color4 transition-all duration-600"
                                 href="#contact">Contact</a></li>
+
                     </ul>
                 </nav>
             </header>
         </section>
     </section>
+
+
 
 
     <!-- Overlay Popup -->
@@ -454,7 +559,7 @@
     </div>
 
 
-    <!-- search script -->
+    <!-- desktop search script -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('search-form');
@@ -513,33 +618,37 @@
                         if (data.length > 0) {
                             data.forEach(blog => {
                                 const blogHtml = `
-                                <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
-                                    <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
-                                        <img src="${blog.banner_image}" alt="Blog Image"
-                                            class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
-                                    </div>
-                                    <div class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
-                                        <figcaption>
-                                            <p class="capitalize text-color3 font-secondary text-2xl">
-                                                ${truncateTitle(blog.title)}
-                                            </p>
-                                            <p class="hidden blog-description">${blog.description}</p>
-                                        </figcaption>
-                                    </div>
-                                </figure>
-                            `;
+                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="${blog.banner_image}" alt="Blog Image"
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                        </div>
+                        <div class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl">
+                                    ${truncateTitle(blog.title)}
+                                </p>
+                                <p class="hidden blog-description">${blog.description}</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+                `;
                                 blogContainer.insertAdjacentHTML('beforeend', blogHtml);
                                 attachEventListeners();
                             });
 
                         } else {
+                            // No results found message
                             const noResultsHtml = `
-                            <div class="no-results-container text-center">
-                                <img src="img/noresults.gif" alt="No Results Found" class="no-results-gif mx-auto mb-4">
-                                <p class="text-3xl font-secondary text-white">Sorry, no results found for your search.</p>
-                            </div>
-                        `;
-                            blogContainer.innerHTML = noResultsHtml;
+                <div class="no-results-container text-center">
+                    
+                    <p class="text-3xl font-secondary text-white">Sorry, no results found for your search.</p>
+                </div>
+                `;
+                            blogContainer.insertAdjacentHTML('beforeend', noResultsHtml);
+
+                            // Fetch and display all data
+                            fetchAllBlogs();
                         }
                     })
                     .catch(error => {
@@ -547,6 +656,50 @@
                         console.error('Error fetching data:', error);
                     });
             }
+
+            function fetchAllBlogs() {
+
+                // Show skeleton loader initially
+                const skeletons = document.querySelectorAll('.skeleton-container');
+                skeletons.forEach(skeleton => skeleton.style.display = 'block');
+
+                fetch('https://script.google.com/macros/s/AKfycbyfzI_PTKPOKuPWYyEAXIsTAgCRc-j-b0tJkugqT00sa8he5AUsKL7uTXRcGp6lc-YB/exec')
+                    .then(response => response.json())
+                    .then(data => {
+                        const blogContainer = document.getElementById('blog-container');
+                        // Hide skeleton loader
+                        skeletons.forEach(skeleton => skeleton.style.display = 'none');
+
+                        // Loop through each blog post and create HTML structure
+                        data.forEach((blog, index) => {
+                            const blogHtml = `
+                <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                    <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                        <img src="${blog.banner_image}" alt="Blog Image"
+                            class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
+                            data-id="${index}">
+                    </div>
+                    <div class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                        <figcaption>
+                            <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                ${truncateTitle(blog.title)}
+                            </p>
+                            <p class="hidden blog-description">${blog.description}</p>
+                        </figcaption>
+                    </div>
+                </figure>
+            `;
+
+                            // Append the blog post to the container
+                            blogContainer.insertAdjacentHTML('beforeend', blogHtml);
+                        });
+
+                        // Re-attach event listeners for the newly added blog posts
+                        attachEventListeners();
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+            }
+
 
             function truncateTitle(title) {
                 const maxLines = 3;
@@ -572,6 +725,178 @@
             }
         });
     </script>
+
+    <!-- desktop search end -->
+
+    <!-- mobile search start -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('mobile-search-form');
+            const input = document.getElementById('mobile-search');
+            const overlay = document.getElementById('overlay');
+            const closeButton = document.getElementById('close-btn');
+            const popupImg = document.getElementById('popup-img');
+            const popupTitle = document.getElementById('popup-title');
+            const popupDescription = document.getElementById('popup-description');
+
+            // Create and style the spinner
+            const loadingIndicator = document.createElement('div');
+            loadingIndicator.style.display = 'none';
+            loadingIndicator.style.position = 'fixed';
+            loadingIndicator.style.top = '50%';
+            loadingIndicator.style.left = '50%';
+            loadingIndicator.style.transform = 'translate(-50%, -50%)';
+            loadingIndicator.style.zIndex = '9999';
+
+            const spinner = document.createElement('div');
+            spinner.className = 'spinner';
+            loadingIndicator.appendChild(spinner);
+            document.body.appendChild(loadingIndicator);
+
+            // Show loading indicator and blur effect
+            function showLoading() {
+                document.body.classList.add('loading');
+                loadingIndicator.style.display = 'block';
+            }
+
+            // Hide loading indicator and blur effect
+            function hideLoading() {
+                document.body.classList.remove('loading');
+                loadingIndicator.style.display = 'none';
+            }
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const query = input.value.trim();
+
+                if (query) {
+                    showLoading();
+                    mobilesearchBlogs(query);
+                }
+            });
+
+            function mobilesearchBlogs(query) {
+                fetch(`https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet3&search=${encodeURIComponent(query)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        hideLoading();
+
+                        const blogContainer = document.getElementById('blog-container');
+                        blogContainer.innerHTML = '';
+
+                        if (data.length > 0) {
+                            data.forEach(blog => {
+                                const blogHtml = `
+                        <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                            <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                                <img src="${blog.banner_image}" alt="Blog Image"
+                                    class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000">
+                            </div>
+                            <div class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                                <figcaption>
+                                    <p class="capitalize text-color3 font-secondary text-2xl">
+                                        ${truncateTitle(blog.title)}
+                                    </p>
+                                    <p class="hidden blog-description">${blog.description}</p>
+                                </figcaption>
+                            </div>
+                        </figure>
+                    `;
+                                blogContainer.insertAdjacentHTML('beforeend', blogHtml);
+                                attachEventListeners();
+                            });
+
+                        } else {
+                            // No results found message
+                            const noResultsHtml = `
+                    <div class="no-results-container text-center">
+                        
+                        <p class="text-3xl font-secondary text-white">Sorry, no results found for your search.</p>
+                    </div>
+                    `;
+                            blogContainer.insertAdjacentHTML('beforeend', noResultsHtml);
+
+                            // Fetch and display all data
+                            fetchAllBlogs();
+                        }
+                    })
+                    .catch(error => {
+                        hideLoading();
+                        console.error('Error fetching data:', error);
+                    });
+            }
+
+            function fetchAllBlogs() {
+
+                // Show skeleton loader initially
+                const skeletons = document.querySelectorAll('.skeleton-container');
+                skeletons.forEach(skeleton => skeleton.style.display = 'block');
+
+                fetch('https://script.google.com/macros/s/AKfycbyfzI_PTKPOKuPWYyEAXIsTAgCRc-j-b0tJkugqT00sa8he5AUsKL7uTXRcGp6lc-YB/exec')
+                    .then(response => response.json())
+                    .then(data => {
+
+                        
+                        const blogContainer = document.getElementById('blog-container');
+                        // Hide skeleton loader
+                        skeletons.forEach(skeleton => skeleton.style.display = 'none');
+
+                        // Loop through each blog post and create HTML structure
+                        data.forEach((blog, index) => {
+                            const blogHtml = `
+                    <figure class="w-full md:w-[45%] xl:w-[30%] h-[450px] relative transition-all duration-1000 group mb-20">
+                        <div class="w-[100%] h-[100%] overflow-hidden group transition-all duration-1000 relative">
+                            <img src="${blog.banner_image}" alt="Blog Image"
+                                class="w-[100%] h-[100%] object-cover group-hover:brightness-75 group-hover:scale-[1.2] absolute transition-all duration-1000"
+                                data-id="${index}">
+                        </div>
+                        <div class="absolute h-[150px] w-[85%] bg-white bottom-[-80px] left-[8%] flex flex-col justify-center px-3 group-hover:bottom-10 transition-all duration-1000">
+                            <figcaption>
+                                <p class="capitalize text-color3 font-secondary text-2xl truncate-title">
+                                    ${truncateTitle(blog.title)}
+                                </p>
+                                <p class="hidden blog-description">${blog.description}</p>
+                            </figcaption>
+                        </div>
+                    </figure>
+                `;
+
+                            // Append the blog post to the container
+                            blogContainer.insertAdjacentHTML('beforeend', blogHtml);
+                        });
+
+                        // Re-attach event listeners for the newly added blog posts
+                        attachEventListeners();
+                    })
+                    .catch(error => console.error('Error fetching data:', error));
+            }
+
+
+            function truncateTitle(title) {
+                const maxLines = 3;
+                const maxWordsPerLine = 8;
+
+                const words = title.split(' ');
+                let truncatedTitle = '';
+
+                for (let i = 0; i < words.length; i++) {
+                    truncatedTitle += words[i] + ' ';
+
+                    if ((i + 1) % maxWordsPerLine === 0 && i < words.length - 1) {
+                        truncatedTitle += '<br>';
+                    }
+                }
+
+                const lines = truncatedTitle.split('<br>');
+                if (lines.length > maxLines) {
+                    truncatedTitle = lines.slice(0, maxLines).join('<br>') + '...';
+                }
+
+                return truncatedTitle;
+            }
+        });
+    </script>
+    <!-- mobile search end -->
 
     <!-- -content-->
     <section class="w-full flex justify-center py-8 h-auto">

@@ -217,7 +217,7 @@
             justify-content: center;
             align-items: center;
             width: 100%;
-            height: 50vh;
+            height: 10vh;
             /* Ensures it takes the full height of the viewport */
             /* position: absolute; */
             top: 0;
@@ -233,6 +233,112 @@
         .no-results-container p {
             font-size: 1.5rem;
             color: #555;
+        }
+
+        .mobile-search-item {
+            background: var(--color-dark);
+            border-radius: var(--rad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.5rem;
+            box-sizing: border-box;
+            height: 10%;
+            font-size: 10px;
+            box-sizing: inherit;
+        }
+
+        .mobile-search-item-form {
+            position: relative;
+            width: 10rem;
+            background: var(--color-brand);
+            border-radius: var(--rad);
+        }
+
+        .mobile-search-item-input,
+        .mobile-search-item-button {
+            height: var(--height);
+            font-family: var(--font-fam);
+            border: 0;
+            color: var(--color-dark);
+            font-size: 1rem;
+        }
+
+        .mobile-search-item-input {
+            outline: 0;
+            width: 100%;
+            background: var(--color-light);
+            padding: 0 0.5rem;
+            border-radius: var(--rad);
+            appearance: none;
+            transition: all var(--dur) var(--bez);
+            transition-property: width, border-radius;
+            z-index: 1;
+            position: relative;
+        }
+
+        .mobile-search-item-button {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: var(--btn-width);
+            font-weight: bold;
+            background: var(--color-brand);
+            border-radius: 0 var(--rad) var(--rad) 0;
+        }
+
+        .mobile-search-item-input:not(:placeholder-shown) {
+            border-radius: var(--rad) 0 0 var(--rad);
+            width: calc(100% - var(--btn-width));
+        }
+
+        .mobile-search-item-input:not(:placeholder-shown)+.search-item-button {
+            display: block;
+        }
+
+        .mobile-search-item-label {
+            position: absolute;
+            clip: rect(1px, 1px, 1px, 1px);
+            padding: 0;
+            border: 0;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 767px) {
+            .mobile-search-item {
+                width: 90%;
+            }
+
+            .mobile-search-item {
+                height: auto;
+                min-height: auto;
+                font-size: 14px;
+            }
+
+            .mobile-search-item-form {
+                width: 100%;
+                background: var(--color-brand);
+                border-radius: var(--rad);
+                display: flex;
+                align-items: center;
+            }
+
+            .mobile-search-item-input {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+            }
+
+            .mobile-search-item-button {
+                display: block;
+                width: 3rem;
+                font-weight: bold;
+                background: var(--color-brand);
+                border-radius: 0 var(--rad) var(--rad) 0;
+            }
         }
     </style>
 
@@ -320,12 +426,12 @@
                 <nav class="menu hidden h-[350px] w-full absolute bg-custom left-0 top-[90px] z-30">
                     <ul class="h-full w-full flex flex-col justify-center ms-6">
 
-                        <li class="list-none search-item">
-                            <form id="search-form" class="search-item-form" role="search">
-                                <label class="search-item-label" for="search">Search for stuff</label>
-                                <input class="search-item-input" id="search" type="search" placeholder="Search..."
-                                    autofocus required />
-                                <button class="search-item-button" type="submit">Go</button>
+                        <li class="list-none mobile-search-item">
+                            <form id="mobile-search-form" class="mobile-search-item-form" role="search">
+                                <label class="mobile-search-item-label" for="search">Search for stuff</label>
+                                <input class="mobile-search-item-input" id="mobile-search" type="search"
+                                    placeholder="Search..." autofocus required />
+                                <button class="mobile-search-item-button" type="submit">Go</button>
                             </form>
                         </li>
 
@@ -351,7 +457,98 @@
         </section>
     </section>
 
-    <!-- search js -->
+    <!-- mobile search start -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const apiUrl = 'https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet4';
+
+            // Create and append the loading indicator
+            const loadingIndicator = document.createElement('div');
+            loadingIndicator.style.display = 'none';
+            loadingIndicator.style.position = 'fixed';
+            loadingIndicator.style.top = '50%';
+            loadingIndicator.style.left = '50%';
+            loadingIndicator.style.transform = 'translate(-50%, -50%)';
+            loadingIndicator.style.zIndex = '9999';
+
+            const spinner = document.createElement('div');
+            spinner.className = 'spinner'; // Apply the spinner class
+
+            loadingIndicator.appendChild(spinner);
+            document.body.appendChild(loadingIndicator);
+
+            // Show loading indicator and blur effect
+            function showLoading() {
+                document.body.classList.add('loading');
+                loadingIndicator.style.display = 'block';
+            }
+
+            // Hide loading indicator and blur effect
+            function hideLoading() {
+                document.body.classList.remove('loading');
+                loadingIndicator.style.display = 'none';
+            }
+
+            // Fetch and display data on page load
+            function fetchData(url) {
+                return fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                        throw error; // Re-throw to handle it in the calling code
+                    });
+            }
+
+            fetchData(apiUrl)
+                .then(data => {
+                    displayTourData(data);
+                });
+
+            // Function to fetch and display search results
+            function mobilesearchTours(query) {
+                const searchUrl = `${apiUrl}&search=${encodeURIComponent(query)}`;
+
+                fetchData(searchUrl)
+                    .then(data => {
+                        hideLoading(); // Hide loading effect when data is loaded
+                        displayTourData(data);
+                    })
+                    .catch(error => {
+                        hideLoading(); // Hide loading effect even if there's an error
+                        console.error('Error fetching search data:', error);
+                    });
+            }
+
+            // Add event listener for search form submission
+            document.getElementById('mobile-search-form').addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent form submission
+                const query = document.getElementById('mobile-search').value.trim();
+                if (query) {
+                    showLoading(); // Show loading effect during search
+                    mobilesearchTours(query);
+                }
+            });
+
+            // Mobile-specific fix: Force form submit using JavaScript
+            document.querySelector('.mobile-search-item-button').addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default button behavior
+                const query = document.getElementById('mobile-search').value.trim();
+                if (query) {
+                    showLoading(); // Show loading effect during search
+                    mobilesearchTours(query);
+                }
+            });
+        });
+
+    </script>
+    <!-- mobile search end -->
+
+    <!-- desktop search js -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const apiUrl = 'https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet4';
@@ -441,15 +638,16 @@
 
     </script>
 
-
-
-
+    <!-- desktop search end -->
 
 
     <!-- google sheet data fetch -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const apiUrl = 'https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet4';
+
+            // Show skeletons while data is being fetched
+            toggleSkeleton(true);
 
             fetch(apiUrl)
                 .then(response => response.json())
@@ -458,6 +656,10 @@
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error);
+                })
+                .finally(() => {
+                    // Hide skeletons after data is fetched
+                    toggleSkeleton(false);
                 });
         });
 
@@ -466,20 +668,180 @@
             container.innerHTML = ''; // Clear existing content if any
 
             if (tourData.length === 0) {
+                // Display the "No Results Found" message
                 container.innerHTML = `
-                    <div class="no-results-container text-center">
-                        <img src="img/noresults.gif" alt="No Results Found" class="no-results-gif mx-auto mb-4">
-                        <p class="text-3xl font-secondary text-white">Sorry, no results found for your search.</p>
+            <div class="no-results-container text-center">
+                <p class="text-3xl font-secondary text-white">Sorry, no results found for your search.</p>
+            </div>
+            <div class="w-full">
+                
+                <div id="blog-container" class="flex flex-wrap md:justify-between gap-10">
+                    <figure
+                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div
+                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
+                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="flex flex-wrap my-1">
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="img/loading.gif" alt="Loading"
+                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
+                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
+                    </figure>
+
+                    <figure
+                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div
+                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
+                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="flex flex-wrap my-1">
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="img/loading.gif" alt="Loading"
+                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
+                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
+                    </figure>
+
+                     <figure
+                        class="skeleton w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000 ">
+                        <div
+                            class="w-[100%] h-[100%] bottom-photo absolute bg-gray-300 flex flex-col justify-center px-4 animate-pulse">
+                            <div class="w-2/3 h-8 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-1/3 h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="w-full h-6 bg-gray-400 rounded mb-3"></div>
+                            <div class="flex flex-wrap my-1">
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                                <div class="w-[50%] flex items-center">
+                                    <div class="w-5 h-5 bg-gray-400 rounded-full"></div>
+                                    <div class="w-2/3 h-6 bg-gray-400 rounded ms-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="img/loading.gif" alt="Loading"
+                            class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                        <div class="w-1/3 h-6 bg-gray-400 absolute right-[-15px] top-12 rotate-[-90deg]"></div>
+                        <figcaption class="w-2/3 h-8 bg-gray-400 absolute bottom-8 right-10"></figcaption>
+                    </figure>
                     </div>
-                `;
+            </div>
+        `;
+                fetchAllBlogs(); // Call function to fetch and display popular data
                 return;
             }
 
+            // Display tour data if results are found
             tourData.forEach(tour => {
                 const figure = document.createElement('figure');
                 figure.className = 'w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000';
 
                 figure.innerHTML = `
+            <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
+                <p class="text-2xl text-color3 capitalize font-secondary">${tour.place_name}</p>
+                <p class="text-color1 mb-1">${tour.price} Rs ${tour.people}</p>
+                <p class="text-color6">${tour.description}</p>
+                <div class="flex flex-wrap my-1">
+                    <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
+                        <p class="text-color6 ms-2">${tour.number_of_trip_days} Days</p>
+                    </div>
+                    <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
+                        <p class="text-color6 ms-2">${tour.covered_place_name}</p>
+                    </div>
+                    <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
+                        <p class="text-color6 ms-2">${tour.age_limit}+</p>
+                    </div>
+                    <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
+                        <p class="text-color6 ms-2">${tour.rating}</p>
+                    </div>
+                </div>
+            </div>
+            <img src="${tour.image_url}" alt="${tour.place_name}" class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+            <p class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg]">
+                ${tour.trip_name}</p>
+            <figcaption class="absolute text-white bottom-8 right-10 fig">
+                <p class="capitalize font-secondary text-3xl mx-2">${tour.place_name}</p>
+                <p class="text-right">${tour.price} Rs ${tour.people}</p>
+            </figcaption>
+        `;
+                container.appendChild(figure);
+            });
+        }
+
+        function toggleSkeleton(show) {
+            const skeletons = document.querySelectorAll('.skeleton');
+            skeletons.forEach(skeleton => {
+                if (show) {
+                    skeleton.classList.remove('hidden');
+                } else {
+                    skeleton.classList.add('hidden');
+                }
+            });
+        }
+
+        function fetchAllBlogs() {
+            // Show skeletons while data is being fetched
+            toggleSkeleton(true);
+
+            fetch('https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet4')
+                .then(response => response.json())
+                .then(data => {
+                    const blogContainer = document.getElementById('blog-container');
+                    blogContainer.innerHTML = ''; // Clear existing content
+
+                    // Loop through each blog post and create HTML structure
+                    data.forEach(tour => {
+                        const figure = document.createElement('figure');
+                        figure.className = 'w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000';
+
+                        figure.innerHTML = `
                     <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
                         <p class="text-2xl text-color3 capitalize font-secondary">${tour.place_name}</p>
                         <p class="text-color1 mb-1">${tour.price} Rs ${tour.people}</p>
@@ -507,9 +869,71 @@
                         <p class="text-right">${tour.price} Rs ${tour.people}</p>
                     </figcaption>
                 `;
-                container.appendChild(figure);
-            });
+                        blogContainer.appendChild(figure);
+                    });
+
+                    // Re-attach event listeners for the newly added blog posts
+                    attachEventListeners();
+                })
+                .catch(error => console.error('Error fetching data:', error))
+                .finally(() => {
+                    // Hide skeletons after data is fetched
+                    toggleSkeleton(false);
+                });
         }
+
+        function fetchPopularData() {
+            const popularApiUrl = 'https://script.google.com/macros/s/AKfycbz1o5jO_2AyFcAVxiwBkeqpmMJjDHAiTwUzSmRoB6i_rl6ALfuYPwKnQJy9bhSGrqr9/exec?sheet=sheet4';
+
+            // Show skeletons while data is being fetched
+            toggleSkeleton(true);
+
+            fetch(popularApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const popularContainer = document.querySelector('.tour-results');
+                    data.forEach(tour => {
+                        const figure = document.createElement('figure');
+                        figure.className = 'w-full md:w-[45%] xl:w-[30%] h-[500px] relative photo transition-all duration-1000';
+
+                        figure.innerHTML = `
+                    <div class="w-[100%] h-[100%] bottom-photo absolute bg-white flex flex-col justify-center px-4">
+                        <p class="text-2xl text-color3 capitalize font-secondary">${tour.place_name}</p>
+                        <p class="text-color1 mb-1">${tour.price} Rs ${tour.people}</p>
+                        <p class="text-color6">${tour.description}</p>
+                        <div class="flex flex-wrap my-1">
+                            <div class="w-[50%] flex"><i class="bi bi-clock text-color4"></i>
+                                <p class="text-color6 ms-2">${tour.number_of_trip_days} Days</p>
+                            </div>
+                            <div class="w-[50%] flex"><i class="bi bi-geo-alt text-color4"></i>
+                                <p class="text-color6 ms-2">${tour.covered_place_name}</p>
+                            </div>
+                            <div class="w-[50%] flex"><i class="bi bi-person text-color4"></i>
+                                <p class="text-color6 ms-2">${tour.age_limit}+</p>
+                            </div>
+                            <div class="w-[50%] flex"><i class="bi bi-emoji-smile text-color4"></i>
+                                <p class="text-color6 ms-2">${tour.rating}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="${tour.image_url}" alt="${tour.place_name}" class="w-[100%] h-[100%] object-cover brightness-75 absolute">
+                    <p class="absolute uppercase text-white bg-color3 px-3 py-1 right-[-15px] top-12 rotate-[-90deg]">
+                        ${tour.trip_name}</p>
+                    <figcaption class="absolute text-white bottom-8 right-10 fig">
+                        <p class="capitalize font-secondary text-3xl mx-2">${tour.place_name}</p>
+                        <p class="text-right">${tour.price} Rs ${tour.people}</p>
+                    </figcaption>
+                `;
+                        popularContainer.appendChild(figure);
+                    });
+                })
+                .catch(error => console.error('Error fetching popular data:', error))
+                .finally(() => {
+                    // Hide skeletons after data is fetched
+                    toggleSkeleton(false);
+                });
+        }
+
     </script>
 
 
@@ -654,14 +1078,14 @@
                     </figure>
 
                     <!-- search result -->
-                    <div class="tour-results flex flex-wrap md:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3"></div>
+                    <div class="tour-results flex flex-wrap md:justify-between gap-10 px-6 xl:px-0 py-8 lg:px-3">test
+                    </div>
+
+
                 </div>
             </div>
         </div>
     </section>
-
-
-
 
     <section id="contact" class="w-full flex justify-center h-auto bg-color3">
         <footer class="w-full container h-auto flex flex-col 2xl:px-36 footer">
