@@ -2227,10 +2227,6 @@ video {
     width: 25%;
   }
 
-  .md\:w-\[\%\] {
-    width: %;
-  }
-
   .md\:justify-between {
     justify-content: space-between;
   }
